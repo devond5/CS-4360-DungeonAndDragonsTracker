@@ -1,6 +1,28 @@
 {
     "logs": [
         {
+            "outputFile": "C:\\Cordova\\DDMT\\platforms\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
+            "map": [
+                {
+                    "source": "C:\\Cordova\\DDMT\\platforms\\android\\app\\src\\main\\res\\values\\strings.xml",
+                    "from": {
+                        "startLines": "4,2,3",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "174,55,115",
+                        "endColumns": "63,59,58",
+                        "endOffsets": "233,110,169"
+                    },
+                    "to": {
+                        "startLines": "2,3,4",
+                        "startColumns": "4,4,4",
+                        "startOffsets": "55,119,179",
+                        "endColumns": "63,59,58",
+                        "endOffsets": "114,174,233"
+                    }
+                }
+            ]
+        },
+        {
             "outputFile": "C:\\Cordova\\DungeonMasterTraker\\platforms\\android\\app\\build\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
             "map": [
                 {
