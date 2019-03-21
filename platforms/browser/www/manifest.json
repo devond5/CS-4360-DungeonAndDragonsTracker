@@ -1,0 +1,11 @@
+{
+  "background_color": "#FFF",
+  "display": "standalone",
+  "name": "Dungeon Master Tracker",
+  "short_name": "Dungeon Master Tracker",
+  "version": "io.cordova.hellocordova",
+  "description": "A sample Apache Cordova application that responds to the deviceready event.",
+  "author": "Apache Cordova Team",
+  "icons": [],
+  "start_url": "splashHome.html"
+}
