@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+ 
+       
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        <link rel="stylesheet" type="text/css" href="css/CMN.css">
+        <title>Choose Combatants</title>
+    </head>
+    <body>
+<div class="body" id="bodyContainCharacters">
+        <div class="tab">
+          <button class="tablinks" onclick="openTab(event, 'Characters')" id="defaultOpen">Characters</button>
+          <button class="tablinks" onclick="openTab(event, 'Monsters')">Monsters</button>
+          <button class="tablinks" onclick="openTab(event, 'NPCs')">NPCs</button>
+        </div>
+        
+        <div id="Characters" class="tabcontent">
+          <h3 style="margin:5px;"align="center">Characters</h3>
+          <div style="display: flex; justify-content: space-evenly">
+          <button id="formButton"  onclick="cmnForm('characterOverlay')">Add characters</button>
+          <button>Import Characters</button>
+        </div>
+        </div>
+        
+        <div id="Monsters" class="tabcontent">
+          <h3 style="margin:5px;"align="center">Monsters</h3>
+          <div style="display: flex; justify-content: space-evenly">
+          <button id="formButton" onclick="cmnForm('monsterOverlay')">Add Monsters</button> 
+          <button>Import Monsters</button>
+        </div>
+        </div>
+        
+        <div id="NPCs" class="tabcontent">
+          <h3 style="margin:5px;"align="center">NPC's</h3>
+          <div style="display: flex; justify-content: space-evenly">
+          <button id="formButton"  onclick="cmnForm('npcOverlay')">Add NPC's</button>
+          <button>Import NPCs</button>
+        </div>
+        </div>
+
+        <div>
+            <button id="start" >Start the adventure</button>
+        </div>
+
+
+        <div id="characterOverlay" >
+          <div id="formCont">
+            <form>
+                <fieldset>
+                    <legend>Character information:</legend>
+              <label for="characterName">Cahracter Name</label>
+              <select id="characterName">
+                <option>Gorgon</option>
+              </select>
+              <br/>
+              <label for="Initiative">HP</label>
+              <input id="Initiative" type="number" min="-1" max="20"></input>
+              <br/>
+              <label for="HP">HP</label>
+              <input id="HP" type="number" min="-1" max="20"></input>
+              <br/>
+              <label for="AC">AC</label>
+              <input  id="AC" type="number" min="-1" max="20"></input>
+              <br/>
+              <label for="PP">AC</label>
+              <input  id="PP" type="number" min="-1" max="20"></input>
+              <br/>
+              <label for="Stength">Stength</label>
+              <input id="Stength" type="number" min="-1" max="20"></input>
+              <br/>
+              <label for="Dexterity">Dexterity</label>
+              <input id="Dexterity" type="number" min="-1" max="20"></input>
+              <br/>
+              <label for="Constitution">Constitution</label>
+              <input id="Constitution" type="number" min="-1" max="20"></input>
+              <br/>
+              <label for="Intellegance">Intellegance</label>
+              <input id="Intellegance"type="number" min="-1" max="20"></input>
+              <br/>
+              <label for="Wisdom">Wisdom</label>
+              <input id="Wisdom" type="number" min="-1" max="20"></input>
+              <br/>
+              <label for="Charisma">Charisma</label>
+              <input id="Charisma" type="number" min="-1" max="20"></input>
+              <br/>
+            </fieldset>
+
+            <fieldset>
+                <legend>Player information:</legend>
+                <label for="PlayerName">Player Name</label>
+                <input id="PlayerName" type="text"></input>
+                <br/>
+                <label for="Background">Background</label>
+                <input id="Background" type="text"></input>
+                <br/>
+                <label for="ClassAndLevel">Class & Level</label>
+                <input id="ClassAndLevel" type="text"></input>
+                <br/>
+                <label for="Experience">Experience</label>
+                <input id="Experience" type="text"></input>
+                <br/>
+                <label for="Alignment">Alignment</label>
+                <input id="Alignment" type="text"></input>
+                <br/>
+                <label for="Race">Race</label>
+                <input id="Race" type="text"></input>
+                <br/>
+            </fieldset>
+              <button id="done" onclick="off('characterOverlay')">Close</button>
+              
+              <button onclick="off('characterOverlay')">Done</button>
+            </form>
+            </div>
+        </div>
+
+
+
+        <div id="monsterOverlay" onclick="off('monsterOverlay')">
+            <form>
+
+            </form>
+        </div>
+
+
+
+
+        <div id="npcOverlay" onclick="off('npcOverlay')">
+          <form>
+
+          </form>
+        </div>
+
+
+
+          
+    </div>
+    </body>
+    
+        <script type="text/javascript" src="js/CMN.js"></script>
+
+</html>
