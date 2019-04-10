@@ -11,18 +11,30 @@ document.addEventListener('deviceready', function() {
     //     );
     //     });
   db.transaction(function(tr) {
-      tr.executeSql('CREATE TABLE IF NOT EXISTS characters (id integer primary key, name text, initiative integer, \
+       tr.executeSql('CREATE TABLE IF NOT EXISTS characters (id integer primary key, name text, initiative integer, \
                                                             hp integer, currenthp integer, ac integer, pp integer, \
                                                             str integer, dex integer, constitution integer, int integer, \
                                                             wis integer, charisma integer)');
+        tr.executeSql('CREATE TABLE IF NOT EXISTS monsters (id integer primary key, name text initiative integer, \
+                                                            hp integer, currenthp integer, ac integer, str integer, \
+                                                            dex integer, constitution integer, int, integer, wis integer, \
+                                                            charisma integer, STstr integer, STdex integer, \
+                                                            STconstitution integer, STint integer, STwis integer, \
+                                                            STcharisma integer)');
+        tr.executeSql('CREATE TABLE IF NOT EXISTS NPCs (id integer primary key, name text initiative integer, \
+                                                        hp integer, currenthp integer, ac integer, str integer, \
+                                                        dex integer, constitution integer, int, integer, wis integer, \
+                                                        charisma integer, STstr integer, STdex integer, \
+                                                        STconstitution integer, STint integer, STwis integer, \
+                                                        STcharisma integer)');
   }, function (error) {
       console.log('transaction error: ' + error.message);
   }, function () {
       console.log('transaction ok');
-  });
+  });  
 })
 
-
+//***************************************/CHARACTER DATABASE FUNCTIONS *********************************************
 
 function insertCharacter() {
     var name="Elie";
@@ -88,6 +100,80 @@ function deleteCharacter(event){
     db.transaction(function(transaction) {
         var id = event.id;
         var executeQuery = "DELETE FROM characters WHERE id=?";
+        transaction.executeSql(executeQuery, [id],
+        //On Success
+        function(tx, result) {alert('Delete successfully');},
+        //On Error
+        function(error){alert('Something went Wrong');});
+    });
+}
+
+//***************************************MONSTER DATABASE FUNCTIONS *********************************************
+
+function insertmonster() {
+    var name="Penis Monster";
+    var hp=69;
+    var currenthp=69
+    var initiative=21
+    var ac=69;
+    var pp=100;
+    var str=20;
+    var dex=20;
+    var constitution=20;
+    var int=20;
+    var wis=20;
+    var charisma=20;
+    db.transaction(function(transaction) {
+        var executeQuery = 'INSERT INTO monsters (name, initiative, hp, currenthp, ac, pp, str, dex, constitution, int, wis, charisma) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)';
+        transaction.executeSql(executeQuery, [name, initiative, hp, currenthp, ac, pp, str, dex, constitution, int, wis, charisma],
+        function(tx, result) {
+            alert('Inserted');
+        },
+        function(error){
+            alert('Error occurred');
+        });
+    });
+}
+
+function updateMonster(){
+    var id=1;
+    var name="Elie2.0";
+    var hp=100;
+    var currenthp=100
+    var initiative=100
+    var ac=100;
+    var pp=100
+    var str=100
+    var dex=100
+    var constitution=100
+    var int=100
+    var wis=100
+    var charisma=100
+        db.transaction(function(transaction) {
+            var executeQuery = "UPDATE monsters SET name=?, initiative=?, hp=?, currenthp=?, ac=?, pp=?, str=?, dex=?, constitution=?, int=?, wis=?, charisma=? WHERE id=?"
+            transaction.executeSql(executeQuery, [name, initiative, hp, currenthp, ac, pp, str, dex, constitution, int, wis, charisma, id],
+                function(tx, result) {
+                    alert('Updated successfully');
+            },
+                function(error){
+                    alert('Something went Wrong');
+            });
+        })
+}
+
+function viewMonster(){
+    db.transaction(function(transaction) {
+        transaction.executeSql('SELECT * FROM monsters', [], function (tx, results) {
+        console.log(results.rows)
+        return results.rows
+        }, null);
+        });
+}
+
+function deleteMonster(event){
+    db.transaction(function(transaction) {
+        var id = event.id;
+        var executeQuery = "DELETE FROM monsters WHERE id=?";
         transaction.executeSql(executeQuery, [id],
         //On Success
         function(tx, result) {alert('Delete successfully');},
