@@ -16,4 +16,8 @@ if(splashNum == 2){
     document.getElementById("splash").style.backgroundPosition = "50%";
 }
 
+function cont() {
+    window.location.assign("splashHome.html")
+}
+
 }
