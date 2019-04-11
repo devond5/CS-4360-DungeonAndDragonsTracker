@@ -1,0 +1,208 @@
+body{
+    margin:0;
+    padding: 0;
+    height:100%;
+    width:100%;
+    position: absolute;
+    
+}
+
+#bodyContainCharacters{
+    background-attachment: fixed;
+    background-color: black;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: 90%;
+    height:100%;
+    background-image: url("../img/characters.jpg");
+    transition: opacity .5s cubic-bezier(.42, 0, .34, 1.01);
+    opacity: 0;
+    position: relative;
+    overflow: auto;
+    -webkit-animation: fadeEffect .5s;
+    animation: fadeEffect .5s;
+}
+
+#bodyContainMonsters{
+  background-attachment: fixed;
+  background-color: black;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 55%;
+  height:100%;
+  background-image: url("../img/monsters.jpg");
+  transition: opacity .5s cubic-bezier(.42, 0, .34, 1.01);
+  opacity: 0;
+  position: relative;
+  overflow: auto;
+}
+
+#bodyContainNpcs{
+  background-attachment:fixed;
+  background-color: black;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 15%;
+  
+  height:100%;
+  background-image: url("../img/npc.jpg");
+  transition: opacity .5s cubic-bezier(.42, 0, .34, 1.01);
+  opacity: 0;
+  position: relative;
+    overflow: auto;
+
+}
+
+
+
+.tab {
+    overflow: hidden;
+    border: 1px solid #ccc;
+    background-color: #f1f1f1;
+  }
+  
+  
+  .tab button {
+    background-color: inherit;
+    float: left;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    transition: 0.3s;
+  }
+  
+  
+  .tab button:hover {
+    background-color: #ddd;
+  }
+  
+  
+  .tab button.active {
+    background-color: #ccc;
+  }
+  
+ 
+  .tabcontent {
+    display: none;
+    padding: 6px 10px;
+    border: 1px solid black;
+    border-top: none;
+    color:white;
+    font-size: 20px;
+    background-color: rgba(0,0,0,0.5);
+    -webkit-animation: fadeEffect .5s;
+    animation: fadeEffect .5s;
+    
+  }
+
+  #start{
+    text-align: center;
+    position: absolute;
+    top: 90%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 16px;
+    border-radius: 5px;
+    background-color: black;
+    color: white;
+    border: 1px groove white;
+    padding: 20px 80px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    overflow: hidden;
+    cursor: pointer;
+    text-align: center;
+    outline:none;
+  }
+
+  #start:hover{
+    background-color: white;
+    color: black;
+    border: 1px groove black;
+  }
+
+
+  #characterOverlay {
+    position: fixed; /* Sit on top of the page content */
+    display: none; /* Hidden by default */
+    width: 100%; /* Full width (cover the whole page) */
+    height: 100%; /* Full height (cover the whole page) */
+    top: 0; 
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+    z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+    
+    -webkit-animation: fadeEffect .5s;
+    animation: fadeEffect .5s;
+  }
+
+  #monsterOverlay {
+    position: fixed; /* Sit on top of the page content */
+    display: none; /* Hidden by default */
+    width: 100%; /* Full width (cover the whole page) */
+    height: 100%; /* Full height (cover the whole page) */
+    top: 0; 
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5); /* Black background with opacity */
+    z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
+   
+    -webkit-animation: fadeEffect .5s;
+    animation: fadeEffect .5s;
+  }
+
+  #npcOverlay {
+    position: fixed; 
+    display: none; 
+    width: 100%; 
+    height: 100%; 
+    top: 0; 
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0,0,0,0.5); 
+    z-index: 2; 
+    -webkit-animation: fadeEffect .5s;
+    animation: fadeEffect .5s;
+  }
+
+  #formCont{
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: black;
+    color: white;
+    opacity: 0;
+    padding: 15px;
+    -webkit-animation: fadeEffect .5s forwards;
+    animation: fadeEffect .5s forwards;
+    width:400px;
+  }
+
+  
+/* Fade in tabs */
+@-webkit-keyframes fadeEffect {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+@keyframes fadeEffect {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+@-webkit-keyframes fadeOut {
+  from {opacity: 1;}
+  to {opacity: 0;}
+}
+
+@keyframes fadeOut {
+  from {opacity: 1;}
+  to {opacity: 0;}
+}
