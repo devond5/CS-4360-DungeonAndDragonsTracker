@@ -178,7 +178,7 @@ body{
     padding: 15px;
     -webkit-animation: fadeEffect .5s forwards;
     animation: fadeEffect .5s forwards;
-    width:435px;
+    width:525px;
   }
 
   fieldset{
@@ -198,9 +198,23 @@ margin-right: 100px;
   }
 
   #close,#done{
-    height: 30px;
-    width: 115px;
+    font-size: 15px;
+    border-radius: 5px;
+    background-color: black;
+    color: white;
+    border: 1px groove white;
+    padding: 15px 45px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    overflow: hidden;
     cursor: pointer;
+    
+  }
+  #close:hover,#done:hover{
+    background-color: white;
+    color: black;
+    border: 1px groove black;
+    
   }
  
 td{
@@ -211,6 +225,58 @@ td{
    font-size: 19px;
  }
 
+ #characterTable,#monsterTable,#npcTable{
+  width: 100%; 
+  background-color: rgba(0,0,0,0.5);
+  color:lightgray;
+  border-style: groove;
+  border-color: lightslategray;
+  border-collapse: collapse;
+  -webkit-animation: fadeEffect .5s;
+    animation: fadeEffect .5s;
+ }
+
+ #characterTable td,#monsterTable td,#npcTable td{
+  border-style: groove;
+  border-color: lightslategray;
+  border-collapse: collapse;
+ }
+ #characterTable th,#monsterTable th,#npcTable th{
+  border-style: groove;
+  border-color: lightslategray;
+  border-collapse: collapse;
+ }
+
+ #tableRow{
+   text-align: center;
+ }
+
+ #importButton, #formButton{
+  font-size: 16px;
+  border-radius: 5px;
+  background-color: black;
+  color: white;
+  border: 1px groove white;
+  padding: 20px 15px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  overflow: hidden;
+  cursor: pointer;
+ }
+
+ #charInfo td{
+ width: 99px;
+ }
+ #charInfo {
+ margin-left: 10px;
+ }
+
+ #importButton:hover, #formButton:hover{
+  background-color: white;
+  color: black;
+  border: 1px groove black;
+ }
+/*Monce was Here*/
 /* Fade in tabs */
 @-webkit-keyframes fadeEffect {
   from {opacity: 0;

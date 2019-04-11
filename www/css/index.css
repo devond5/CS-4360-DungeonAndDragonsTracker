@@ -49,15 +49,18 @@
     left: 25%;
     font-size: 5vw;
     transform: translate(-50%, -50%);
-    background-color: #1c87c9;
-    border: none;
+    font-size: 16px;
+    border-radius: 5px;
+    background-color: black;
     color: white;
-    padding: 20px 34px;
+    border: 1px groove white;
+    padding: 20px 80px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    overflow: hidden;
+    cursor: pointer;
     text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 20px;
-    margin: 4px 2px;
+    outline:none;
     cursor: pointer;
     opacity:0;
     animation:fadein 2s 7s ease forwards;
@@ -69,18 +72,27 @@
       left: 75%;
       font-size: 5vw;
       transform: translate(-50%, -50%);
-      background-color: #1c87c9;
-      border: none;
+      font-size: 16px;
+      border-radius: 5px;
+      background-color: black;
       color: white;
-      padding: 20px 34px;
+      border: 1px groove white;
+      padding: 20px 80px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      overflow: hidden;
+      cursor: pointer;
       text-align: center;
-      text-decoration: none;
-      display: inline-block;
-      font-size: 20px;
-      margin: 4px 2px;
+      outline:none;
       cursor: pointer;
       opacity:0;
       animation:fadein 2s 7s ease forwards;
+      }
+
+      #button2:hover, #button1:hover{
+        background-color: white;
+        color: black;
+        border: 1px groove black;
       }
       
       #newContinue{

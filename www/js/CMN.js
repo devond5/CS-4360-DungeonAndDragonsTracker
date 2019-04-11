@@ -37,17 +37,25 @@ function openTab(evt, tabName) {
     
         document.getElementsByClassName("body")[0].id = "bodyContainMonsters";
         document.getElementById("bodyContainMonsters").style.opacity = "1"; 
-        
+        document.getElementsByClassName("monsterTableCont")[0].style.display = "block"; 
+        document.getElementsByClassName("npcTableCont")[0].style.display = "none"; 
+        document.getElementsByClassName("characterTableCont")[0].style.display = "none"; 
     }else if(tabName === 'NPCs'){
       document.getElementById(document.getElementsByClassName("body")[0].id).style.opacity = "0"; 
       
       document.getElementsByClassName("body")[0].id = "bodyContainNpcs";
         document.getElementById("bodyContainNpcs").style.opacity = "1"; 
+        document.getElementsByClassName("monsterTableCont")[0].style.display = "none"; 
+        document.getElementsByClassName("npcTableCont")[0].style.display = "block"; 
+        document.getElementsByClassName("characterTableCont")[0].style.display = "none"; 
     }else{
       document.getElementById(document.getElementsByClassName("body")[0].id).style.opacity = "0"; 
       
         document.getElementsByClassName("body")[0].id = "bodyContainCharacters";
         document.getElementById("bodyContainCharacters").style.opacity = "1"; 
+        document.getElementsByClassName("monsterTableCont")[0].style.display = "none"; 
+        document.getElementsByClassName("npcTableCont")[0].style.display = "none"; 
+        document.getElementsByClassName("characterTableCont")[0].style.display = "block"; 
     }
     evt.currentTarget.className += " active";
   }
