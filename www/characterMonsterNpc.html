@@ -43,77 +43,114 @@
         </div>
 
         <div>
-            <button id="start" >Start the adventure</button>
+            <button onclick="window.location.href='combat.html'" id="start" >Start the adventure</button>
         </div>
 
 
-        <div id="characterOverlay" >
+        <div id="characterOverlay" class="nonactive" >
           <div id="formCont">
             <form>
-                <fieldset>
+              <table>
+                <tr>
+                  <td>
+                <fieldset style="width:240px">
                     <legend>Character information:</legend>
-              <label for="characterName">Cahracter Name</label>
+              <label for="characterName">Character Name</label>
               <select id="characterName">
                 <option>Gorgon</option>
               </select>
-              <br/>
-              <label for="Initiative">HP</label>
-              <input id="Initiative" type="number" min="-1" max="20"></input>
-              <br/>
-              <label for="HP">HP</label>
-              <input id="HP" type="number" min="-1" max="20"></input>
-              <br/>
-              <label for="AC">AC</label>
-              <input  id="AC" type="number" min="-1" max="20"></input>
-              <br/>
-              <label for="PP">AC</label>
-              <input  id="PP" type="number" min="-1" max="20"></input>
-              <br/>
-              <label for="Stength">Stength</label>
-              <input id="Stength" type="number" min="-1" max="20"></input>
-              <br/>
-              <label for="Dexterity">Dexterity</label>
-              <input id="Dexterity" type="number" min="-1" max="20"></input>
-              <br/>
-              <label for="Constitution">Constitution</label>
-              <input id="Constitution" type="number" min="-1" max="20"></input>
-              <br/>
-              <label for="Intellegance">Intellegance</label>
-              <input id="Intellegance"type="number" min="-1" max="20"></input>
-              <br/>
-              <label for="Wisdom">Wisdom</label>
-              <input id="Wisdom" type="number" min="-1" max="20"></input>
-              <br/>
-              <label for="Charisma">Charisma</label>
-              <input id="Charisma" type="number" min="-1" max="20"></input>
-              <br/>
+              <table>
+                <tr>
+                  <td style="display:inline-grid">
+                      <label for="Initiative">Initiative:</label>
+                      <input id="Initiative" type="number" min="-1" max="20"></input>
+                  </td>
+                  <td style="display:inline-grid">
+                      <label for="HP">HP:</label>
+                      <input id="HP" type="number" min="-1" max="100"></input>
+                  </td>
+                </tr>
+                <tr>
+                    <td style="display:inline-grid"> 
+                        <label for="AC">AC:</label>
+                        <input  id="AC" type="number" min="-1" max="100"></input>
+                    </td>
+                    <td style="display:inline-grid">
+                       
+                      <label for="PP">PP:</label>
+                      <input  id="PP" type="number" min="-1" max="100"></input>
+                    </td>
+                  </tr>
+                  <tr>
+                      <td style="display:inline-grid">
+                          <label for="Stength">Stength:</label>
+                          <input id="Stength" type="number" min="-1" max="100"></input>
+                         
+                      </td>
+                      <td style="display:inline-grid">
+                          <label for="Dexterity">Dexterity:</label>
+                          <input id="Dexterity" type="number" min="-1" max="100"></input>
+                      </td>
+                    </tr>
+                    <tr>
+                        <td style="display:inline-grid">
+                            <label for="Constitution">Constitution:</label>
+                            <input id="Constitution" type="number" min="-1" max="100"></input>
+                        </td>
+                        <td style="display:inline-grid">
+                            <label for="Intellegance">Intellegance:</label>
+                            <input id="Intellegance"type="number" min="-1" max="100"></input>
+                        </td>
+                      </tr>
+                      <tr>
+                          <td style="display:inline-grid">
+                              <label for="Wisdom">Wisdom:</label>
+                              <input id="Wisdom" type="number" min="-1" max="100"></input>
+                          </td>
+                          <td style="display:inline-grid">
+                              <label for="Charisma">Charisma:</label>
+                              <input id="Charisma" type="number" min="-1" max="100"></input>
+                          </td>
+                        </tr>
+              </table>
+             
             </fieldset>
-
+          </td>
+<td>
             <fieldset>
                 <legend>Player information:</legend>
-                <label for="PlayerName">Player Name</label>
+                <label for="PlayerName">Player Name:</label>
                 <input id="PlayerName" type="text"></input>
-                <br/>
-                <label for="Background">Background</label>
+               
+                <label for="Background">Background:</label>
                 <input id="Background" type="text"></input>
-                <br/>
-                <label for="ClassAndLevel">Class & Level</label>
+                
+                <label for="ClassAndLevel">Class & Level:</label>
                 <input id="ClassAndLevel" type="text"></input>
-                <br/>
-                <label for="Experience">Experience</label>
+                
+                <label for="Experience">Experience:</label>
                 <input id="Experience" type="text"></input>
-                <br/>
-                <label for="Alignment">Alignment</label>
+                
+                <label for="Alignment">Alignment:</label>
                 <input id="Alignment" type="text"></input>
-                <br/>
-                <label for="Race">Race</label>
+                
+                <label for="Race">Race:</label>
                 <input id="Race" type="text"></input>
-                <br/>
+                
             </fieldset>
-              <button id="done" onclick="off('characterOverlay')">Close</button>
+          </td>
+          </tr>
+          <tr>
+            <td colspan="2">
+                <button type = "button" id="close" onclick="off('characterOverlay')">Close</button>
               
-              <button onclick="off('characterOverlay')">Done</button>
-            </form>
+                <button id="done" onclick="off('characterOverlay')">Done</button>
+          </td>
+          </tr>
+          </table>
+              </form>
+              
+            
             </div>
         </div>
 

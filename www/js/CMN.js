@@ -1,6 +1,6 @@
 function cmnForm(currentId){
   if(currentId == "characterOverlay"){
-    document.getElementById("characterOverlay").style.display = "block"; 
+    document.getElementById("characterOverlay").style.display = "block"
   }else if(currentId == "monsterOverlay"){
     document.getElementById("monsterOverlay").style.display = "block"; 
   }else{
@@ -10,7 +10,7 @@ function cmnForm(currentId){
 }
 function off(currentId){
   if(currentId == "characterOverlay"){
-    document.getElementById("characterOverlay").style.display = "none"; 
+    document.getElementById("characterOverlay").style.display = "none"
   }else if(currentId == "monsterOverlay"){
     document.getElementById("monsterOverlay").style.display = "none"; 
   }else{
@@ -56,9 +56,7 @@ function openTab(evt, tabName) {
   // Get the element with id="defaultOpen" and click on it
   document.getElementById("defaultOpen").click();
 
-  window.onload = function(){
-    document.getElementById("bodyContainCharacters").style.opacity = "1"; 
-  }
+ 
 
 
 
