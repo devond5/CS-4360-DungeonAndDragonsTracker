@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+ 
+        <!-- <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: gap: https://ssl.gstatic.com 'unsafe-eval'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data: content:;"> -->
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        <link rel="stylesheet" type="text/css" href="css/index.css">
+        <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="https://code.jquery.com/mobile/1.5.0-alpha.1/jquery.mobile-1.5.0-alpha.1.min.js"></script>
+        <title>Hompage</title>
+    </head>
+    <body>
+
+    <!--Home Screen-->
+    <div id="home">
+        <p id = homeText>
+            <button id="dbInsert" onClick="insertCharacter()">Insert character</button>
+            <button id="dbView" onClick="viewChracter()">View characters</button>
+            <button id="update" onClick="updateCharacter()">Update Character</button>
+            <button id="10" onClick="deleteCharacter('all')">Delete Data</button>   
+
+        </p>       
+    </div>
+   
+
+        <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="js/database.js"></script>
+    </body>
+
+</html>
