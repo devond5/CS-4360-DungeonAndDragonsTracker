@@ -1,2 +1,3 @@
-#ignore platforms folder
-platforms/browser/
+#ignore platforms and plugin folders
+platforms/
+plugins/
