@@ -42,7 +42,9 @@
   animation:fadeinOutText 7s ease;
 }
 
-  
+ 
+
+
   #button1 {
     position: fixed;
     top: 40%;
@@ -128,6 +130,63 @@
     to{opacity:1;}
   }
 
+
+   
+  
+
+  @media screen and (max-width: 545px){
+    #button2 {
+     position: fixed;
+     top: 40%;
+     left: 75%;
+     font-size: 5vw;
+     transform: translate(-50%, -50%);
+     font-size: 16px;
+     border-radius: 5px;
+     background-color: black;
+     color: white;
+     border: 1px groove white;
+     padding: 10px 30px;
+     text-transform: uppercase;
+     letter-spacing: 2px;
+     overflow: hidden;
+     cursor: pointer;
+     text-align: center;
+     outline:none;
+     cursor: pointer;
+     opacity:0;
+     animation:fadein 2s 7s ease forwards;
+     width: 45%;
+    height: 60px;      
+   }
+ }
+
+ @media screen and (max-width: 545px){
+         #button1{
+           position: fixed;
+           top: 40%;
+           left: 25%;
+           font-size: 5vw;
+           transform: translate(-50%, -50%);
+           font-size: 16px;
+           border-radius: 5px;
+           background-color: black;
+           color: white;
+           border: 1px groove white;
+           padding: 10px 30px;
+           text-transform: uppercase;
+           letter-spacing: 2px;
+           overflow: hidden;
+           cursor: pointer;
+           text-align: center;
+           outline: none;
+           cursor: pointer;
+           opacity: 0;
+           animation: fadein 2s 7s ease forwards;
+           width: 45%;
+           height: 60px;
+         }
+ }
 
 
 
