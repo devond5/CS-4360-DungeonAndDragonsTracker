@@ -1,2 +1,4 @@
-#ignore platforms folder
+#ignore platforms and plugin folders
 platforms/
+plugins/
+

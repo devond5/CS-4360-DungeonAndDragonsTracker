@@ -11,6 +11,7 @@
         <title>Choose Combatants</title>
     </head>
     <body>
+        
 <div class="body" id="bodyContainCharacters">
         <div class="tab">
           <button class="tablinks" onclick="openTab(event, 'Characters')" id="defaultOpen">Characters</button>
@@ -48,24 +49,8 @@
                 <col width="130">
                 <col width="130">
                 <col width="130">
-              <tr>
-                
-                <th>Character</th>
-                <th>Statistics</th>
-                <th>Player Info</th>
-              </tr>
-              <tr id="tableRow">
-               
-                <td>
-                    Gooda
-                </td>
-                <td>
-                 HP:5 PP:3 AC:2
-                </td>
-                <td>
-                    Devon Awesome dude
-                </td>
-              </tr>
+             
+             
               </table>
           </div>
           <div class="monsterTableCont" style="display: none">
@@ -114,9 +99,9 @@
                   </tr>
                   </table>
               </div>
-
         <div>
             <button onclick="window.location.href='adventure.html'" id="start" >Start the adventure</button>
+
         </div>
 
 
@@ -236,7 +221,7 @@
             <td colspan="2">
                 <button type = "button" id="close" onclick="off('characterOverlay')">Close</button>
               
-                <button type = "button" id="done" onclick="off('characterOverlay')">Done</button>
+                <button type = "button" id="done" onclick="submitCharacters()">Done</button>
           </td>
           </tr>
           </table>
