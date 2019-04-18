@@ -1,6 +1,6 @@
 var db = (window.cordova.platformId === 'browser') ?
-window.openDatabase('MyDatabase', '1.0', 'Data', 2*1024*1024) :
-window.sqlitePlugin.openDatabase({name: 'MyDatabase.db', location: 'default'});
+window.openDatabase('dmdb', '1.0', 'Data', 2*1024*1024) :
+window.sqlitePlugin.openDatabase({name: 'dmdb.db', location: 'default'});
 
 document.addEventListener('deviceready', function() {
     // db.transaction(function(transaction) {
@@ -14,7 +14,8 @@ document.addEventListener('deviceready', function() {
        tr.executeSql('CREATE TABLE IF NOT EXISTS characters (id integer primary key, name text, initiative integer, \
                                                             hp integer, currenthp integer, ac integer, pp integer, \
                                                             str integer, dex integer, constitution integer, int integer, \
-                                                            wis integer, charisma integer)');
+                                                            wis integer, charisma integer, player text, bg text, classLevel text,\
+                                                            exp text, align text, race text)');
         tr.executeSql('CREATE TABLE IF NOT EXISTS monsters (id integer primary key, name text initiative integer, \
                                                             hp integer, currenthp integer, ac integer, str integer, \
                                                             dex integer, constitution integer, int, integer, wis integer, \
