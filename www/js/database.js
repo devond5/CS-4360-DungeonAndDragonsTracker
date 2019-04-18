@@ -1,6 +1,6 @@
 var db = (window.cordova.platformId === 'browser') ?
-window.openDatabase('MyDatabase', '1.0', 'Data', 2*1024*1024) :
-window.sqlitePlugin.openDatabase({name: 'MyDatabase.db', location: 'default'});
+window.openDatabase('dmdb', '1.0', 'Data', 2*1024*1024) :
+window.sqlitePlugin.openDatabase({name: 'dmdb.db', location: 'default'});
 
 document.addEventListener('deviceready', function() {
     // db.transaction(function(transaction) {
@@ -27,6 +27,7 @@ document.addEventListener('deviceready', function() {
                                                         cha integer, str_save integer, dex_save integer, \
                                                         con_save integer, int_save integer, wis_save integer, \
                                                         cha_save integer, proficiency_bonus integer, dmg_resist text, dmg_immune text, condition_immune text)');
+    
   }, function (error) {
       console.log('transaction error: ' + error.message);
   }, function () {
