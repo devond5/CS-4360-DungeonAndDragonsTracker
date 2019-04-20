@@ -1,25 +1,55 @@
 <!DOCTYPE html>
 
 <html>
-    <head>
 
-        <meta name="format-detection" content="telephone=no">
-        <meta name="msapplication-tap-highlight" content="no">
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
-        <link rel="stylesheet" type="text/css" href="css/index.css">
-        <title>Combat</title>
-    </head>
-    <body>
+<head>
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport"
+        content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+    <link rel="stylesheet" type="text/css" href="css/combat.css">
+    <title>Combat</title>
+</head>
 
-
-    <!--Combat Screen-->
-    <div id="home" style="text-align:center;">
-        <button onclick="window.location.href='databaseTesting.html'">Uhhhhhhhh Combat?</button>
+<body>
+    <div id="bodyDiv">
+        <!--Combat Screen-->
+        <div id="initCont">
+            <h3 id="combatHeader">Combat!</h3>
+            <h3 id="initHeader">Inititave:</h3>
+            <button id="initButton" value=0>0</button>
+            <div id="buttonGroup"style="display: inline-block; text-align: center">
+                    <button id="d4">1</button>
+                    <Label for="d4" style="color:wheat;text-align: center">D4</Label>
+                </div>
+                    <div id="buttonGroup"style="display: inline-block; text-align: center">
+                    <button id="d6">1</button>
+                    <Label for="d6" style="color:wheat;text-align: center">D6</Label>
+                </div>
+                    <div id="buttonGroup"style="display: inline-block; text-align: center">
+                    <button id="d8">1</button>
+                    <Label for="d8" style="color:wheat;text-align: center">D8</Label>
+                </div>
+                    <div id="buttonGroup"style="display: inline-block; text-align: center">
+                    <button id="d10">1</button>
+                    <Label for="d10" style="color:wheat;text-align: center">D10</Label>
+                </div>
+                    <div id="buttonGroup"style="display: inline-block; text-align: center">
+                    <button id="d12">1</button>
+                    <Label for="d12" style="color:wheat;text-align: center">D12</Label>
+                </div>
+                    <div id="buttonGroup"style="display: inline-block; text-align: center">
+                    <button id="d20">1</button>
+                    <Label for="d20" style="color:wheat;text-align: center">D20</Label>
+                </div>
+            </div>
+            
+            
+            
+            
+        </div>
     </div>
-
-
-        
-        <script type="text/javascript" src="js/index.js"></script>
-    </body>
+    <script type="text/javascript" src="js/combat.js"></script>
+</body>
 
 </html>

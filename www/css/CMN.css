@@ -123,6 +123,8 @@ transform: translateX(-50%);
     display: inline-block;
     width: 100%;
     height: 17%;
+    position:sticky;
+    top:90%;
   }
 
 
@@ -278,7 +280,11 @@ td{
   color: black;
   border: 1px groove black;
  }
-
+#error{
+  color:red;
+  font-size: smaller;
+  margin:0;
+}
 
 /* width */
 ::-webkit-scrollbar {
