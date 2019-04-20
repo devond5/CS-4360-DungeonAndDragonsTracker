@@ -1,2 +1,4 @@
-#ignore platform folder
-CS-4360-DungeonAndDragonsTracker/platforms
+#ignore platforms and plugin folders
+platforms/
+plugins/
+
