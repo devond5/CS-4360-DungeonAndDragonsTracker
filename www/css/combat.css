@@ -1,0 +1,69 @@
+body{
+    margin:0;
+}
+
+#bodyDiv{
+    padding:20px;
+    background-color: black;
+    overflow: auto;
+}
+
+#initHeader{
+    display:inline-block;
+    color:white;
+    font-size: x-large;
+}
+
+#initButton{
+    border-radius: 50px;
+    border-color: white;
+    color: white;
+    font-size: x-large;
+    width: 100px;
+    height: 100px;
+    background-color: rgba(0, 0, 0, 0);
+    cursor: pointer;
+    outline:none;
+    transition: all .5s;
+    display: inline-block;
+}
+
+#initButton:hover{
+    background-color: rgba(255, 255, 255, 1);
+    color:black;
+    border-color: black;
+}
+
+
+#combatHeader{
+    text-align: center;
+    color:white;
+    font-size: xx-large;
+}
+
+#d4,#d6,#d8,#d10,#d12,#d20{
+    border-radius: 50px;
+    border-color: white;
+    color: white;
+    font-size: x-large;
+    width: 50px;
+    height: 50px;
+    background-color: rgba(0, 0, 0, 0);
+    cursor: pointer;
+    outline:none;
+    transition: all .5s;
+    display: inline-block;
+    float:right;
+}
+
+#buttonGroup label{
+    display: block;
+    
+}
+
+#buttonGroup{
+    float: right;
+    margin:5px;
+}
+
+
