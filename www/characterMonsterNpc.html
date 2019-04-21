@@ -74,7 +74,7 @@
     </div>
 
 
-    <div id="characterOverlay" class="nonactive">
+    <div id="characterOverlay" >
       <div id="formCont">
         <form>
           <table>
@@ -199,8 +199,9 @@
             </tr>
           </table>
         </form>
-
-        <div id="monsterOverlay" class="nonactive">
+</div>
+    </div>
+        <div id="monsterOverlay" >
             <div id="formCont">
                 <form>
                     <table>
@@ -311,7 +312,7 @@
                             <td colspan="2">
                                 <button type="button" id="close" onclick="off('monsterOverlay')">Close</button>
 
-                                <button id="done" onclick="off('monsterOverlay')">Done</button>
+                                <button type="button" id="done" onclick="off('monsterOverlay')">Done</button>
                             </td>
                         </tr>
                     </table>
@@ -319,13 +320,6 @@
             </div>
         </div>
 
-
-
-    <div id="monsterOverlay" onclick="off('monsterOverlay')">
-      <form>
-
-      </form>
-    </div>
 
 
     <div id="npcOverlay" onclick="off('npcOverlay')">

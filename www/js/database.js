@@ -1,7 +1,4 @@
-var db = (window.cordova.platformId === 'browser') ?
-
-window.openDatabase('dmdb', '1.0', 'Data', 2*1024*1024) :
-window.sqlitePlugin.openDatabase({name: 'dmdb.db', location: 'default'});
+var db = window.openDatabase('dmdb', '1.0', 'Data', 2*1024*1024);
 
 document.addEventListener('deviceready', function () {
 
