@@ -185,6 +185,7 @@
                       </td>
                     </tr>
 
+
                   </table>
                 </fieldset>
               </td>
@@ -199,9 +200,124 @@
           </table>
         </form>
 
+        <div id="monsterOverlay" class="nonactive">
+            <div id="formCont">
+                <form>
+                    <table>
+                        <tr>
+                            <td>
+                                <fieldset style="width:240px">
+                                    <legend>Monster information:</legend>
+                                    <label for="monsterName">Monster Name</label>
+                                    <input id="monsterName" type="text" min="-1" max="30"></input>
+                                    <table>
+                                        <tr>
+                                            <td style="display:inline-grid">
+                                                <label for="Initiative">Initiative:</label>
+                                                <input id="Initiative" type="number" min="-1" max="20"></input>
+                                            </td>
+                                            <td style="display:inline-grid">
+                                                <label for="HP">HP:</label>
+                                                <input id="HP" type="number" min="-1" max="100"></input>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="display:inline-grid">
+                                                <label for="AC">AC:</label>
+                                                <input id="AC" type="number" min="-1" max="100"></input>
+                                            </td>
+                                            <td style="display:inline-grid">
 
-      </div>
-    </div>
+
+                                                <label for="Perception">Perception:</label>
+                                                <input id="Perception" type="number" min="-1" max="100"></input>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="display:inline-grid">
+                                                <label for="Stength">Stength:</label>
+                                                <input id="Stength" type="number" min="-1" max="100"></input>
+
+                                            </td>
+                                            <td style="display:inline-grid">
+                                                <label for="Dexterity">Dexterity:</label>
+                                                <input id="Dexterity" type="number" min="-1" max="100"></input>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="display:inline-grid">
+                                                <label for="Constitution">Constitution:</label>
+                                                <input id="Constitution" type="number" min="-1" max="100"></input>
+                                            </td>
+                                            <td style="display:inline-grid">
+                                                <label for="Intellegance">Intellegance:</label>
+                                                <input id="Intellegance" type="number" min="-1" max="100"></input>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="display:inline-grid">
+                                                <label for="Wisdom">Wisdom:</label>
+                                                <input id="Wisdom" type="number" min="-1" max="100"></input>
+                                            </td>
+                                            <td style="display:inline-grid">
+                                                <label for="Charisma">Charisma:</label>
+                                                <input id="Charisma" type="number" min="-1" max="100"></input>
+                                            </td>
+                                        </tr>
+                                    </table>
+
+                                </fieldset>
+                            </td>
+                            <td>
+                                <fieldset style="width:200px">
+                                    <table>
+                                        <tr>
+                                            <td style="display:inline-grid">
+                                                <label for="Stength">Stength:</label>
+                                                <input id="Stength" type="number" min="-1" max="100"></input>
+
+                                            </td>
+                                            <td style="display:inline-grid">
+                                                <label for="Dexterity">Dexterity:</label>
+                                                <input id="Dexterity" type="number" min="-1" max="100"></input>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="display:inline-grid">
+                                                <label for="Constitution">Constitution:</label>
+                                                <input id="Constitution" type="number" min="-1" max="100"></input>
+                                            </td>
+                                            <td style="display:inline-grid">
+                                                <label for="Intellegance">Intellegance:</label>
+                                                <input id="Intellegance" type="number" min="-1" max="100"></input>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="display:inline-grid">
+                                                <label for="Wisdom">Wisdom:</label>
+                                                <input id="Wisdom" type="number" min="-1" max="100"></input>
+                                            </td>
+                                            <td style="display:inline-grid">
+                                                <label for="Charisma">Charisma:</label>
+                                                <input id="Charisma" type="number" min="-1" max="100"></input>
+                                            </td>
+                                        </tr>
+                                    </table>
+
+                                </fieldset>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <button type="button" id="close" onclick="off('monsterOverlay')">Close</button>
+
+                                <button id="done" onclick="off('monsterOverlay')">Done</button>
+                            </td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
+        </div>
 
 
 
@@ -212,13 +328,13 @@
     </div>
 
 
-
-
     <div id="npcOverlay" onclick="off('npcOverlay')">
       <form>
 
+
       </form>
     </div>
+
 
 
 

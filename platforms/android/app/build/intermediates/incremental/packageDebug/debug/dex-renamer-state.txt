@@ -1,4 +1,4 @@
-#Tue Mar 26 20:11:00 MDT 2019
-base.0=C\:\\Cordova\\DDMT\\platforms\\android\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0
+#Thu Apr 11 09:25:59 MDT 2019
+base.0=C\:\\Users\\Maxdm\\workspace\\DnD\\CS-4360-DungeonAndDragonsTracker\\platforms\\android\\app\\build\\intermediates\\transforms\\dexMerger\\debug\\0
 path.0=classes.dex
 renamed.0=classes.dex

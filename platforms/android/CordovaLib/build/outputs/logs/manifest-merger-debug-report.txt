@@ -1,27 +1,27 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Cordova\DDMT\platforms\android\CordovaLib\AndroidManifest.xml:20:1-23:12
-INJECTED from C:\Cordova\DDMT\platforms\android\CordovaLib\AndroidManifest.xml:20:1-23:12
-INJECTED from C:\Cordova\DDMT\platforms\android\CordovaLib\AndroidManifest.xml:20:1-23:12
-INJECTED from C:\Cordova\DDMT\platforms\android\CordovaLib\AndroidManifest.xml:20:1-23:12
-INJECTED from C:\Cordova\DDMT\platforms\android\CordovaLib\AndroidManifest.xml:20:1-23:12
-INJECTED from C:\Cordova\DDMT\platforms\android\CordovaLib\AndroidManifest.xml:20:1-23:12
-INJECTED from C:\Cordova\DDMT\platforms\android\CordovaLib\AndroidManifest.xml:20:1-23:12
+ADDED from C:\Users\Maxdm\workspace\DnD\CS-4360-DungeonAndDragonsTracker\platforms\android\CordovaLib\AndroidManifest.xml:20:1-23:12
+INJECTED from C:\Users\Maxdm\workspace\DnD\CS-4360-DungeonAndDragonsTracker\platforms\android\CordovaLib\AndroidManifest.xml:20:1-23:12
+INJECTED from C:\Users\Maxdm\workspace\DnD\CS-4360-DungeonAndDragonsTracker\platforms\android\CordovaLib\AndroidManifest.xml:20:1-23:12
+INJECTED from C:\Users\Maxdm\workspace\DnD\CS-4360-DungeonAndDragonsTracker\platforms\android\CordovaLib\AndroidManifest.xml:20:1-23:12
+INJECTED from C:\Users\Maxdm\workspace\DnD\CS-4360-DungeonAndDragonsTracker\platforms\android\CordovaLib\AndroidManifest.xml:20:1-23:12
+INJECTED from C:\Users\Maxdm\workspace\DnD\CS-4360-DungeonAndDragonsTracker\platforms\android\CordovaLib\AndroidManifest.xml:20:1-23:12
+INJECTED from C:\Users\Maxdm\workspace\DnD\CS-4360-DungeonAndDragonsTracker\platforms\android\CordovaLib\AndroidManifest.xml:20:1-23:12
 	package
-		ADDED from C:\Cordova\DDMT\platforms\android\CordovaLib\AndroidManifest.xml:21:7-35
-		INJECTED from C:\Cordova\DDMT\platforms\android\CordovaLib\AndroidManifest.xml
-		INJECTED from C:\Cordova\DDMT\platforms\android\CordovaLib\AndroidManifest.xml
+		ADDED from C:\Users\Maxdm\workspace\DnD\CS-4360-DungeonAndDragonsTracker\platforms\android\CordovaLib\AndroidManifest.xml:21:7-35
+		INJECTED from C:\Users\Maxdm\workspace\DnD\CS-4360-DungeonAndDragonsTracker\platforms\android\CordovaLib\AndroidManifest.xml
+		INJECTED from C:\Users\Maxdm\workspace\DnD\CS-4360-DungeonAndDragonsTracker\platforms\android\CordovaLib\AndroidManifest.xml
 	android:versionName
-		ADDED from C:\Cordova\DDMT\platforms\android\CordovaLib\AndroidManifest.xml:21:36-61
-		INJECTED from C:\Cordova\DDMT\platforms\android\CordovaLib\AndroidManifest.xml
-		INJECTED from C:\Cordova\DDMT\platforms\android\CordovaLib\AndroidManifest.xml
+		ADDED from C:\Users\Maxdm\workspace\DnD\CS-4360-DungeonAndDragonsTracker\platforms\android\CordovaLib\AndroidManifest.xml:21:36-61
+		INJECTED from C:\Users\Maxdm\workspace\DnD\CS-4360-DungeonAndDragonsTracker\platforms\android\CordovaLib\AndroidManifest.xml
+		INJECTED from C:\Users\Maxdm\workspace\DnD\CS-4360-DungeonAndDragonsTracker\platforms\android\CordovaLib\AndroidManifest.xml
 	xmlns:android
-		ADDED from C:\Cordova\DDMT\platforms\android\CordovaLib\AndroidManifest.xml:20:11-69
+		ADDED from C:\Users\Maxdm\workspace\DnD\CS-4360-DungeonAndDragonsTracker\platforms\android\CordovaLib\AndroidManifest.xml:20:11-69
 	android:versionCode
-		ADDED from C:\Cordova\DDMT\platforms\android\CordovaLib\AndroidManifest.xml:21:62-85
-		INJECTED from C:\Cordova\DDMT\platforms\android\CordovaLib\AndroidManifest.xml
-		INJECTED from C:\Cordova\DDMT\platforms\android\CordovaLib\AndroidManifest.xml
+		ADDED from C:\Users\Maxdm\workspace\DnD\CS-4360-DungeonAndDragonsTracker\platforms\android\CordovaLib\AndroidManifest.xml:21:62-85
+		INJECTED from C:\Users\Maxdm\workspace\DnD\CS-4360-DungeonAndDragonsTracker\platforms\android\CordovaLib\AndroidManifest.xml
+		INJECTED from C:\Users\Maxdm\workspace\DnD\CS-4360-DungeonAndDragonsTracker\platforms\android\CordovaLib\AndroidManifest.xml
 uses-sdk
-ADDED from C:\Cordova\DDMT\platforms\android\CordovaLib\AndroidManifest.xml:22:5-44
+ADDED from C:\Users\Maxdm\workspace\DnD\CS-4360-DungeonAndDragonsTracker\platforms\android\CordovaLib\AndroidManifest.xml:22:5-44
 	android:minSdkVersion
-		ADDED from C:\Cordova\DDMT\platforms\android\CordovaLib\AndroidManifest.xml:22:15-41
+		ADDED from C:\Users\Maxdm\workspace\DnD\CS-4360-DungeonAndDragonsTracker\platforms\android\CordovaLib\AndroidManifest.xml:22:15-41
