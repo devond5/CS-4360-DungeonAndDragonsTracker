@@ -65,7 +65,7 @@ function updateCharacter() {
     var HP = 100;
     var currentHP = 100
     var initiative = 100
-    var ac = 100;
+    var AC = 100;
     var pp = 100
     var str = 100
     var dex = 100
@@ -124,7 +124,7 @@ function insertMonster() {
     var HP = 69;
     var currentHP = 69;
     var initiative = 21;
-    var ac = 69;
+    var AC = 69;
     var speed = 45;
     var pp = 100;
     var str = 20;
@@ -162,7 +162,7 @@ function updateMonster() {
     var HP = 69;
     var currentHP = 69;
     var initiative = 21;
-    var ac = 69;
+    var AC = 69;
     var speed = 45;
     var pp = 100;
     var str = 20;
@@ -235,7 +235,7 @@ function insertNPC() {
     var HP = 5;
     var currentHP = 5;
     var initiative = 20;
-    var ac = 10;
+    var AC = 10;
     var speed = 15;
     var pp = 2;
     var str = 2;
@@ -273,7 +273,7 @@ function updateNPC() {
     var HP = 150;
     var currentHP = 100;
     var initiative = 21;
-    var ac = 22;
+    var AC = 22;
     var speed = 50;
     var pp = 100;
     var str = 20;
