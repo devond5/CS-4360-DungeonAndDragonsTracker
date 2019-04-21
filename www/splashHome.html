@@ -1,22 +1,22 @@
 <!DOCTYPE html>
 <html>
 
-<head>
+    <head>
+ 
+        <meta name="format-detection" content="telephone=no">
+        <meta name="msapplication-tap-highlight" content="no">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+        <link rel="stylesheet" type="text/css" href="css/index.css">
 
-    <meta name="format-detection" content="telephone=no">
-    <meta name="msapplication-tap-highlight" content="no">
-    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
-    <link rel="stylesheet" type="text/css" href="css/index.css">
+        <title>Homepage</title>
 
-    <title>Homepage</title>
-
-</head>
-
-<body>
-    <!--home-->
-    <div id="home" style="text-align:center;">
-        <a href="characterMonsterNpc.html" class="button">CONTINUE</a>
-        <a href="characterMonsterNpc.html" class="button">NEW GAME</a>
+    </head>
+    <body>
+        <!--home-->
+    <div id="newContinue" >
+        
+        <button onclick="window.location.href='characterMonsterNpc.html'" id="button1" >NEW GAME</button>
+        <button onclick="window.location.href='combat.html'" id="button2" >CONTINUE</button>
 
     </div>
     <!--Splash Screen-->
@@ -26,8 +26,8 @@
         </div>
     </div>
 
-    <script type="text/javascript" src="cordova.js"></script>
-    <script type="text/javascript" src="js/index.js"></script>
-</body>
+
+        <script type="text/javascript" src="js/index.js"></script>
+    </body>
 
 </html>

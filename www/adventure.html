@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport"
+        content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+    <link rel="stylesheet" type="text/css" href="css/adventure.css">
+
+    <title>Adventure</title>
+
+</head>
+
+<body>
+    <div id="adventure">
+
+        <div id="topCenter">
+            <button id="formButton" onclick="openForm()">Choose Combatants</button>
+        </div>
+
+        <div id="bottomLeft">
+            <button onclick="window.location.href='characterMonsterNpc.html'" id="goBack">Go back</button>
+        </div>
+
+        <div id="bottomRight">
+            <button onclick="window.location.href='combat.html'" id="engage">Engage</button>
+        </div>
+    </div>
+
+    <div id="addCombatant" class="form-popup">
+        <form>
+            <div class="tab">
+                <button type="button" onclick="changeTab('characters')">Characters</button>
+                <button type="button" onclick="changeTab('monsters')">Monsters</button>
+                <button type="button" onclick="changeTab('npcs')">NPCs</button>
+            </div>
+            <table id="characterTable">
+            </table>
+            <table id="monsterTable">
+            </table>
+            <table id="NPCtable">
+            </table>
+            <div id="formBottom">
+                    <button id="formButton" class="btn cancel" onclick="closeForm()">Close</button>
+            </div>
+        </form>
+    </div>
+
+
+    <script type="text/javascript" src="js/adventure.js"></script>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/database.js"></script>
+</body>
+
+</html>

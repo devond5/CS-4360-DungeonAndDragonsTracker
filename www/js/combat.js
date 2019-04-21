@@ -1,0 +1,1 @@
+var db = window.openDatabase('dmdb', '1.0', 'DM Data', 2 * 1024 * 1024);
