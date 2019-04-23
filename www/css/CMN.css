@@ -106,11 +106,13 @@ body{
     letter-spacing: 2px;
     overflow: hidden;
     cursor: pointer;
-    top: 25%;
+    top: 15%;
      left: 50%;
 transform: translateX(-50%);
     text-align: center;
     outline: none;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-tap-highlight-color: transparent;
   }
 
   #start:hover{
@@ -187,6 +189,20 @@ transform: translateX(-50%);
     animation: fadeEffect .5s forwards;
     width:525px;
   }
+  #formContMonster{
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: black;
+    color: white;
+    opacity: 0;
+    padding: 15px;
+    -webkit-animation: fadeEffect .5s forwards;
+    animation: fadeEffect .5s forwards;
+    width:470px;
+  }
 
   fieldset{
     float: left;
@@ -215,6 +231,8 @@ margin-right: 100px;
     letter-spacing: 2px;
     overflow: hidden;
     cursor: pointer;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-tap-highlight-color: transparent;
     
   }
   #close:hover,#done:hover{
@@ -266,6 +284,8 @@ td{
   letter-spacing: 2px;
   overflow: hidden;
   cursor: pointer;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  -webkit-tap-highlight-color: transparent;
  }
 
  #charInfo td{
@@ -275,7 +295,7 @@ td{
  margin-left: 10px;
  }
 
- #importButton:hover, #formButton:hover{
+ #importButton:hover, #formButton:hover, #deleteButton{
   background-color: white;
   color: black;
   border: 1px groove black;
@@ -285,6 +305,54 @@ td{
   font-size: smaller;
   margin:0;
 }
+
+#deleteButton{
+  font-size: 16px;
+  border-radius: 5px;
+  background-color: black;
+  color: white;
+  border: 1px groove white;
+  padding: 20px 15px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  overflow: hidden;
+  cursor: pointer;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  -webkit-tap-highlight-color: transparent;
+}
+
+@media screen and (max-width: 360px){
+#formButton,#importButton{
+  font-size: 12px;
+  width: 150px;
+}
+#start{
+  width:300px
+}
+label{
+  font-size: 14px;
+}
+#formCont{
+  width:270px;
+  overflow:scroll;
+}
+#formContMonster{
+  width:270px;
+  overflow:scroll;
+}
+#deleteButton{
+  font-size:12px;
+  width: 83px;
+  margin: 9px;
+  padding: 10px;
+}
+#characterTable,#monsterTable,#npcTable{
+font-size:smaller;
+}
+
+}
+
+
 
 /* width */
 ::-webkit-scrollbar {

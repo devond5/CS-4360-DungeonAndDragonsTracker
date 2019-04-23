@@ -1,20 +1,20 @@
 var db = window.openDatabase('dmdb', '1.0', 'Data', 2*1024*1024);
 
-document.addEventListener('deviceready', function () {
+window.onload = function () {
 
     db.transaction(function (tr) {
-        tr.executeSql('CREATE TABLE IF NOT EXISTS characters (id integer primary key, name text, initiative integer, \
-                                                            HP integer, currentHP integer, AC integer, pp integer, \
+        tr.executeSql('CREATE TABLE IF NOT EXISTS characters (id integer primary key, name text, Initiative integer, \
+                                                            HP integer, currentHP integer, AC integer, PP integer, \
                                                             str_save integer, dex_save integer, con_save integer, \
                                                             int_save integer, wis_save integer, cha_save integer)');
-        tr.executeSql('CREATE TABLE IF NOT EXISTS monsters (id integer primary key, name text, initiative integer, \
-                                                            HP integer, currentHP integer, AC integer, speed integer, pp integer, str integer, \
+        tr.executeSql('CREATE TABLE IF NOT EXISTS monsters (id integer primary key, name text, Initiative integer, \
+                                                            HP integer, currentHP integer, AC integer, speed integer, PP integer, Strength integer, \
                                                             dex integer, con integer, int integer, wis integer, \
                                                             cha integer, str_save integer, dex_save integer, \
                                                             con_save integer, int_save integer, wis_save integer, \
                                                             cha_save integer, proficiency_bonus integer, dmg_resist text, dmg_immune text, condition_immune text)');
         tr.executeSql('CREATE TABLE IF NOT EXISTS NPCs (id integer primary key, name text, initiative integer, \
-                                                        HP integer, currentHP integer, AC integer, speed integer, pp integer, str integer, \
+                                                        HP integer, currentHP integer, AC integer, speed integer, PP integer, Strength integer, \
                                                         dex integer, con integer, int integer, wis integer, \
                                                         cha integer, str_save integer, dex_save integer, \
                                                         con_save integer, int_save integer, wis_save integer, \
@@ -27,7 +27,7 @@ document.addEventListener('deviceready', function () {
     }, function () {
         console.log('transaction ok');
     });
-})
+};
 
 //***************************************/CHARACTER DATABASE FUNCTIONS *********************************************
 
