@@ -76,16 +76,16 @@ function fillCharTable(results) {
       if (it == "Initiative" || it == "HP" || it == "CurrentHp" || it == "AC" || it == "PP" ||
         it == "Strength" || it == "Dexterity" || it == "Constitution" || it == "Intellegence" || it == "Wisdom" || it == "Charisma") {
         if (items[it] != null) {
-          reStats += " |" + it + ":" + items[it] + " |<br/>";
+          reStats +=  it + ":" + items[it] + "<br/>";
         }
       }
       else if (items[it] != null && items[it] != "" && it != "id" && it != "name") {
-        rePlayers += " |" + it + ":" + items[it] + " |<br/>";
+        rePlayers += it + ":" + items[it] + "<br/>";
       }
     }
     cell2.innerHTML = reStats;
     cell3.innerHTML = rePlayers;
-    cell4.innerHTML = "<button id='formButton' data-name=" + items['name'] + " onclick='deleteCharacter(this)'>Delete</button>"
+    cell4.innerHTML = "<button id='deleteButton' data-name=" + items['name'] + " onclick='deleteCharacter(this)'>Delete</button>"
   }
 }
 
@@ -333,73 +333,73 @@ function addToCharTable() {
     var charName = document.getElementById("characterName").value;
     cell1.innerHTML = document.getElementById("characterName").value;
 
-    cell4.innerHTML = "<button id='formButton' data-name=" + document.getElementById('characterName').value + " onclick='deleteCharacter(this)'>Delete</button>"
+    cell4.innerHTML = "<button id='deleteButton' data-name=" + document.getElementById('characterName').value + " onclick='deleteCharacter(this)'>Delete</button>"
     
     if (document.getElementById("HP").value != "") {
-      stats += " |HP:" + document.getElementById("HP").value+ " |<br/>";
-      stats += " |CurrentHP:" + document.getElementById("HP").value + " |<br/>";
+      stats += "HP:" + document.getElementById("HP").value+ "<br/>";
+      stats += "CurrentHP:" + document.getElementById("HP").value + "<br/>";
     }else{
-      stats += " |HP:0|" + " |<br/>" ;
+      stats += "HP:0" + " <br/>" ;
     }
     if (document.getElementById("AC").value != "") {
-      stats += " |AC:" + document.getElementById("AC").value + " |<br/>";
+      stats += "AC:" + document.getElementById("AC").value + "<br/>";
     }else{
-      stats += " |AC:0|" + " |<br/>" ;
+      stats += "AC:0" + "<br/>" ;
     }
     if (document.getElementById("PP").value != "") {
-      stats += " |Perception:" + document.getElementById("PP").value + " |<br/>";
+      stats += "Perception:" + document.getElementById("PP").value + "<br/>";
     }else{
-      stats += " |Perception:0|" + " |<br/>" ;
+      stats += "Perception:0" + "<br/>" ;
     }
     if (document.getElementById("Stength").value != "") {
-      stats += " |Stength:" + document.getElementById("Stength").value; + " |<br/>"
+      stats += "Stength:" + document.getElementById("Stength").value + "<br/>"
     }else{
-      stats += " |Stength:0|" + " |<br/>" ;
+      stats += "Stength:0" + "<br/>" ;
     }
     if (document.getElementById("Dexterity").value != "") {
-      stats += " |Dexterity:" + document.getElementById("Dexterity").value + " |<br/>";
+      stats += "Dexterity:" + document.getElementById("Dexterity").value + "<br/>";
     }else{
-      stats += " |Dexterity:0| " + " |<br/>" ;
+      stats += "Dexterity:0" + "<br/>" ;
     }
     if (document.getElementById("Constitution").value != "") {
-      stats += " |Constitution:" + document.getElementById("Constitution").value + " |<br/>";
+      stats += "Constitution:" + document.getElementById("Constitution").value + "<br/>";
     }else{
-      stats += " |Constitution:0|" + " |<br/>" ;
+      stats += "Constitution:0" + "<br/>" ;
     }
     if (document.getElementById("Intellegance").value != "") {
-      stats += " |Intellegance:" + document.getElementById("Intellegance").value + " |<br/>";
+      stats += "Intellegance:" + document.getElementById("Intellegance").value + "<br/>";
     }else{
-      stats += " |Intellegance:0|" + " |<br/>" ;
+      stats += "Intellegance:0" + " <br/>" ;
     }
     if (document.getElementById("Wisdom").value != "") {
-      stats += " |Wisdom:" + document.getElementById("Wisdom").value + " |<br/>";
+      stats += "Wisdom:" + document.getElementById("Wisdom").value + "<br/>";
     }else{
-      stats += " |Wisdom:0|" + " |<br/>" ;
+      stats += " Wisdom:0" + "<br/>" ;
     }
     if (document.getElementById("Charisma").value != "") {
-      stats += " |Charisma:" + document.getElementById("Charisma").value + " |<br/>";
+      stats += "Charisma:" + document.getElementById("Charisma").value + "<br/>";
     }else{
-      stats += " |Charisma:0|" + " |<br/>" ;
+      stats += "Charisma:0" + " <br/>" ;
     }
     cell2.innerHTML = stats;
 
     if (document.getElementById("PlayerName").value != "") {
-      characterInfo += " |Player:" + document.getElementById("PlayerName").value + " |<br/>";
+      characterInfo += "Player:" + document.getElementById("PlayerName").value + "<br/>";
     }
     if (document.getElementById("Background").value != "") {
-      characterInfo += " |Background:" + document.getElementById("Background").value + " |<br/>";
+      characterInfo += "Background:" + document.getElementById("Background").value + "<br/>";
     }
     if (document.getElementById("ClassAndLevel").value != "") {
-      characterInfo += " |ClassAndLevel:" + document.getElementById("ClassAndLevel").value + " |<br/>";
+      characterInfo += "ClassAndLevel:" + document.getElementById("ClassAndLevel").value + "<br/>";
     }
     if (document.getElementById("Experience").value != "") {
-      characterInfo += " |Experience:" + document.getElementById("Experience").value + " |<br/>";
+      characterInfo += "Experience:" + document.getElementById("Experience").value + "<br/>";
     }
     if (document.getElementById("Alignment").value != "") {
-      characterInfo += " |Alignment:" + document.getElementById("Alignment").value + " |<br/>";
+      characterInfo += "Alignment:" + document.getElementById("Alignment").value + "<br/>";
     }
     if (document.getElementById("Race").value != "") {
-      characterInfo += " |Race:" + document.getElementById("Race").value + " |<br/>";
+      characterInfo += "Race:" + document.getElementById("Race").value + "<br/>";
     }
     cell3.innerHTML = characterInfo;
 
