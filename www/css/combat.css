@@ -4,16 +4,25 @@ body{
 
 #bodyDiv{
     position: fixed;
+    background-image: url('../img/combat.jpg');
+    background-attachment: fixed;
     background-color: black;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position-y: 50%;
     overflow: auto;
     width:100%;
     height:100%;
 }
 
+#rw{
+    display:inline;
+}
 #initHeader{
     display:inline-block;
     color:white;
     font-size: x-large;
+    margin-left: 10px;
 }
 
 #initButton{
@@ -29,26 +38,18 @@ body{
     transition: all .5s;
     display: inline-block;
     -webkit-tap-highlight-color: rgba(0,0,0,0);
--webkit-tap-highlight-color: transparent;
+    -webkit-tap-highlight-color: transparent;
+    margin:10px;
 }
-
-#initButton:hover{
-    background-color: rgba(255, 255, 255, 1);
-    color:black;
-    border-color: black;
-}
-#initButton:focus {
-    outline: 0;
-}
-
 
 #combatHeader{
     text-align: center;
     color:white;
     font-size: xx-large;
+    margin:5px;
 }
 
-#d4,#d6,#d8,#d10,#d12,#d20{
+#d4,#d6,#d8,#d10,#d12,#d20,#d100{
     border-radius: 50px;
     border-color: white;
     color: white;
@@ -62,7 +63,7 @@ body{
     display: inline-block;
     float:right;
     -webkit-tap-highlight-color: rgba(0,0,0,0);
--webkit-tap-highlight-color: transparent;
+    -webkit-tap-highlight-color: transparent;
 }
 
 
@@ -76,7 +77,9 @@ body{
     float: right;
     margin:5px;
     -webkit-tap-highlight-color: rgba(0,0,0,0);
--webkit-tap-highlight-color: transparent;
+    -webkit-tap-highlight-color: transparent;
+    position: relative;
+    top:25px;
 }
 #buttonGroup:focus {
     outline: 0;
@@ -85,33 +88,30 @@ body{
 
 #initCont{
     position: absolute;
+    width:100%;
+    background-color: rgba(0, 0, 0, 0.6);
 }
 
-@media screen and (max-width: 360px){
-#initButton{
-border-radius: 50px;
-border-color: white;
-color: white;
-font-size: x-large;
-width: 70px;
-height: 70px;
-background-color: rgba(0, 0, 0, 0);
-cursor: pointer;
-outline: none;
-transition: all .5s;
-display: inline-block;
-position: relative;
-top: 35px;
+@media screen and (max-width: 560px){
 
+
+#buttonGroup{
+    margin:0;
+    float:none;
+    top:0;
 }
-#initButton:hover{
-    background-color: rgba(0, 0, 0, 1);
-    color:white;
-    border-color: white;
+#initCont{
+    position: absolute;
+    width: 100%;
+    text-align: center;
 }
-#initHeader{
-position: relative;
-top: 35px;
+#bodyDiv{
+    background-position-x: 50%;
+}
+#rw{
+    display:block;
+    text-align: center;
+   
 }
 
 }
