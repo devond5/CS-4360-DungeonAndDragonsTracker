@@ -8,7 +8,7 @@ body{
     
 }
 
-#bodyContainCharacters{
+#body.bodyContainCharacters{
     background-attachment: fixed;
     background-color: black;
     background-size: cover;
@@ -20,10 +20,11 @@ body{
     overflow: auto;
     -webkit-animation: fadeEffect .5s forwards;
     animation: fadeEffect .5s forwards;
-    
+    transition:background-image 0.5s;
+   
 }
 
-#bodyContainMonsters{
+#body.bodyContainMonsters{
   background-attachment: fixed;
   background-color: black;
   background-size: cover;
@@ -35,11 +36,14 @@ body{
   overflow: auto;
   -webkit-animation: fadeEffect .5s forwards;
   animation: fadeEffect .5s forwards;
+  transition:background-image 0.5s;
+  
 }
 
-#bodyContainNpcs{
+#body.bodyContainNpcs{
   background-attachment:fixed;
   background-color: black;
+  opacity:0;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: 15%;
@@ -49,6 +53,8 @@ body{
     overflow: auto;
     -webkit-animation: fadeEffect .5s forwards;
     animation: fadeEffect .5s forwards;
+    transition:background-image 0.5s;
+    
 }
 
 
@@ -89,6 +95,7 @@ body{
     color:white;
     font-size: 20px;
     background-color: rgba(0,0,0,0.5);
+    transition: 0.3s;
     -webkit-animation: fadeEffect .5s;
     animation: fadeEffect .5s;
     
@@ -106,11 +113,14 @@ body{
     letter-spacing: 2px;
     overflow: hidden;
     cursor: pointer;
-    top: 25%;
+    top: 15%;
      left: 50%;
-transform: translateX(-50%);
+    transform: translateX(-50%);
     text-align: center;
     outline: none;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-tap-highlight-color: transparent;
+    transition: 0.3s;
   }
 
   #start:hover{
@@ -125,12 +135,14 @@ transform: translateX(-50%);
     height: 17%;
     position:sticky;
     top:90%;
+    transition: visibility 0.3s;
   }
 
 
   #characterOverlay {
     position: fixed; /* Sit on top of the page content */
-    display:none;
+    visibility: hidden;
+    opacity:0;
     width: 100%; /* Full width (cover the whole page) */
     height: 100%; /* Full height (cover the whole page) */
     top: 0; 
@@ -139,12 +151,13 @@ transform: translateX(-50%);
     bottom: 0;
     background-color: rgba(0,0,0,0.5); /* Black background with opacity */
     z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
-
+    transition: visibility 0.5s, opacity 0.5s;
   }
 
   #monsterOverlay {
     position: fixed; /* Sit on top of the page content */
-    display: none; /* Hidden by default */
+    visibility: hidden;
+    opacity:0;
     width: 100%; /* Full width (cover the whole page) */
     height: 100%; /* Full height (cover the whole page) */
     top: 0; 
@@ -153,14 +166,13 @@ transform: translateX(-50%);
     bottom: 0;
     background-color: rgba(0,0,0,0.5); /* Black background with opacity */
     z-index: 2; /* Specify a stack order in case you're using a different order for other elements */
-   
-    -webkit-animation: fadeEffect .5s;
-    animation: fadeEffect .5s;
+    transition: visibility 0.5s, opacity 0.5s;
   }
 
   #npcOverlay {
     position: fixed; 
-    display: none; 
+    visibility: hidden;
+    opacity:0;
     width: 100%; 
     height: 100%; 
     top: 0; 
@@ -169,8 +181,10 @@ transform: translateX(-50%);
     bottom: 0;
     background-color: rgba(0,0,0,0.5); 
     z-index: 2; 
+    transition: 0.3s;
     -webkit-animation: fadeEffect .5s;
     animation: fadeEffect .5s;
+    transition: visibility 0.5s, opacity 0.5s;
   }
 
   #formCont{
@@ -186,6 +200,22 @@ transform: translateX(-50%);
     -webkit-animation: fadeEffect .5s forwards;
     animation: fadeEffect .5s forwards;
     width:525px;
+    transition: 0.3s;
+  }
+  #formContMonster{
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: black;
+    color: white;
+    opacity: 0;
+    padding: 15px;
+    -webkit-animation: fadeEffect .5s forwards;
+    animation: fadeEffect .5s forwards;
+    width:470px;
+    transition: 0.3s;
   }
 
   fieldset{
@@ -215,6 +245,8 @@ margin-right: 100px;
     letter-spacing: 2px;
     overflow: hidden;
     cursor: pointer;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-tap-highlight-color: transparent;
     
   }
   #close:hover,#done:hover{
@@ -241,6 +273,7 @@ td{
   border-collapse: collapse;
   -webkit-animation: fadeEffect .5s;
     animation: fadeEffect .5s;
+    transition: 0.3s;
  }
 
  #characterTable td,#monsterTable td,#npcTable td{
@@ -266,6 +299,8 @@ td{
   letter-spacing: 2px;
   overflow: hidden;
   cursor: pointer;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  -webkit-tap-highlight-color: transparent;
  }
 
  #charInfo td{
@@ -275,16 +310,64 @@ td{
  margin-left: 10px;
  }
 
- #importButton:hover, #formButton:hover{
+ #importButton:hover, #formButton:hover, #deleteButton{
   background-color: white;
   color: black;
   border: 1px groove black;
  }
-#error{
+#error, #monsterError{
   color:red;
   font-size: smaller;
   margin:0;
 }
+
+#deleteButton{
+  font-size: 16px;
+  border-radius: 5px;
+  background-color: black;
+  color: white;
+  border: 1px groove white;
+  padding: 20px 15px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  overflow: hidden;
+  cursor: pointer;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
+  -webkit-tap-highlight-color: transparent;
+}
+
+@media screen and (max-width: 360px){
+#formButton,#importButton{
+  font-size: 12px;
+  width: 150px;
+}
+#start{
+  width:300px
+}
+label{
+  font-size: 14px;
+}
+#formCont{
+  width:270px;
+  overflow:scroll;
+}
+#formContMonster{
+  width:270px;
+  overflow:scroll;
+}
+#deleteButton{
+  font-size:12px;
+  width: 83px;
+  margin: 9px;
+  padding: 10px;
+}
+#characterTable,#monsterTable,#npcTable{
+font-size:smaller;
+}
+
+}
+
+
 
 /* width */
 ::-webkit-scrollbar {

@@ -18,6 +18,8 @@ body{
     background-image: url("../img/adventureTest.jpg");
     position: relative;
     overflow: auto;
+    -webkit-animation: fadeEffect .5s forwards;
+    animation: fadeEffect .5s forwards;
 }
 #topCenter{
     text-align: center;
@@ -50,6 +52,8 @@ body{
     letter-spacing: 2px;
     overflow: hidden;
     cursor: pointer;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-tap-highlight-color: transparent;
    }
 
 #goBack:hover, #engage:hover, #formButton:hover{
@@ -65,12 +69,12 @@ body{
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background-color: black;
+    background-color: rgba(0,0,0,0.8);
     color: white;
     padding: 15px;
     -webkit-animation: fadeEffect .5s forwards;
     animation: fadeEffect .5s forwards;
-    width:50%;
+    width:70%;
     height: 50%;
   }
 
@@ -79,7 +83,7 @@ table{
     margin: 10px auto;
     display: inline-block;
     padding: 0;
-    width: 50%;
+    width: 65%;
     height: 100%;
     border-collapse: collapse;
     text-align: center; 
@@ -93,7 +97,7 @@ table, td, tr{
 
 .tab {
     overflow: hidden;
-    background-color: black;
+    
     margin: 0 auto;
   }
   
@@ -107,6 +111,8 @@ table, td, tr{
     padding: 2.5%;
     transition: 0.3s;
     border-radius: 5px;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-tap-highlight-color: transparent;
   }
   
   
@@ -119,7 +125,7 @@ table, td, tr{
     background-color: #ccc;
   }
   
-tr:hover{
+.hover:hover{
     background-color: grey;
     color: #696969;
 }
@@ -128,5 +134,27 @@ tr:hover{
     background-color: greenyellow;
     border: 1px groove greenyellow;
     color: black;
+}
+
+
+@media screen and (max-width: 360px){
+  #adventureCont{
+
+    background-position: 50%;
+  }
+  
+
+}
+
+@-webkit-keyframes fadeEffect {
+  from {opacity: 0;
+  z-index: 1;}
+  to {opacity: 1;}
+}
+
+@keyframes fadeEffect {
+  from {opacity: 0;
+    z-index: 1;}
+  to {opacity: 1;}
 }
 

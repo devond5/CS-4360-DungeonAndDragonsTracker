@@ -1,25 +1,8 @@
 var db = window.openDatabase('dmdb', '1.0', 'Data', 2*1024*1024);
 
-document.addEventListener('deviceready', function () {
+window.onload = function () {
 
     db.transaction(function (tr) {
-        tr.executeSql('CREATE TABLE IF NOT EXISTS characters (id integer primary key, name text, initiative integer, \
-                                                            HP integer, currentHP integer, AC integer, pp integer, \
-                                                            str_save integer, dex_save integer, con_save integer, \
-                                                            int_save integer, wis_save integer, cha_save integer)');
-        tr.executeSql('CREATE TABLE IF NOT EXISTS monsters (id integer primary key, name text, initiative integer, \
-                                                            HP integer, currentHP integer, AC integer, speed integer, pp integer, str integer, \
-                                                            dex integer, con integer, int integer, wis integer, \
-                                                            cha integer, str_save integer, dex_save integer, \
-                                                            con_save integer, int_save integer, wis_save integer, \
-                                                            cha_save integer, proficiency_bonus integer, dmg_resist text, dmg_immune text, condition_immune text)');
-        tr.executeSql('CREATE TABLE IF NOT EXISTS NPCs (id integer primary key, name text, initiative integer, \
-                                                        HP integer, currentHP integer, AC integer, speed integer, pp integer, str integer, \
-                                                        dex integer, con integer, int integer, wis integer, \
-                                                        cha integer, str_save integer, dex_save integer, \
-                                                        con_save integer, int_save integer, wis_save integer, \
-                                                        cha_save integer, proficiency_bonus integer, dmg_resist text, dmg_immune text, condition_immune text)');
-
         tr.executeSql('CREATE TABLE IF NOT EXISTS combatants (id integer, name text, type text)'); 
 
     }, function (error) {
@@ -27,60 +10,13 @@ document.addEventListener('deviceready', function () {
     }, function () {
         console.log('transaction ok');
     });
-})
+};
 
 //***************************************/CHARACTER DATABASE FUNCTIONS *********************************************
 
-function insertCharacter() {
-    var name = "Elie";
-    var HP = 0;
-    var currentHP = 0
-    var initiative = 0
-    var AC = 0;
-    var pp = 0
-    var str = 0
-    var dex = 0
-    var con = 0
-    var int = 0
-    var wis = 0
-    var cha = 0
-    db.transaction(function (transaction) {
-        var executeQuery = 'INSERT INTO characters (name, initiative, HP, currentHP, AC, pp, str_save, dex_save, con_save, int_save, wis_save, cha_save) VALUES (?,?,?,?,?,?,?,?,?,?,?,?)';
-        transaction.executeSql(executeQuery, [name, initiative, HP, currentHP, AC, pp, str, dex, con, int, wis, cha],
-            function (tx, result) {
-                console.log('Inserted');
-            },
-            function (error) {
-                console.log('Error occurred');
-            });
-    });
-}
 
-function updateCharacter() {
-    var id = 1;
-    var name = "Elie2.0";
-    var HP = 100;
-    var currentHP = 100
-    var initiative = 100
-    var ac = 100;
-    var pp = 100
-    var str = 100
-    var dex = 100
-    var constitution = 100
-    var int = 100
-    var wis = 100
-    var charisma = 100
-    db.transaction(function (transaction) {
-        var executeQuery = "UPDATE characters SET name=?, initiative=?, HP=?, currentHP=?, AC=?, pp=?, str_save=?, dex_save=?, con_save=?, int_save=?, wis_save=?, cha_save=? WHERE id=?"
-        transaction.executeSql(executeQuery, [name, initiative, HP, currentHP, AC, pp, str, dex, constitution, int, wis, charisma, id],
-            function (tx, result) {
-                console.log('Updated successfully');
-            },
-            function (error) {
-                console.log('Something went Wrong');
-            });
-    })
-}
+
+
 
 function viewCharacters() {
     db.transaction(function (transaction) {
@@ -335,59 +271,4 @@ function deleteNPC(event) {
             //On Error
             function (error) { console.log('Something went Wrong'); });
     });
-}
-//*********************************************Combatants***************************************************************************/
-
-function insertCombatant(row){
-    cell = row.getElementsByTagName("td");
-    var id = cell[0].id;
-    var name = cell[0].innerText;
-    var type = row.id;
-    db.transaction(function (transaction) {
-        var executeQuery = 'INSERT INTO combatants (id, name, type) VALUES (?,?,?)';
-        transaction.executeSql(executeQuery, [id, name, type],
-            function (tx, result) {
-                console.log('Inserted');
-            },
-            function (error) {
-                console.log('Error occurred');
-            });
-
-    })
-}
-
-function removeCombatant(row){
-    var cell = row.getElementsByTagName("td");
-    var id = cell[0].id;
-    // var type = row.id
-    console.log(id);
-    db.transaction(function (transaction){
-        var executeQuery = "DELETE FROM combatants WHERE id=?";
-            transaction.executeSql(executeQuery, [id],
-                //On Success
-                function (tx, result) { console.log('Delete successfully'); },
-                //On Error
-                function (error) { console.log('Something went Wrong'); });
-    })
-}
-
-function highlightCombatants(){
-    var table = document.getElementById("characterTable");
-    db.transaction(function (transaction) {
-        transaction.executeSql("SELECT * FROM combatants", [], function(tx, results){
-            len = results.rows.length;
-            for(var i = 0; i < len; i++){
-                try{
-                    var cellId = results.rows.item(i).id;    
-                    console.log(cellId)
-                    var cell = document.getElementById(cellId);
-                    row = cell.parentElement;
-                    row.setAttribute("class", "selected");
-                }
-                catch{
-                    console.log("oof");
-                }   
-            }
-        });
-    })
 }
