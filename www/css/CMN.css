@@ -304,11 +304,18 @@ td{
   -webkit-tap-highlight-color: transparent;
  }
 
- #charInfo td{
+ #charInfo td, #monsInfo td, #npcInfo td{
  width: 99px;
  }
- #charInfo {
+
+ #monsInfo2 td, #npcInfo2 td{
+  width: 100%;
+ }
+
+ #charInfo, #monsInfo, #npcInfo {
  margin-left: 10px;
+ width:100%;
+ text-align: center;
  }
 
  #importButton:hover, #formButton:hover, #deleteButton{

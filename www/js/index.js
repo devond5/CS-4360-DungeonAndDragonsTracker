@@ -11,22 +11,22 @@ var db = window.openDatabase('dmdb', '1.0', 'Data', 2 * 1024 * 1024);
 window.onload = function load() {
   db.transaction(function (tx) {
     tx.executeSql('CREATE TABLE IF NOT EXISTS characters (id integer primary key, name text, Initiative integer, \
-          HP integer, CurrentHp integer, AC integer, PP integer, \
-          Strength integer, Dexterity integer, Constitution integer, Intellegence integer, \
-          Wisdom integer, Charisma integer, Player text, Background text, ClassLevel text,\
-          Experience text, Align text, Race text)');
+      HP integer, CurrentHp integer, AC integer, PP integer, \
+      Strength integer, Dexterity integer, Constitution integer, Intelligence integer, \
+      Wisdom integer, Charisma integer, Player text, Background text, ClassLevel text,\
+      Experience text, Align text, Race text)');
     tx.executeSql('CREATE TABLE IF NOT EXISTS monsters (id integer primary key, name text, Initiative integer, \
-          HP integer, CurrentHp integer, AC integer, PP integer, \
-          Strength integer, Dexterity integer, Constitution integer, Intellegence integer, \
-          Wisdom integer, Charisma integer, STstr integer, STdex integer, \
-            STconstitution integer, STint integer, STwis integer, \
-            STcharisma integer)');
-    tx.executeSql('CREATE TABLE IF NOT EXISTS NPCs (id integer primary key, name text, Initiative integer, \
-          HP integer, CurrentHp integer, AC integer, PP integer, \
-          Strength integer, Dexterity integer, Constitution integer, Intellegence integer, \
-          Wisdom integer, Charisma integer, STstr integer, STdex integer, \
+      HP integer, CurrentHp integer, AC integer, PP integer, \
+      Strength integer, Dexterity integer, Constitution integer, Intelligence integer, \
+      Wisdom integer, Charisma integer, STstr integer, STdex integer, \
         STconstitution integer, STint integer, STwis integer, \
         STcharisma integer)');
+    tx.executeSql('CREATE TABLE IF NOT EXISTS NPCs (id integer primary key, name text, Initiative integer, \
+      HP integer, CurrentHp integer, AC integer, PP integer, \
+      Strength integer, Dexterity integer, Constitution integer, Intelligence integer, \
+      Wisdom integer, Charisma integer, STstr integer, STdex integer, \
+    STconstitution integer, STint integer, STwis integer, \
+    STcharisma integer)');
     checkTableLength();
   });
 
@@ -89,7 +89,7 @@ function dropTables() {
 }
 
 function newGame() {
-  window.location.replace('characterMonsterNpc.html');
+  window.location.href='characterMonsterNpc.html';
 }
 
  // Get the modal
@@ -105,6 +105,7 @@ function newGame() {
  btn.onclick = function () {
 
   if(document.getElementById("button2").disabled == true){
+    dropTables();
     window.location.replace('characterMonsterNpc.html');
   }else{
     modal.style.display = "block";

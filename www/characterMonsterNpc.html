@@ -208,16 +208,16 @@
 
     
         <div id="monsterOverlay" >
-            <div id="formContMonster">
+            <div id="formCont">
                 <form>
-                    <table>
+                    <table >
                         <tr>
                             <td>
                                 <fieldset style="width:240px">
                                     <legend>Base Monster Stats:</legend>
                                     <label for="monsterName">Monster Name</label>
                                     <input id="monsterName" type="text"></input>
-                                    <table>
+                                    <table id="monsInfo">
                                         <tr>
                                             <td style="display:inline-grid">
                                                 <label for="monsterInitiative">Initiative:</label>
@@ -283,7 +283,7 @@
                             <td>
                                 <fieldset style="width:200px">
                                   <legend>Monster Saving Stats:</legend>
-                                    <table>
+                                    <table id="monsInfo2">
                                         <tr>
                                             <td style="display:inline-grid">
                                                 <label for="monsterSavingStrength"> Saving Strength:</label>
@@ -341,7 +341,7 @@
                 <legend>Base NPC Stats:</legend>
                 <label for="npcName">NPC Name</label>
                 <input id="npcName" type="text" min="-1" max="30"></input>
-                <table>
+                <table id="npcInfo">
                   <tr>
                     <td style="display:inline-grid">
                       <label for="Initiative">Initiative:</label>
@@ -400,10 +400,9 @@
               </fieldset>
             </td>
             <td>
-              <fieldset style="width:250px">
+              <fieldset style="width:215px">
                 <legend>NPC Saving Stats:</legend>
-                <table style="width: 225px;">
-                <table>
+                <table id="npcInfo2">
                   <tr>
                     <td style="display:inline-grid">
                       <label for="Strength">Strength:</label>
