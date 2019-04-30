@@ -1,22 +1,70 @@
 <!DOCTYPE html>
 <html>
 
-    <head>
- 
-        <meta name="format-detection" content="telephone=no">
-        <meta name="msapplication-tap-highlight" content="no">
-        <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
-        <link rel="stylesheet" type="text/css" href="css/index.css">
+<head>
 
-        <title>Homepage</title>
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="msapplication-tap-highlight" content="no">
+    <meta name="viewport"
+        content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
 
-    </head>
-    <body>
-        <!--home-->
-    <div id="newContinue" >
-        
-        <button onclick="window.location.href='characterMonsterNpc.html'" id="button1" >NEW GAME</button>
-        <button onclick="window.location.href='combat.html'" id="button2" >CONTINUE</button>
+    <title>Homepage</title>
+
+</head>
+
+<body>
+    <!--home-->
+    <div id="newContinue">
+            
+            <!-- Trigger/Open The Modal -->
+            <button id="button1">NEW GAME</button>
+            
+            <!-- The Modal -->
+            <div id="myModal" class="modal">
+            
+              <!-- Modal content -->
+              <div class="modal-content">
+                <span class="close">&times;</span>
+                <p>Are you sure? All previously saved content will be erased.</p>
+                <button onclick="window.location.href='characterMonsterNpc.html'" id="mybtn">NEW GAME</button>
+              </div>
+            
+            </div>
+            
+            <script>
+            // Get the modal
+            var modal = document.getElementById('myModal');
+            
+            // Get the button that opens the modal
+            var btn = document.getElementById("button1");
+            
+            // Get the <span> element that closes the modal
+            var span = document.getElementsByClassName("close")[0];
+            
+            // When the user clicks the button, open the modal 
+            btn.onclick = function() {
+              modal.style.display = "block";
+            }
+            
+            // When the user clicks on <span> (x), close the modal
+            span.onclick = function() {
+              modal.style.display = "none";
+            }
+            
+            // When the user clicks anywhere outside of the modal, close it
+            window.onclick = function(event) {
+              if (event.target == modal) {
+                modal.style.display = "none";
+              }
+            }
+            </script>
+            
+            </body>
+            </html>
+            
+        <button onclick="window.location.href='combat.html'" id="button2">CONTINUE</button>
 
     </div>
     <!--Splash Screen-->
@@ -27,7 +75,7 @@
     </div>
 
 
-        <script type="text/javascript" src="js/index.js"></script>
-    </body>
+    <script type="text/javascript" src="js/index.js"></script>
+</body>
 
 </html>
