@@ -1,5 +1,16 @@
 var db = window.openDatabase('dmdb', '1.0', 'DM Data', 2 * 1024 * 1024);
 
+window.onload = function () {
+
+    db.transaction(function (tr) {
+        tr.executeSql('CREATE TABLE IF NOT EXISTS combatants (id integer, name text, type text)'); 
+
+    }, function (error) {
+        console.log('transaction error: ' + error.message);
+    }, function () {
+        console.log('transaction ok');
+    });
+};
 //****************************************************BASIC PAGE FUNCTIONS***************************************************************************/
 
 function openForm() {
@@ -166,6 +177,7 @@ function insertCombatant(row){
         transaction.executeSql(executeQuery, [id, name, type],
             function (tx, result) {
                 console.log('Inserted');
+                highlightCombatants();
             },
             function (error) {
                 console.log('Error occurred');

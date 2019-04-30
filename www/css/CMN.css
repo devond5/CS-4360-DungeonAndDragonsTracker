@@ -20,7 +20,7 @@ body{
     overflow: auto;
     -webkit-animation: fadeEffect .5s forwards;
     animation: fadeEffect .5s forwards;
-    transition:background-image 0.5s;
+    transition:all 1s;
    
 }
 
@@ -36,7 +36,7 @@ body{
   overflow: auto;
   -webkit-animation: fadeEffect .5s forwards;
   animation: fadeEffect .5s forwards;
-  transition:background-image 0.5s;
+  transition:all 1s;
   
 }
 
@@ -53,7 +53,7 @@ body{
     overflow: auto;
     -webkit-animation: fadeEffect .5s forwards;
     animation: fadeEffect .5s forwards;
-    transition:background-image 0.5s;
+    transition:all 1s;
     
 }
 
@@ -202,6 +202,7 @@ body{
     width:525px;
     transition: 0.3s;
   }
+
   #formContMonster{
     text-align: center;
     position: fixed;

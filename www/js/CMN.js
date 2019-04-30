@@ -6,18 +6,18 @@ window.onload = function () {
   db.transaction(function (tx) {
     tx.executeSql('CREATE TABLE IF NOT EXISTS characters (id integer primary key, name text, Initiative integer, \
       HP integer, CurrentHp integer, AC integer, PP integer, \
-      Strength integer, Dexterity integer, Constitution integer, Intellegence integer, \
+      Strength integer, Dexterity integer, Constitution integer, Intelligence integer, \
       Wisdom integer, Charisma integer, Player text, Background text, ClassLevel text,\
       Experience text, Align text, Race text)');
     tx.executeSql('CREATE TABLE IF NOT EXISTS monsters (id integer primary key, name text, Initiative integer, \
       HP integer, CurrentHp integer, AC integer, PP integer, \
-      Strength integer, Dexterity integer, Constitution integer, Intellegence integer, \
+      Strength integer, Dexterity integer, Constitution integer, Intelligence integer, \
       Wisdom integer, Charisma integer, STstr integer, STdex integer, \
         STconstitution integer, STint integer, STwis integer, \
         STcharisma integer)');
     tx.executeSql('CREATE TABLE IF NOT EXISTS NPCs (id integer primary key, name text, Initiative integer, \
       HP integer, CurrentHp integer, AC integer, PP integer, \
-      Strength integer, Dexterity integer, Constitution integer, Intellegence integer, \
+      Strength integer, Dexterity integer, Constitution integer, Intelligence integer, \
       Wisdom integer, Charisma integer, STstr integer, STdex integer, \
     STconstitution integer, STint integer, STwis integer, \
     STcharisma integer)');
@@ -75,7 +75,7 @@ function fillCharTable(results) {
     var items = results.rows.item(i);
     for (var it in items) {
       if (it == "Initiative" || it == "HP" || it == "CurrentHp" || it == "AC" || it == "PP" ||
-        it == "Strength" || it == "Dexterity" || it == "Constitution" || it == "Intellegence" || it == "Wisdom" || it == "Charisma") {
+        it == "Strength" || it == "Dexterity" || it == "Constitution" || it == "Intelligence" || it == "Wisdom" || it == "Charisma") {
         if (items[it] != null) {
           reStats += it + ":" + items[it] + "<br/>";
         }
@@ -115,7 +115,7 @@ function fillMonsTable(results) {
     var items = results.rows.item(i);
     for (var it in items) {
       if (it == "Initiative" || it == "HP" || it == "CurrentHp" || it == "AC" || it == "PP" ||
-        it == "Strength" || it == "Dexterity" || it == "Constitution" || it == "Intellegence" || it == "Wisdom" || it == "Charisma") {
+        it == "Strength" || it == "Dexterity" || it == "Constitution" || it == "Intelligence" || it == "Wisdom" || it == "Charisma") {
         if (items[it] != null) {
           reStats += it + ":" + items[it] + "<br/>";
         }
@@ -131,7 +131,7 @@ function fillMonsTable(results) {
           reSaving += "Saving Constitution"  + ":" + items[it] + "<br/>";
         }
         if(it.includes("STint")){
-          reSaving += "Saving Intellegence"  + ":" + items[it] + "<br/>";
+          reSaving += "Saving Intelligence"  + ":" + items[it] + "<br/>";
         }
         if(it.includes("STwis")){
           reSaving += "Saving Wisdom"  + ":" + items[it] + "<br/>";
@@ -161,10 +161,10 @@ function insertCharacter() {
   currenthp = (document.getElementById("HP").value == "" ? 0 : document.getElementById("HP").value),
     ac = (document.getElementById("AC").value == "" ? 0 : document.getElementById("AC").value),
     pp = (document.getElementById("PP").value == "" ? 0 : document.getElementById("PP").value),
-    str = (document.getElementById("Stength").value == "" ? 0 : document.getElementById("Stength").value),
+    str = (document.getElementById("Strength").value == "" ? 0 : document.getElementById("Strength").value),
     dex = (document.getElementById("Dexterity").value == "" ? 0 : document.getElementById("Dexterity").value),
     constitution = (document.getElementById("Constitution").value == "" ? 0 : document.getElementById("Constitution").value),
-    int = (document.getElementById("Intellegance").value == "" ? 0 : document.getElementById("Intellegance").value),
+    int = (document.getElementById("Intelligence").value == "" ? 0 : document.getElementById("Intelligence").value),
     wis = (document.getElementById("Wisdom").value == "" ? 0 : document.getElementById("Wisdom").value),
     charisma = (document.getElementById("Charisma").value == "" ? 0 : document.getElementById("Charisma").value),
     player = (document.getElementById("PlayerName").value == "" ? null : document.getElementById("PlayerName").value),
@@ -176,7 +176,7 @@ function insertCharacter() {
   if (name != null) {
     db.transaction(function (transaction) {
 
-      var executeQuery = 'INSERT INTO characters (name, HP, CurrentHP, AC, PP, Strength, Dexterity, Constitution, Intellegence, Wisdom, Charisma, Player, Background, ClassLevel, Experience,Align, Race) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)';
+      var executeQuery = 'INSERT INTO characters (name, HP, CurrentHP, AC, PP, Strength, Dexterity, Constitution, Intelligence, Wisdom, Charisma, Player, Background, ClassLevel, Experience,Align, Race) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)';
       transaction.executeSql(executeQuery, [name, hp, currenthp, ac, pp, str, dex, constitution, int, wis, charisma, player, bg, classLevel, exp, align, race],
         function (tx, result) {
           console.log('Inserted');
@@ -193,8 +193,10 @@ function insertCharacter() {
       elements[ii].value = "";
     }
   }
-  document.getElementById("characterOverlay").style.display = "none"
+  document.getElementById("characterOverlay").style.visibility = "hidden"
+  document.getElementById("characterOverlay").style.opacity = "0"
   document.getElementById("error").innerHTML = ""
+  document.getElementById("characterName").style.borderColor = "";
 }
 
 
@@ -262,10 +264,10 @@ function addToCharTable() {
     } else {
       stats += "Perception:0" + "<br/>";
     }
-    if (document.getElementById("Stength").value != "") {
-      stats += "Stength:" + document.getElementById("Stength").value + "<br/>"
+    if (document.getElementById("Strength").value != "") {
+      stats += "Strength:" + document.getElementById("Strength").value + "<br/>"
     } else {
-      stats += "Stength:0" + "<br/>";
+      stats += "Strength:0" + "<br/>";
     }
     if (document.getElementById("Dexterity").value != "") {
       stats += "Dexterity:" + document.getElementById("Dexterity").value + "<br/>";
@@ -277,10 +279,10 @@ function addToCharTable() {
     } else {
       stats += "Constitution:0" + "<br/>";
     }
-    if (document.getElementById("Intellegance").value != "") {
-      stats += "Intellegance:" + document.getElementById("Intellegance").value + "<br/>";
+    if (document.getElementById("Intelligence").value != "") {
+      stats += "Intelligence:" + document.getElementById("Intelligence").value + "<br/>";
     } else {
-      stats += "Intellegance:0" + " <br/>";
+      stats += "Intelligence:0" + " <br/>";
     }
     if (document.getElementById("Wisdom").value != "") {
       stats += "Wisdom:" + document.getElementById("Wisdom").value + "<br/>";
@@ -332,22 +334,22 @@ function insertMonster() {
     str = (document.getElementById("monsterStrength").value == "" ? 0 : document.getElementById("monsterStrength").value),
     dex = (document.getElementById("monsterDexterity").value == "" ? 0 : document.getElementById("monsterDexterity").value),
     constitution = (document.getElementById("monsterConstitution").value == "" ? 0 : document.getElementById("monsterConstitution").value),
-    int = (document.getElementById("monsterIntellegance").value == "" ? 0 : document.getElementById("monsterIntellegance").value),
+    int = (document.getElementById("monsterIntelligence").value == "" ? 0 : document.getElementById("monsterIntelligence").value),
     wis = (document.getElementById("monsterWisdom").value == "" ? 0 : document.getElementById("monsterWisdom").value),
     charisma = (document.getElementById("monsterCharisma").value == "" ? 0 : document.getElementById("monsterCharisma").value);
-  SavingStength = (document.getElementById("monsterSavingStength").value == "" ? 0 : document.getElementById("monsterSavingStength").value);
+  SavingStrength = (document.getElementById("monsterSavingStrength").value == "" ? 0 : document.getElementById("monsterSavingStrength").value);
   SavingDexterity = (document.getElementById("monsterSavingDexterity").value == "" ? 0 : document.getElementById("monsterSavingDexterity").value);
   SavingConstitution = (document.getElementById("monsterSavingConstitution").value == "" ? 0 : document.getElementById("monsterSavingConstitution").value);
-  SavingIntellegance = (document.getElementById("monsterSavingIntellegance").value == "" ? 0 : document.getElementById("monsterSavingIntellegance").value);
+  SavingIntelligence = (document.getElementById("monsterSavingIntelligence").value == "" ? 0 : document.getElementById("monsterSavingIntelligence").value);
   SavingWisdom = (document.getElementById("monsterSavingWisdom").value == "" ? 0 : document.getElementById("monsterSavingWisdom").value);
   SavingCharisma = (document.getElementById("monsterSavingCharisma").value == "" ? 0 : document.getElementById("monsterSavingCharisma").value);
 
 
   if (name != null) {
     db.transaction(function (transaction) {
-      var executeQuery = 'INSERT INTO monsters (name, HP, CurrentHP, AC, PP, Strength, Dexterity, Constitution, Intellegence, Wisdom, Charisma, STstr, STdex, STconstitution, STint, STwis, STcharisma) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)';
+      var executeQuery = 'INSERT INTO monsters (name, HP, CurrentHP, AC, PP, Strength, Dexterity, Constitution, Intelligence, Wisdom, Charisma, STstr, STdex, STconstitution, STint, STwis, STcharisma) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)';
       transaction.executeSql(executeQuery, [name, hp, currenthp, ac, pp, str, dex, constitution, int, wis, charisma,
-        SavingStength, SavingDexterity, SavingConstitution, SavingIntellegance, SavingWisdom, SavingCharisma],
+        SavingStrength, SavingDexterity, SavingConstitution, SavingIntelligence, SavingWisdom, SavingCharisma],
         function (tx, result) {
           console.log('Inserted');
         },
@@ -364,7 +366,9 @@ function insertMonster() {
     }
   }
   document.getElementById("monsterOverlay").style.visibility = "hidden"
+  document.getElementById("monsterOverlay").style.opacity = "0"
   document.getElementById("monsterError").innerHTML = ""
+  document.getElementById("monsterName").style.borderColor = "";
 }
 
 function addToMonsTable() {
@@ -415,9 +419,9 @@ function addToMonsTable() {
       stats += "Perception:0" + "<br/>";
     }
     if (document.getElementById("monsterStrength").value != "") {
-      stats += "Stength:" + document.getElementById("monsterStrength").value + "<br/>"
+      stats += "Strength:" + document.getElementById("monsterStrength").value + "<br/>"
     } else {
-      stats += "Stength:0" + "<br/>";
+      stats += "Strength:0" + "<br/>";
     }
     if (document.getElementById("monsterDexterity").value != "") {
       stats += "Dexterity:" + document.getElementById("monsterDexterity").value + "<br/>";
@@ -429,10 +433,10 @@ function addToMonsTable() {
     } else {
       stats += "Constitution:0" + "<br/>";
     }
-    if (document.getElementById("monsterIntellegance").value != "") {
-      stats += "Intellegance:" + document.getElementById("monsterIntellegance").value + "<br/>";
+    if (document.getElementById("monsterIntelligence").value != "") {
+      stats += "Intelligence:" + document.getElementById("monsterIntelligence").value + "<br/>";
     } else {
-      stats += "Intellegance:0" + " <br/>";
+      stats += "Intelligence:0" + " <br/>";
     }
     if (document.getElementById("monsterWisdom").value != "") {
       stats += "Wisdom:" + document.getElementById("monsterWisdom").value + "<br/>";
@@ -446,10 +450,10 @@ function addToMonsTable() {
     }
     cell2.innerHTML = stats;
 
-    if (document.getElementById("monsterSavingStength").value != "") {
-      savingStats += "Saving Stength:" + document.getElementById("monsterSavingStength").value + "<br/>"
+    if (document.getElementById("monsterSavingStrength").value != "") {
+      savingStats += "Saving Strength:" + document.getElementById("monsterSavingStrength").value + "<br/>"
     } else {
-      savingStats += "Saving Stength:0" + "<br/>";
+      savingStats += "Saving Strength:0" + "<br/>";
     }
     if (document.getElementById("monsterSavingDexterity").value != "") {
       savingStats += "Saving Dexterity:" + document.getElementById("monsterSavingDexterity").value + "<br/>";
@@ -461,10 +465,10 @@ function addToMonsTable() {
     } else {
       savingStats += "Saving Constitution:0" + "<br/>";
     }
-    if (document.getElementById("monsterSavingIntellegance").value != "") {
-      savingStats += "Saving Intellegance:" + document.getElementById("monsterSavingIntellegance").value + "<br/>";
+    if (document.getElementById("monsterSavingIntelligence").value != "") {
+      savingStats += "Saving Intelligence:" + document.getElementById("monsterSavingIntelligence").value + "<br/>";
     } else {
-      savingStats += "Saving Intellegance:0" + " <br/>";
+      savingStats += "Saving Intelligence:0" + " <br/>";
     }
     if (document.getElementById("monsterSavingWisdom").value != "") {
       savingStats += "Saving Wisdom:" + document.getElementById("monsterSavingWisdom").value + "<br/>";
