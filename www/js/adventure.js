@@ -19,26 +19,6 @@ window.onload = function () {
 };
 //****************************************************BASIC PAGE FUNCTIONS***************************************************************************/
 
-function openForm() {
-    document.getElementById("addCombatant").style.display = "block";
-    viewCharacters();
-    viewMonsters();
-    viewNPCs();
-    highlightCombatants();
-    document.getElementById("characterTable").style.display = "inline-table";
-    document.getElementById("monsterTable").style.display = "none";
-    document.getElementById("NPCtable").style.display = "none";
-    document.getElementById("formButton").disabled = true;
-}
-
-function closeForm() {
-    document.getElementById("addCombatant").style.display = "none";
-    var table = document.getElementById("characterTable");
-    table.innerHTML = "<tbody></tbody>";
-    document.getElementById("formButton").disabled = false;
-
-}
-
 function changeTab(tabType) {
     if (tabType === 'characters') {
         document.getElementById('characterTable').style.display = "inline-table";
