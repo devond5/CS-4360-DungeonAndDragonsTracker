@@ -3,12 +3,18 @@ var db = window.openDatabase('dmdb', '1.0', 'DM Data', 2 * 1024 * 1024);
 window.onload = function () {
 
     db.transaction(function (tr) {
-        tr.executeSql('CREATE TABLE IF NOT EXISTS combatants (id integer, relid integer, name text, type text)'); 
-
+        tr.executeSql('CREATE TABLE IF NOT EXISTS combatants (id integer, name text, type text)'); 
+        viewCharacters();
+        viewMonsters();
+        viewNPCs();
+        highlightCombatants();
+        document.getElementById("characterTable").style.display = "inline-table";
+        document.getElementById("monsterTable").style.display = "none";
+        document.getElementById("NPCtable").style.display = "none";
     }, function (error) {
         console.log('transaction error: ' + error.message);
     }, function () {
-        console.log('transaction ok');
+        console.log('transaction ok');   
     });
 };
 //****************************************************BASIC PAGE FUNCTIONS***************************************************************************/
