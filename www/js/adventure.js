@@ -11,7 +11,6 @@ window.onload = function () {
         document.getElementById("characterTable").style.display = "inline-table";
         document.getElementById("monsterTable").style.display = "none";
         document.getElementById("NPCtable").style.display = "none";
-
     }, function (error) {
         console.log('transaction error: ' + error.message);
     }, function () {
@@ -60,13 +59,14 @@ function changeTab(tabType) {
 
 function toggleClass(cell, className) {
     if (cell.className.indexOf(className) >= 0) {
-        cell.className = cell.className.replace(className, "hover ");
+        cell.setAttribute("class", "hover ");
         removeCombatant(cell.parentNode);
     }
     else {
         //selected
+        cell.setAttribute("class", "selected");
         insertCombatant(cell.parentNode);
-        cell.className += className;
+        
     }
 }
 
@@ -105,7 +105,7 @@ function viewCharacters() {
                 cell = document.createElement("td");
                 cell.setAttribute("onclick", "toggleClass(this, 'selected')");
                 cell.setAttribute("class", "hover");
-                cell.setAttribute("id", results.rows.item(i).id+"characters")
+                cell.setAttribute("id", results.rows.item(i).id+" characters")
                 cell.innerHTML = results.rows.item(i).name;
                 row.appendChild(cell);
                 cell2 = document.createElement("td");
@@ -130,7 +130,7 @@ function viewMonsters() {
                 row.setAttribute("id", "monsters");
                 cell = document.createElement("td");
                 cell.setAttribute("onclick", "toggleClass(this, 'selected')");
-                cell.setAttribute("id", results.rows.item(i).id+"monsters")
+                cell.setAttribute("id", results.rows.item(i).id+" monsters")
                 cell.setAttribute("class", "hover");
                 cell.innerHTML = results.rows.item(i).name;
                 row.appendChild(cell);
@@ -157,7 +157,7 @@ function viewNPCs() {
                 cell = document.createElement("td");
                 cell.setAttribute("onclick", "toggleClass(this, 'selected')");
                 cell.setAttribute("class", "hover");
-                cell.setAttribute("id", results.rows.item(i).id+"NPCs");
+                cell.setAttribute("id", results.rows.item(i).id+" NPCs");
                 cell.innerHTML = results.rows.item(i).name;
                 row.appendChild(cell);
                 cell2 = document.createElement("td");
@@ -177,14 +177,14 @@ function viewNPCs() {
 function insertCombatant(row){
     cell = row.getElementsByTagName("td");
     var id = cell[0].id;
+    var relid = id.split(" ")[0];
     var name = cell[0].innerText;
     var type = row.id;
     db.transaction(function (transaction) {
-        var executeQuery = 'INSERT INTO combatants (id, name, type) VALUES (?,?,?)';
-        transaction.executeSql(executeQuery, [id, name, type],
+        var executeQuery = 'INSERT INTO combatants (id, relid, name, type) VALUES (?,?,?,?)';
+        transaction.executeSql(executeQuery, [id, relid, name, type],
             function (tx, result) {
                 console.log('Inserted');
-                highlightCombatants();
             },
             function (error) {
                 console.log('Error occurred');
