@@ -11,6 +11,7 @@ window.onload = function () {
         document.getElementById("characterTable").style.display = "inline-table";
         document.getElementById("monsterTable").style.display = "none";
         document.getElementById("NPCtable").style.display = "none";
+        checkTableLength();
     }, function (error) {
         console.log('transaction error: ' + error.message);
     }, function () {
@@ -41,11 +42,13 @@ function toggleClass(cell, className) {
     if (cell.className.indexOf(className) >= 0) {
         cell.setAttribute("class", "hover ");
         removeCombatant(cell.parentNode);
+        checkTableLength();
     }
     else {
         //selected
         cell.setAttribute("class", "selected");
         insertCombatant(cell.parentNode);
+        checkTableLength();
         
     }
 }
@@ -187,4 +190,24 @@ function removeCombatant(row){
                 function (error) { console.log('Something went Wrong'); });
     })
 }
+
+function checkTableLength() {
+    console.log("Checking Length");
+    db.transaction(function (tx) {
+      tx.executeSql('SELECT * FROM combatants', [], function (tx, results) {
+           len = results.rows.length; 
+           console.log(len);
+           if(len < 2){
+               document.getElementById("engage").disabled = true;
+           }
+           else{
+               document.getElementById("engage").disabled = false;
+           }
+        }
+  
+      );
+
+    });
+  }
+  
 
