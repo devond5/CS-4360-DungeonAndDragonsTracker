@@ -3,7 +3,7 @@ var db = window.openDatabase('dmdb', '1.0', 'DM Data', 2 * 1024 * 1024);
 window.onload = function () {
 
     db.transaction(function (tr) {
-        tr.executeSql('CREATE TABLE IF NOT EXISTS combatants (id integer, name text, type text)'); 
+        tr.executeSql('CREATE TABLE IF NOT EXISTS combatants (id integer, relid integer, name text, type text)'); 
         viewCharacters();
         viewMonsters();
         viewNPCs();
