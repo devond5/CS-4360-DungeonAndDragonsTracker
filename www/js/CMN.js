@@ -139,7 +139,7 @@ function fillMonsTable(results) {
         if(it.includes("STcharisma")){
           reSaving += "Saving Charisma"  + ":" + items[it] + "<br/>";
         }
-        
+
       }
     }
     cell2.innerHTML = reStats;
@@ -539,7 +539,7 @@ function off(currentId) {
 }
 
 // Get the element with id="defaultOpen" and click on it
-document.getElementById("defaultOpen").click();
+document.getElementById("charOpen").click();
 
 function openTab(evt, tabName) {
   var i, tabcontent, tablinks;
@@ -568,7 +568,7 @@ function openTab(evt, tabName) {
     document.getElementById("characterTableCont").style.display = "none";
 
   } else if (tabName === 'NPCs') {
-    
+
     document.getElementById("body").className = "bodyContainNpcs";
     document.getElementById("npcTableCont").style.visibility = "visible";
     document.getElementById("npcTableCont").style.opacity = "1";
