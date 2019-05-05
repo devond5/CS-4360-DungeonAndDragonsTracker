@@ -24,12 +24,12 @@
         "source": "C:\\Cordova\\DDMT\\platforms\\android\\app\\src\\main\\res\\drawable-land-xhdpi\\screen.png"
     },
     {
-        "merged": "C:\\Cordova\\DungeonMasterTraker\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\drawable-port-mdpi_screen.png.flat",
-        "source": "C:\\Cordova\\DungeonMasterTraker\\platforms\\android\\app\\src\\main\\res\\drawable-port-mdpi\\screen.png"
-    },
-    {
         "merged": "C:\\Cordova\\DDMT\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\drawable-port-xxxhdpi_screen.png.flat",
         "source": "C:\\Cordova\\DDMT\\platforms\\android\\app\\src\\main\\res\\drawable-port-xxxhdpi\\screen.png"
+    },
+    {
+        "merged": "C:\\Cordova\\DungeonMasterTraker\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\drawable-port-mdpi_screen.png.flat",
+        "source": "C:\\Cordova\\DungeonMasterTraker\\platforms\\android\\app\\src\\main\\res\\drawable-port-mdpi\\screen.png"
     },
     {
         "merged": "C:\\Cordova\\DDMT\\platforms\\android\\app\\build\\intermediates\\res\\merged\\debug\\drawable-port-mdpi_screen.png.flat",
