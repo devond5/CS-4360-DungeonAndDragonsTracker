@@ -7,7 +7,7 @@ class Testing(unittest.TestCase):
 		self.browser = webdriver.Chrome()
 		self.addCleanup(self.browser.quit)
 
-	def testPageTitle(self):
+	def testMonsterForm(self):
 		self.browser.get('http://localhost:8000/splashHome.html')
 		time.sleep(10)
 		self.browser.find_element_by_id('button1').click()
