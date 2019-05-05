@@ -15,23 +15,10 @@
 
 <body>
     <div id="adventureCont">
-    <div id="adventure">
+    
 
-        <div id="topCenter">
-            <button id="formButton" onclick="openForm()">Choose Combatants</button>
-        </div>
-
-        <div id="bottomLeft">
-            <button onclick="window.location.href='characterMonsterNpc.html'" id="goBack">Go back</button>
-        </div>
-
-        <div id="bottomRight">
-            <button onclick="window.location.href='combat.html'" id="engage">Engage</button>
-        </div>
-    </div>
-
-    <div id="addCombatant" class="form-popup">
-        <form>
+    
+    <div id="addCombatant">
             <div class="tab">
                 <button type="button" onclick="changeTab('characters')">Characters</button>
                 <button type="button" onclick="changeTab('monsters')">Monsters</button>
@@ -49,10 +36,18 @@
                     <col width="130">
                     <col width="130">
             </table>
-            <div id="formBottom">
-                    <button type="button" id="formButton" class="btn cancel" onclick="closeForm()">Close</button>
-            </div>
-        </form>
+    </div>
+
+
+
+    <div id="adventure">
+        <div id="bottomLeft">
+            <button onclick="window.location.href='characterMonsterNpc.html'" id="goBack">Go back</button>
+        </div>
+
+        <div id="bottomRight">
+            <button onclick="window.location.href='combat.html'" id="engage">Engage</button>
+        </div>
     </div>
 
 </div>
