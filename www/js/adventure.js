@@ -92,7 +92,7 @@ function viewCharacters() {
                 cell.innerHTML = results.rows.item(i).name;
                 row.appendChild(cell);
                 cell2 = document.createElement("td");
-                cell2.innerHTML = "<label for='initChoose'>Inititave: </label><input id='initChoose' style='margin-bottom:5px;' type=number type='number' min='0' max='100'>";
+                cell2.innerHTML = "<label for='initChoose'>Inititave: </label><input onblur='updateInit(this)' id='initChoose' style='margin-bottom:5px;' type=number type='number' min='0' max='100'>";
                 cell2.setAttribute("class", "nohover");
                 row.appendChild(cell2);
                 table.appendChild(row);
@@ -118,7 +118,7 @@ function viewMonsters() {
                 cell.innerHTML = results.rows.item(i).name;
                 row.appendChild(cell);
                 cell2 = document.createElement("td");
-                cell2.innerHTML = "<label for='initChoose'>Inititave: </label><input id='initChoose' style='margin-bottom:5px;' type=number type='number' min='0' max='100'>";
+                cell2.innerHTML = "<label for='initChoose'>Inititave: </label><input  onblur='updateInit(this)' id='initChoose' style='margin-bottom:5px;' type=number type='number' min='0' max='100'>";
                 cell2.setAttribute("class", "nohover");
                 row.appendChild(cell2);
                 table.appendChild(row);
@@ -144,7 +144,7 @@ function viewNPCs() {
                 cell.innerHTML = results.rows.item(i).name;
                 row.appendChild(cell);
                 cell2 = document.createElement("td");
-                cell2.innerHTML = "<label for='initChoose'>Inititave: </label><input id='initChoose' style='margin-bottom:5px;' type=number type='number' min='0' max='100'>";
+                cell2.innerHTML = "<label for='initChoose'>Inititave: </label><input onblur='updateInit(this)' id='initChoose' style='margin-bottom:5px;' type=number type='number' min='0' max='100'>";
                 cell2.setAttribute("class", "nohover");
                 row.appendChild(cell2);
                 table.appendChild(row);
@@ -207,6 +207,25 @@ function checkTableLength() {
   
       );
 
+    });
+  }
+
+  function updateInit(info){
+      var initiative = info.value;
+      var id = info.parentNode.parentNode.children[0].id;
+      id = id.split(" ");
+      var type = id[1];
+      id = id[0];
+      
+    db.transaction(function (transaction) {
+        var executeQuery = 'UPDATE '+type+ ' SET initiative=? WHERE id=?';
+        transaction.executeSql(executeQuery, [initiative, id],
+            function (tx, result) {
+                console.log('Updated');
+            },
+            function (error) {
+                console.log('Error occurred');
+            });
     });
   }
   

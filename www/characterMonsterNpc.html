@@ -321,9 +321,9 @@
                         </tr>
                         <tr>
                             <td colspan="2">
-                                <button type="button" id="close" onclick="off('monsterOverlay')">Close</button>
+                                <button type="button" id="closeMon" onclick="off('monsterOverlay')">Close</button>
 
-                                <button type="button" id="done" onclick="insertMonster()">Done</button>
+                                <button type="button" id="doneMon" onclick="insertMonster()">Done</button>
                             </td>
                         </tr>
                     </table>
@@ -441,9 +441,9 @@
           </tr>
           <tr>
             <td colspan="2">
-              <button type="button" id="closeMon" onclick="off('monsterOverlay')">Close</button>
+              <button type="button" id="closeNPC" onclick="off('npcOverlay')">Close</button>
 
-              <button type="button" id="doneMon" onclick="insertMonster()">Done</button>
+              <button type="button" id="doneNPC" onclick="insertNpc()">Done</button>
 
             </td>
           </tr>
@@ -451,126 +451,7 @@
         </form>
       </div>
     </div>
-    <div id="npcOverlay">
-      <div id="formCont">
-        <form>
-          <table>
-            <tr>
-              <td>
-                <fieldset style="width:240px">
-                  <legend>Base NPC Stats:</legend>
-                  <label for="npcName">NPC Name</label>
-                  <input id="npcName" type="text" min="-1" max="30"></input>
-                  <table>
-                    <tr>
-                      <td style="display:inline-grid">
-                        <label for="npcInitiative">Initiative:</label>
-                        <input id="npcInitiative" type="number" min="-1" max="20"></input>
-                      </td>
-                      <td style="display:inline-grid">
-                        <label for="npcHP">HP:</label>
-                        <input id="npcHP" type="number" min="-1" max="100"></input>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td style="display:inline-grid">
-                        <label for="npcAC">AC:</label>
-                        <input id="npcAC" type="number" min="-1" max="100"></input>
-                      </td>
-                      <td style="display:inline-grid">
 
-
-                        <label for="npcPerception">Perception:</label>
-                        <input id="npcPerception" type="number" min="-1" max="100"></input>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td style="display:inline-grid">
-                        <label for="npcStrength">Strength:</label>
-                        <input id="npcStrength" type="number" min="-1" max="100"></input>
-
-                      </td>
-                      <td style="display:inline-grid">
-                        <label for="npcDexterity">Dexterity:</label>
-                        <input id="npcDexterity" type="number" min="-1" max="100"></input>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td style="display:inline-grid">
-                        <label for="npcConstitution">Constitution:</label>
-                        <input id="npcConstitution" type="number" min="-1" max="100"></input>
-                      </td>
-                      <td style="display:inline-grid">
-                        <label for="npcIntelligence">Intelligence:</label>
-                        <input id="npcIntelligence" type="number" min="-1" max="100"></input>
-                      </td>
-                    </tr>
-                    <tr>
-                      <td style="display:inline-grid">
-                        <label for="npcWisdom">Wisdom:</label>
-                        <input id="npcWisdom" type="number" min="-1" max="100"></input>
-                      </td>
-                      <td style="display:inline-grid">
-                        <label for="npcCharisma">Charisma:</label>
-                        <input id="npcCharisma" type="number" min="-1" max="100"></input>
-                      </td>
-                    </tr>
-                  </table>
-
-                </fieldset>
-              </td>
-              <td>
-                <fieldset style="width:250px">
-                  <legend>NPC Saving Stats:</legend>
-                  <table style="width: 225px;">
-                    <table>
-                      <tr>
-                        <td style="display:inline-grid">
-                          <label for="npcStrength">Strength:</label>
-                          <input id="npcStrength" type="number" min="-1" max="100"></input>
-
-                        </td>
-                        <td style="display:inline-grid">
-                          <label for="npcDexterity">Dexterity:</label>
-                          <input id="npcDexterity" type="number" min="-1" max="100"></input>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td style="display:inline-grid">
-                          <label for="npcConstitution">Constitution:</label>
-                          <input id="npcConstitution" type="number" min="-1" max="100"></input>
-                        </td>
-                        <td style="display:inline-grid">
-                          <label for="npcIntelligence">Intelligence:</label>
-                          <input id="npcIntelligence" type="number" min="-1" max="100"></input>
-                        </td>
-                      </tr>
-                      <tr>
-                        <td style="display:inline-grid">
-                          <label for="npcWisdom">Wisdom:</label>
-                          <input id="npcWisdom" type="number" min="-1" max="100"></input>
-                        </td>
-                        <td style="display:inline-grid">
-                          <label for="npcCharisma">Charisma:</label>
-                          <input id="npcCharisma" type="number" min="-1" max="100"></input>
-                        </td>
-                      </tr>
-                    </table>
-
-                </fieldset>
-              </td>
-            </tr>
-            <tr>
-              <td colspan="2">
-                <button type="button" id="closeNPC" onclick="off('npcOverlay')">Close</button>
-
-                <button type="button" id="doneNPC" onclick="off('npcOverlay')">Done</button>
-              </td>
-            </tr>
-          </table>
-        </form>
-      </div>
-    </div>
 
   </div>
 </body>
