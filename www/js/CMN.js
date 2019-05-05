@@ -139,7 +139,7 @@ function fillMonsTable(results) {
         if(it.includes("STcharisma")){
           reSaving += "Saving Charisma"  + ":" + items[it] + "<br/>";
         }
-        
+
       }
     }
     cell2.innerHTML = reStats;
@@ -809,7 +809,7 @@ function openTab(evt, tabName) {
     document.getElementById("characterTableCont").style.display = "none";
 
   } else if (tabName === 'NPCs') {
-    
+
     document.getElementById("body").className = "bodyContainNpcs";
     document.getElementById("npcTableCont").style.visibility = "visible";
     document.getElementById("npcTableCont").style.opacity = "1";
