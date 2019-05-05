@@ -46,16 +46,17 @@ function addCombtToTable(id, type){
             var cell2 = row.insertCell(1);
             var cell3 = row.insertCell(2);
             var cell4 = row.insertCell(3);
-            var row = combatant.rows[0];
+            var rowdb = combatant.rows[0];
             
-            if(row.Initiative == null || typeof row.Initiative == "undefined" ){
+            if(rowdb.Initiative == null || typeof rowdb.Initiative == "undefined" ){
                 cell1.innerHTML = 0;
             }else{
-                cell1.innerHTML = row.Initiative;
+                cell1.innerHTML = rowdb.Initiative;
             }
-            cell2.innerHTML = row.name;
-            cell3.innerHTML = row.CurrentHp + "/" +row.HP;
-            cell4.innerHTML = "<button id='attack' onclick='attack(this)'>Attack/Heal</button><input id='attackInput' type='number'>"
+            cell2.innerHTML = rowdb.name;
+            cell3.innerHTML = rowdb.CurrentHp + "/" +rowdb.HP;
+            cell4.innerHTML = "<button id='attack' onclick='attack(this)'>Attack</button><input id='attackInput' type='number' min='0'> <br/> \
+            <button id='heal' onclick='attack(this)'>Heal</button><input id='attackInput' type='number' min='0'>"
             sortTable();
         });
     });
@@ -157,9 +158,79 @@ function initButton(button){
             if(parseInt(rows[a].cells[0].innerHTML) == init){
                 rows[a].style.backgroundColor = "rgba(100,100,100,0.8)";
             }else{
-                rows[a].style.backgroundColor = "rgba(0,0,0,0.6)";
+                rows[a].style.backgroundColor = "rgba(0,0,0,0)";
             }
         }
 
     }
 }
+
+function attack(val){
+    if(val.id =="attack"){
+        var value = val.parentNode.children[1].value;
+        var name = val.parentNode.parentNode.children[1].innerHTML;
+        var hpStat = val.parentNode.parentNode.children[2];
+        val.parentNode.children[1].value = "";
+    }else{
+        var value = val.parentNode.children[4].value;
+        var name = val.parentNode.parentNode.children[1].innerHTML;
+        var hpStat = val.parentNode.parentNode.children[2];
+       
+    }
+    
+
+    if(value == ""){
+        return;
+    }else{
+        value = parseInt(value);
+        if(val.id == "attack"){
+            value = value * -1;
+            val.parentNode.children[1].value = "";
+        }else{
+            val.parentNode.children[4].value = "";
+        }
+        
+        db.transaction(function (tx) {
+            var executeSql = 'SELECT * FROM combatants WHERE name=?'
+            tx.executeSql(executeSql, [name], function (tx, combatant) {
+                var rowdb = combatant.rows[0];
+                var id = rowdb.id; 
+                id = id.split(" ")[0]; 
+                var type = rowdb.type;
+                db.transaction(function (tx) {
+                    var sql = 'SELECT * FROM '+ type + ' WHERE id=?';
+                    tx.executeSql(sql, [id], function (tx, results) {
+                        var currHp = parseInt(results.rows[0].CurrentHp);
+                        var totHp = parseInt(results.rows[0].HP);
+                          if((currHp +value)<0){
+                            updateHp(hpStat,type,id,0,totHp);
+                          }else if((currHp+value)>totHp){
+                            updateHp(hpStat,type, id, totHp, totHp);
+                          }else{
+                            updateHp(hpStat,type, id, (currHp +value), totHp);
+                          }                
+                        
+                  });
+                
+                });
+              
+            });
+        });
+    }
+}
+
+function updateHp(hpStat, type, id, newHp, totHp){
+    db.transaction(function (transaction) {
+        var executeQuery = 'UPDATE '+type+ ' SET CurrentHp=? WHERE id=?';
+        transaction.executeSql(executeQuery, [newHp, id],
+            function (tx, result) {
+                hpStat.innerHTML = newHp + '/' + totHp;
+                console.log('Updated');
+                
+            },
+            function (error) {
+                console.log('Error occurred');
+            });
+    });
+}
+
