@@ -44,7 +44,7 @@ function checkTableLength() {
     tx.executeSql('SELECT * FROM NPCs', [], function (tx, results) {
       lenDbNpc = results.rows.length;
       if (lenDbNpc > 0) {
-        //fillNpcTable(results);
+        fillNpcTable(results);
       }
     });
   });
@@ -145,6 +145,64 @@ function fillMonsTable(results) {
     cell2.innerHTML = reStats;
     cell3.innerHTML = reSaving;
     cell4.innerHTML = "<button id='deleteButton' data-name=" + items['name'] + " onclick='deleteMonster(this)'>Delete</button>"
+  }
+}
+
+function fillNpcTable(results) {
+  var table = document.getElementById("npcTable");
+  if (table.rows.length == 0) {
+    var HeaderRow = table.insertRow(0);
+    var cell1Head = HeaderRow.insertCell(0);
+    var cell2Head = HeaderRow.insertCell(1);
+    var cell3Head = HeaderRow.insertCell(2);
+    var cell4Head = HeaderRow.insertCell(3);
+    cell1Head.innerHTML = "NPC";
+    cell2Head.innerHTML = "Statistics";
+    cell3Head.innerHTML = "Saving Statistics";
+    cell4Head.innerHTML = "Delete";
+  }
+  for (var i = 0; i < lenDbNpc; i++) {
+    var row = table.insertRow(1);
+    var cell1 = row.insertCell(0);
+    var cell2 = row.insertCell(1);
+    var cell3 = row.insertCell(2);
+    var cell4 = row.insertCell(3);
+    var reStats = "";
+    var reSaving = "";
+    cell1.innerHTML = results.rows.item(i).name;
+    var items = results.rows.item(i);
+    for (var it in items) {
+      if (it == "Initiative" || it == "HP" || it == "CurrentHp" || it == "AC" || it == "PP" ||
+        it == "Strength" || it == "Dexterity" || it == "Constitution" || it == "Intelligence" || it == "Wisdom" || it == "Charisma") {
+        if (items[it] != null) {
+          reStats += it + ":" + items[it] + "<br/>";
+        }
+      }
+      else if (items[it] != null && items[it] != "" && it != "id" && it != "name") {
+        if(it.includes("STstr")){
+          reSaving += "Saving Strength" + ":" + items[it] + "<br/>";
+        }
+        if(it.includes("STdex")){
+          reSaving += "Saving Dexterity"  + ":" + items[it] + "<br/>";
+        }
+        if(it.includes("STconstitution")){
+          reSaving += "Saving Constitution"  + ":" + items[it] + "<br/>";
+        }
+        if(it.includes("STint")){
+          reSaving += "Saving Intelligence"  + ":" + items[it] + "<br/>";
+        }
+        if(it.includes("STwis")){
+          reSaving += "Saving Wisdom"  + ":" + items[it] + "<br/>";
+        }
+        if(it.includes("STcharisma")){
+          reSaving += "Saving Charisma"  + ":" + items[it] + "<br/>";
+        }
+        
+      }
+    }
+    cell2.innerHTML = reStats;
+    cell3.innerHTML = reSaving;
+    cell4.innerHTML = "<button id='deleteButton' data-name=" + items['name'] + " onclick='deleteNpc(this)'>Delete</button>"
   }
 }
 
@@ -502,6 +560,189 @@ function deleteMonster(event) {
 }
 //***************************************END MONSTER DATABASE FUNCTIONS *********************************************
 
+//***************************************NPC DATABASE FUNCTIONS *********************************************
+
+function insertNpc() {
+  var name = (document.getElementById("npcName").value == "" ? null : document.getElementById("npcName").value);
+  if (name == null) {
+    document.getElementById("npcError").innerHTML = "Add NPC Name or Close."
+    document.getElementById("npcName").style.borderColor = "red";
+    return;
+  }
+  hp = (document.getElementById("npcHP").value == "" ? 0 : document.getElementById("npcHP").value);
+  currenthp = (document.getElementById("npcHP").value == "" ? 0 : document.getElementById("npcHP").value),
+    ac = (document.getElementById("npcAC").value == "" ? 0 : document.getElementById("npcAC").value),
+    pp = (document.getElementById("npcPP").value == "" ? 0 : document.getElementById("npcPP").value),
+    str = (document.getElementById("npcStrength").value == "" ? 0 : document.getElementById("npcStrength").value),
+    dex = (document.getElementById("npcDexterity").value == "" ? 0 : document.getElementById("npcDexterity").value),
+    constitution = (document.getElementById("npcConstitution").value == "" ? 0 : document.getElementById("npcConstitution").value),
+    int = (document.getElementById("npcIntelligence").value == "" ? 0 : document.getElementById("npcIntelligence").value),
+    wis = (document.getElementById("npcWisdom").value == "" ? 0 : document.getElementById("npcWisdom").value),
+    charisma = (document.getElementById("npcCharisma").value == "" ? 0 : document.getElementById("npcCharisma").value);
+  SavingStrength = (document.getElementById("npcSavingStrength").value == "" ? 0 : document.getElementById("npcSavingStrength").value);
+  SavingDexterity = (document.getElementById("npcSavingDexterity").value == "" ? 0 : document.getElementById("npcSavingDexterity").value);
+  SavingConstitution = (document.getElementById("npcSavingConstitution").value == "" ? 0 : document.getElementById("npcSavingConstitution").value);
+  SavingIntelligence = (document.getElementById("npcSavingIntelligence").value == "" ? 0 : document.getElementById("npcSavingIntelligence").value);
+  SavingWisdom = (document.getElementById("npcSavingWisdom").value == "" ? 0 : document.getElementById("npcSavingWisdom").value);
+  SavingCharisma = (document.getElementById("npcSavingCharisma").value == "" ? 0 : document.getElementById("npcSavingCharisma").value);
+
+
+  if (name != null) {
+    db.transaction(function (transaction) {
+      var executeQuery = 'INSERT INTO NPCs (name, HP, CurrentHP, AC, PP, Strength, Dexterity, Constitution, Intelligence, Wisdom, Charisma, STstr, STdex, STconstitution, STint, STwis, STcharisma) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)';
+      transaction.executeSql(executeQuery, [name, hp, currenthp, ac, pp, str, dex, constitution, int, wis, charisma,
+        SavingStrength, SavingDexterity, SavingConstitution, SavingIntelligence, SavingWisdom, SavingCharisma],
+        function (tx, result) {
+          console.log('Inserted');
+        },
+        function (error) {
+          console.log('Error occurred');
+        });
+    });
+    addToNpcTable();
+  }
+  var elements = document.getElementsByTagName("input");
+  for (var ii = 0; ii < elements.length; ii++) {
+    if (elements[ii].type == "text" || elements[ii].type == "number") {
+      elements[ii].value = "";
+    }
+  }
+  document.getElementById("npcOverlay").style.visibility = "hidden"
+  document.getElementById("npcOverlay").style.opacity = "0"
+  document.getElementById("npcError").innerHTML = ""
+  document.getElementById("npcName").style.borderColor = "";
+}
+
+function addToNpcTable() {
+  //If enough info is added create a table
+
+  var table = document.getElementById("npcTable");
+
+  if (table.rows.length == 0) {
+    firstMonsTable = false;
+    var HeaderRow = table.insertRow(0);
+    var cell1Head = HeaderRow.insertCell(0);
+    var cell2Head = HeaderRow.insertCell(1);
+    var cell3Head = HeaderRow.insertCell(2);
+    var cell4Head = HeaderRow.insertCell(3);
+    cell1Head.innerHTML = "Monster";
+    cell2Head.innerHTML = "Statistics";
+    cell3Head.innerHTML = "Saving Statistics";
+  }
+
+
+  var row = table.insertRow(1);
+  var cell1 = row.insertCell(0);
+  var cell2 = row.insertCell(1);
+  var cell3 = row.insertCell(2);
+  var cell4 = row.insertCell(3);
+
+  var stats = "";
+  var savingStats = "";
+  if (document.getElementById("npcName").value != "") {
+    cell1.innerHTML = document.getElementById("npcName").value;
+
+    cell4.innerHTML = "<button id='deleteButton' data-name=" + document.getElementById('npcName').value + " onclick='deleteMonster(this)'>Delete</button>"
+
+    if (document.getElementById("npcHP").value != "") {
+      stats += "HP:" + document.getElementById("npcHP").value + "<br/>";
+      stats += "CurrentHP:" + document.getElementById("npcHP").value + "<br/>";
+    } else {
+      stats += "HP:0" + " <br/>";
+    }
+    if (document.getElementById("npcAC").value != "") {
+      stats += "AC:" + document.getElementById("monsterAC").value + "<br/>";
+    } else {
+      stats += "AC:0" + "<br/>";
+    }
+    if (document.getElementById("npcPP").value != "") {
+      stats += "Perception:" + document.getElementById("npcPP").value + "<br/>";
+    } else {
+      stats += "Perception:0" + "<br/>";
+    }
+    if (document.getElementById("npcStrength").value != "") {
+      stats += "Strength:" + document.getElementById("npcStrength").value + "<br/>"
+    } else {
+      stats += "Strength:0" + "<br/>";
+    }
+    if (document.getElementById("npcDexterity").value != "") {
+      stats += "Dexterity:" + document.getElementById("npcDexterity").value + "<br/>";
+    } else {
+      stats += "Dexterity:0" + "<br/>";
+    }
+    if (document.getElementById("npcConstitution").value != "") {
+      stats += "Constitution:" + document.getElementById("npcConstitution").value + "<br/>";
+    } else {
+      stats += "Constitution:0" + "<br/>";
+    }
+    if (document.getElementById("npcIntelligence").value != "") {
+      stats += "Intelligence:" + document.getElementById("npcIntelligence").value + "<br/>";
+    } else {
+      stats += "Intelligence:0" + " <br/>";
+    }
+    if (document.getElementById("npcWisdom").value != "") {
+      stats += "Wisdom:" + document.getElementById("npcWisdom").value + "<br/>";
+    } else {
+      stats += " Wisdom:0" + "<br/>";
+    }
+    if (document.getElementById("npcCharisma").value != "") {
+      stats += "Charisma:" + document.getElementById("npcCharisma").value + "<br/>";
+    } else {
+      stats += "Charisma:0" + " <br/>";
+    }
+    cell2.innerHTML = stats;
+
+    if (document.getElementById("npcSavingStrength").value != "") {
+      savingStats += "Saving Strength:" + document.getElementById("npcSavingStrength").value + "<br/>"
+    } else {
+      savingStats += "Saving Strength:0" + "<br/>";
+    }
+    if (document.getElementById("npcSavingDexterity").value != "") {
+      savingStats += "Saving Dexterity:" + document.getElementById("npcSavingDexterity").value + "<br/>";
+    } else {
+      savingStats += "Saving Dexterity:0" + "<br/>";
+    }
+    if (document.getElementById("npcSavingConstitution").value != "") {
+      savingStats += "Saving Constitution:" + document.getElementById("npcSavingConstitution").value + "<br/>";
+    } else {
+      savingStats += "Saving Constitution:0" + "<br/>";
+    }
+    if (document.getElementById("npcSavingIntelligence").value != "") {
+      savingStats += "Saving Intelligence:" + document.getElementById("npcSavingIntelligence").value + "<br/>";
+    } else {
+      savingStats += "Saving Intelligence:0" + " <br/>";
+    }
+    if (document.getElementById("npcSavingWisdom").value != "") {
+      savingStats += "Saving Wisdom:" + document.getElementById("npcSavingWisdom").value + "<br/>";
+    } else {
+      savingStats += "Saving Wisdom:0" + "<br/>";
+    }
+    if (document.getElementById("npcSavingCharisma").value != "") {
+      savingStats += "Saving Charisma:" + document.getElementById("npcSavingCharisma").value + "<br/>";
+    } else {
+      savingStats += "Saving Charisma:0" + " <br/>";
+    }
+    cell3.innerHTML = savingStats;
+  }
+}
+
+function deleteNpc(event) {
+  db.transaction(function (transaction) {
+    var name = event.dataset.name;
+    var executeQuery = "DELETE FROM NPCs WHERE name=?";
+    transaction.executeSql(executeQuery, [name],
+      //On Success
+      function (tx, result) { console.log("Delete Sucessfully"); },
+      //On Error
+      function (error) { console.log("Something went wrong"); });
+    var i = event.parentNode.parentNode.rowIndex;
+    document.getElementById("npcTable").deleteRow(i);
+    if (document.getElementById("npcTable").rows.length == 1) {
+      document.getElementById("npcTable").deleteRow(0);
+    }
+  });
+}
+
 
 //***************************************DOCUMENT FUNCTIONS**********************************************************
 
@@ -523,12 +764,18 @@ function off(currentId) {
   if (currentId == "characterOverlay") {
     document.getElementById("characterOverlay").style.visibility = "hidden"
     document.getElementById("characterOverlay").style.opacity = "0";
+    document.getElementById("error").innerHTML = ""
+    document.getElementById("characterName").style.borderColor = "";
   } else if (currentId == "monsterOverlay") {
     document.getElementById("monsterOverlay").style.visibility = "hidden";
     document.getElementById("monsterOverlay").style.opacity = "0";
+    document.getElementById("monsterError").innerHTML = ""
+  document.getElementById("monsterName").style.borderColor = "";
   } else {
     document.getElementById("npcOverlay").style.visibility = "hidden";
     document.getElementById("npcOverlay").style.opacity = "0";
+    document.getElementById("npcError").innerHTML = ""
+    document.getElementById("npcName").style.borderColor = "";
   }
   var elements = document.getElementsByTagName("input");
   for (var ii = 0; ii < elements.length; ii++) {
