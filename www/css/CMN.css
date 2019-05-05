@@ -118,7 +118,7 @@ body{
     transform: translateX(-50%);
     text-align: center;
     outline: none;
-    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-tap-highlight-color: rgba(66, 12, 12, 0);
     -webkit-tap-highlight-color: transparent;
     transition: 0.3s;
   }
@@ -215,7 +215,23 @@ body{
     padding: 15px;
     -webkit-animation: fadeEffect .5s forwards;
     animation: fadeEffect .5s forwards;
-    width:470px;
+    width: 470px;
+    transition: 0.3s;
+  }
+
+  #formContNPC{
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: black;
+    color: white;
+    opacity: 0;
+    padding: 15px;
+    -webkit-animation: fadeEffect .5s forwards;
+    animation: fadeEffect .5s forwards;
+    width: 480px;
     transition: 0.3s;
   }
 
@@ -289,7 +305,7 @@ td{
    text-align: center;
  }
 
- #importButton, #formButton{
+ #importButton, #formButtonChar, #formButtonMon, #formButtonNPC{
   font-size: 16px;
   border-radius: 5px;
   background-color: black;
@@ -318,7 +334,7 @@ td{
  text-align: center;
  }
 
- #importButton:hover, #formButton:hover, #deleteButton{
+ #importButton:hover, #formButtonChar:hover,#formButtonMon:hover,#formButtonNPC:hover #deleteButton{
   background-color: white;
   color: black;
   border: 1px groove black;
@@ -345,7 +361,7 @@ td{
 }
 
 @media screen and (max-width: 360px){
-#formButton,#importButton{
+#importButton, #formButtonChar,#formButtonMon,#formButtonNPC{
   font-size: 12px;
   width: 150px;
 }

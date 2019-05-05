@@ -53,7 +53,7 @@ body{
     text-align: center;
     color:white;
     font-size: xx-large;
-    margin:5px;
+    margin:0px;
 }
 
 #d4,#d6,#d8,#d10,#d12,#d20,#d100{
@@ -94,12 +94,91 @@ body{
 
 
 #initCont{
-    position: absolute;
+    position: relative;
     width:100%;
     background-color: rgba(0, 0, 0, 0.6);
 }
 
-@media screen and (max-width: 560px){
+#enditContain{
+    display: inline-block;
+    width: 100%;
+    height: 17%;
+    position:sticky;
+    top:90%;
+    transition: visibility 0.3s;
+}
+
+#endit{
+    position: relative;
+    font-size: 16px;
+    border-radius: 5px;
+    background-color: black;
+    color: white;
+    border: 1px groove white;
+    padding: 20px 80px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    overflow: hidden;
+    cursor: pointer;
+    top: 15%;
+     left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    outline: none;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-tap-highlight-color: transparent;
+    transition: 0.3s;
+}
+#endit:hover{
+    background-color: white;
+    color: black;
+    border: 1px groove black;
+}
+
+
+#combatantsTable{
+    width: 100%;
+    text-align: center;
+    background-color: rgba(0,0,0,0.6);
+    color:white;
+    border-style: groove;
+    border-color: lightgray;
+    border-collapse: collapse;
+}
+
+#combatantsTable td{
+    text-align: center;
+    color:white;
+    border-style: groove;
+    border-color: lightgray;
+    border-collapse: collapse;
+}
+
+
+/* width */
+::-webkit-scrollbar {
+    width: 5px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px black; 
+    border-radius: 10px;
+    background:black;
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: grey; 
+    border-radius: 10px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #ddd; 
+  }
+
+@media screen and (max-width: 672px){
     #d4,#d6,#d8,#d10,#d12,#d20,#d100{
         width: 45px;
         height: 45px;
@@ -122,6 +201,10 @@ body{
     display:block;
     text-align: center;
    
+}
+
+#endit{
+    width:300px;
 }
 
 }
