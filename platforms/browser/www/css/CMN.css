@@ -118,7 +118,7 @@ body{
     transform: translateX(-50%);
     text-align: center;
     outline: none;
-    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-tap-highlight-color: rgba(66, 12, 12, 0);
     -webkit-tap-highlight-color: transparent;
     transition: 0.3s;
   }
@@ -215,7 +215,23 @@ body{
     padding: 15px;
     -webkit-animation: fadeEffect .5s forwards;
     animation: fadeEffect .5s forwards;
-    width:470px;
+    width: 470px;
+    transition: 0.3s;
+  }
+
+  #formContNPC{
+    text-align: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: black;
+    color: white;
+    opacity: 0;
+    padding: 15px;
+    -webkit-animation: fadeEffect .5s forwards;
+    animation: fadeEffect .5s forwards;
+    width: 480px;
     transition: 0.3s;
   }
 
@@ -231,11 +247,11 @@ body{
     padding-left:5px;
   }
 
-  #close{
+  #closeChar,#closeMon,#closeNPC{
 margin-right: 100px;
   }
 
-  #close,#done{
+  #closeChar,#closeMon,#closeNPC,#doneChar,#doneMon,#doneNPC{
     font-size: 15px;
     border-radius: 5px;
     background-color: black;
@@ -250,7 +266,7 @@ margin-right: 100px;
     -webkit-tap-highlight-color: transparent;
     
   }
-  #close:hover,#done:hover{
+  #closeChar:hover, #closeMon:hover, #closeNPC:hover,#doneChar:hover,#doneMon:hover,#doneNPC:hover{
     background-color: white;
     color: black;
     border: 1px groove black;
@@ -289,7 +305,7 @@ td{
    text-align: center;
  }
 
- #importButton, #formButton{
+ #importButtonMon,#importButtonChar, #importButtonNPC,#formButtonChar, #formButtonMon, #formButtonNPC{
   font-size: 16px;
   border-radius: 5px;
   background-color: black;
@@ -304,19 +320,26 @@ td{
   -webkit-tap-highlight-color: transparent;
  }
 
- #charInfo td{
+ #charInfo td, #monsInfo td, #npcInfo td{
  width: 99px;
  }
- #charInfo {
- margin-left: 10px;
+
+ #monsInfo2 td, #npcInfo2 td{
+  width: 100%;
  }
 
- #importButton:hover, #formButton:hover, #deleteButton{
+ #charInfo, #monsInfo, #npcInfo {
+ margin-left: 10px;
+ width:100%;
+ text-align: center;
+ }
+
+ #importButtonChar:hover,  #importButtonMon:hover,  #importButtonNPC:hover, #formButtonChar:hover,#formButtonMon:hover,#formButtonNPC:hover #deleteButton{
   background-color: white;
   color: black;
   border: 1px groove black;
  }
-#error, #monsterError{
+#error, #monsterError, #npcError{
   color:red;
   font-size: smaller;
   margin:0;
@@ -338,7 +361,7 @@ td{
 }
 
 @media screen and (max-width: 360px){
-#formButton,#importButton{
+  #importButtonMon,#importButtonChar, #importButtonNPC, #formButtonChar,#formButtonMon,#formButtonNPC{
   font-size: 12px;
   width: 150px;
 }

@@ -4,8 +4,13 @@
         <param name="android-package" value="org.apache.cordova.whitelist.WhitelistPlugin" />
         <param name="onload" value="true" />
     </feature>
-    <name>DM Combat Tracker</name>
-    <icon src="www/img/download.png" />
+    <name>Dungeon Master Tracker</name>
+    <description>
+        A sample Apache Cordova application that responds to the deviceready event.
+    </description>
+    <author email="dev@cordova.apache.org" href="http://cordova.io">
+        Apache Cordova Team
+    </author>
     <content src="splashHome.html" />
     <access origin="*" />
     <allow-intent href="http://*/*" />

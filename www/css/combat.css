@@ -153,7 +153,36 @@ body{
     border-color: lightgray;
     border-collapse: collapse;
 }
-
+#attack{
+    font-size: 12px;
+    border-radius: 5px;
+    background-color: black;
+    color: white;
+    border: 1px groove white;
+    padding: 15px 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    overflow: hidden;
+    cursor: pointer;
+    margin-right: 5px;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-tap-highlight-color: transparent;
+}
+#heal{
+    font-size: 12px;
+    border-radius: 5px;
+    background-color: black;
+    color: white;
+    border: 1px groove white;
+    padding: 15px 10px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    overflow: hidden;
+    cursor: pointer;
+    margin-right: 5px;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-tap-highlight-color: transparent;
+}
 
 /* width */
 ::-webkit-scrollbar {
@@ -190,7 +219,7 @@ body{
     top:0;
 }
 #initCont{
-    position: absolute;
+    
     width: 100%;
     text-align: center;
 }
@@ -205,6 +234,19 @@ body{
 
 #endit{
     width:300px;
+}
+
+#attack{
+    font-size:12px;
+    margin: 9px;
+    padding: 10px;
+
+}
+#heal{
+    font-size:12px;
+    margin: 9px;
+    padding: 10px;
+
 }
 
 }
