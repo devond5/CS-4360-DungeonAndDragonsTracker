@@ -17,15 +17,15 @@
 
   <div id="body">
     <div class="tab">
-      <button class="tablinks" onclick="openTab(event, 'Characters')" id="defaultOpen">Characters</button>
-      <button class="tablinks" onclick="openTab(event, 'Monsters')">Monsters</button>
-      <button class="tablinks" onclick="openTab(event, 'NPCs')">NPCs</button>
+      <button class="tablinks" onclick="openTab(event, 'Characters')" id="charOpen">Characters</button>
+      <button class="tablinks" onclick="openTab(event, 'Monsters')" id="monOpen">Monsters</button>
+      <button class="tablinks" onclick="openTab(event, 'NPCs')" id="npcOpen">NPCs</button>
     </div>
 
     <div id="Characters" class="tabcontent">
       <h3 style="margin:5px;font-size: 40px;" align="center">Characters</h3>
       <div style="display: flex; justify-content: space-between">
-        <button id="formButton" onclick="cmnForm('characterOverlay')">Add characters</button>
+        <button id="formButtonChar" onclick="cmnForm('characterOverlay')">Add characters</button>
         <button id="importButton">Import Characters</button>
       </div>
     </div>
@@ -33,7 +33,7 @@
     <div id="Monsters" class="tabcontent">
       <h3 style="margin:5px;font-size: 40px;" align="center">Monsters</h3>
       <div style="display: flex; justify-content: space-between">
-        <button id="formButton" onclick="cmnForm('monsterOverlay')">Add Monsters</button>
+        <button id="formButtonMon" onclick="cmnForm('monsterOverlay')">Add Monsters</button>
         <button id="importButton">Import Monsters</button>
       </div>
     </div>
@@ -41,7 +41,7 @@
     <div id="NPCs" class="tabcontent">
       <h3 style="margin:5px;font-size: 40px;" align="center">NPC's</h3>
       <div style="display: flex; justify-content: space-between">
-        <button id="formButton" onclick="cmnForm('npcOverlay')">Add NPC's</button>
+        <button id="formButtonNPC" onclick="cmnForm('npcOverlay')">Add NPC's</button>
         <button id="importButton">Import NPCs</button>
       </div>
     </div>
@@ -208,7 +208,7 @@
 
     
         <div id="monsterOverlay" >
-            <div id="formCont">
+            <div id="formContMonster">
                 <form>
                     <table >
                         <tr>
@@ -332,7 +332,7 @@
             </div>
         </div>
   <div id="npcOverlay">
-    <div id="formCont">
+    <div id="formContNPC">
       <form>
         <table>
           <tr>

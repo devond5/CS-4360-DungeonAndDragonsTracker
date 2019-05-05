@@ -539,7 +539,7 @@ function off(currentId) {
 }
 
 // Get the element with id="defaultOpen" and click on it
-document.getElementById("defaultOpen").click();
+document.getElementById("charOpen").click();
 
 function openTab(evt, tabName) {
   var i, tabcontent, tablinks;
