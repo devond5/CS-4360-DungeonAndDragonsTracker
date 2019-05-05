@@ -339,7 +339,7 @@ td{
   color: black;
   border: 1px groove black;
  }
-#error, #monsterError{
+#error, #monsterError, #npcError{
   color:red;
   font-size: smaller;
   margin:0;

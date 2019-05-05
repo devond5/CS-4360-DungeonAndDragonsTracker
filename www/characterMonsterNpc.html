@@ -220,10 +220,6 @@
                                     <table id="monsInfo">
                                         <tr>
                                             <td style="display:inline-grid">
-                                                <label for="monsterInitiative">Initiative:</label>
-                                                <input id="monsterInitiative" type="number" min="-1" max="20"></input>
-                                            </td>
-                                            <td style="display:inline-grid">
                                                 <label for="monsterHP">HP:</label>
                                                 <input id="monsterHP" type="number" min="-1" max="100"></input>
                                             </td>
@@ -344,55 +340,56 @@
                 <table id="npcInfo">
                   <tr>
                     <td style="display:inline-grid">
-                      <label for="Initiative">Initiative:</label>
-                      <input id="Initiative" type="number" min="-1" max="20"></input>
-                    </td>
-                    <td style="display:inline-grid">
-                      <label for="HP">HP:</label>
-                      <input id="HP" type="number" min="-1" max="100"></input>
+                      <label for="npcHP">HP:</label>
+                      <input id="npcHP" type="number" min="-1" max="100"></input>
                     </td>
                   </tr>
                   <tr>
                     <td style="display:inline-grid">
-                      <label for="AC">AC:</label>
-                      <input id="AC" type="number" min="-1" max="100"></input>
+                      <label for="npcAC">AC:</label>
+                      <input id="npcAC" type="number" min="-1" max="100"></input>
                     </td>
                     <td style="display:inline-grid">
 
 
-                      <label for="Perception">Perception:</label>
-                      <input id="Perception" type="number" min="-1" max="100"></input>
+                      <label for="npcPP">Perception:</label>
+                      <input id="npcPP" type="number" min="-1" max="100"></input>
                     </td>
                   </tr>
                   <tr>
                     <td style="display:inline-grid">
-                      <label for="Strength">Strength:</label>
-                      <input id="Strength" type="number" min="-1" max="100"></input>
+                      <label for="npcStrength">Strength:</label>
+                      <input id="npcStrength" type="number" min="-1" max="100"></input>
 
                     </td>
                     <td style="display:inline-grid">
-                      <label for="Dexterity">Dexterity:</label>
-                      <input id="Dexterity" type="number" min="-1" max="100"></input>
+                      <label for="npcDexterity">Dexterity:</label>
+                      <input id="npcDexterity" type="number" min="-1" max="100"></input>
                     </td>
                   </tr>
                   <tr>
                     <td style="display:inline-grid">
-                      <label for="Constitution">Constitution:</label>
-                      <input id="Constitution" type="number" min="-1" max="100"></input>
+                      <label for="npcConstitution">Constitution:</label>
+                      <input id="npcConstitution" type="number" min="-1" max="100"></input>
                     </td>
                     <td style="display:inline-grid">
-                      <label for="Intelligence">Intelligence:</label>
-                      <input id="Intelligence" type="number" min="-1" max="100"></input>
+                      <label for="npcIntelligence">Intelligence:</label>
+                      <input id="npcIntelligence" type="number" min="-1" max="100"></input>
                     </td>
                   </tr>
                   <tr>
                     <td style="display:inline-grid">
-                      <label for="Wisdom">Wisdom:</label>
-                      <input id="Wisdom" type="number" min="-1" max="100"></input>
+                      <label for="npcWisdom">Wisdom:</label>
+                      <input id="npcWisdom" type="number" min="-1" max="100"></input>
                     </td>
                     <td style="display:inline-grid">
-                      <label for="Charisma">Charisma:</label>
-                      <input id="Charisma" type="number" min="-1" max="100"></input>
+                      <label for="npcCharisma">Charisma:</label>
+                      <input id="npcCharisma" type="number" min="-1" max="100"></input>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <p id="npcError"></p>
                     </td>
                   </tr>
                 </table>
@@ -405,33 +402,33 @@
                 <table id="npcInfo2">
                   <tr>
                     <td style="display:inline-grid">
-                      <label for="Strength">Strength:</label>
-                      <input id="Strength" type="number" min="-1" max="100"></input>
+                      <label for="npcSavingStrength">Strength:</label>
+                      <input id="npcSavingStrength" type="number" min="-1" max="100"></input>
 
                     </td>
                     <td style="display:inline-grid">
-                      <label for="Dexterity">Dexterity:</label>
-                      <input id="Dexterity" type="number" min="-1" max="100"></input>
+                      <label for="npcSavingDexterity">Dexterity:</label>
+                      <input id="npcSavingDexterity" type="number" min="-1" max="100"></input>
                     </td>
                   </tr>
                   <tr>
                     <td style="display:inline-grid">
-                      <label for="Constitution">Constitution:</label>
-                      <input id="Constitution" type="number" min="-1" max="100"></input>
+                      <label for="npcSavingConstitution">Constitution:</label>
+                      <input id="npcSavingConstitution" type="number" min="-1" max="100"></input>
                     </td>
                     <td style="display:inline-grid">
-                      <label for="Intelligence">Intelligence:</label>
-                      <input id="Intelligence" type="number" min="-1" max="100"></input>
+                      <label for="npcSavingIntelligence">Intelligence:</label>
+                      <input id="npcSavingIntelligence" type="number" min="-1" max="100"></input>
                     </td>
                   </tr>
                   <tr>
                     <td style="display:inline-grid">
-                      <label for="Wisdom">Wisdom:</label>
-                      <input id="Wisdom" type="number" min="-1" max="100"></input>
+                      <label for="npcSavingWisdom">Wisdom:</label>
+                      <input id="npcSavingWisdom" type="number" min="-1" max="100"></input>
                     </td>
                     <td style="display:inline-grid">
-                      <label for="Charisma">Charisma:</label>
-                      <input id="Charisma" type="number" min="-1" max="100"></input>
+                      <label for="npcSavingCharisma">Charisma:</label>
+                      <input id="npcSavingCharisma" type="number" min="-1" max="100"></input>
                     </td>
                   </tr>
                 </table>
@@ -443,7 +440,7 @@
             <td colspan="2">
               <button type="button" id="close" onclick="off('npcOverlay')">Close</button>
 
-              <button type="button" id="done" onclick="off('npcOverlay')">Done</button>
+              <button type="button" id="done" onclick="insertNpc()">Done</button>
             </td>
           </tr>
         </table>
