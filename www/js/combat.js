@@ -2,6 +2,7 @@ var db = window.openDatabase('dmdb', '1.0', 'DM Data', 2 * 1024 * 1024);
 
 //****************************************************Table Setup FUNCTIONS*************************************************/
 var table = document.getElementById("combatantsTable");
+var started = false;
 
 window.onload = function (){
     var row = table.insertRow(0);
@@ -21,13 +22,14 @@ window.onload = function (){
                     id = id.split(" ")[0]; 
                     var type = results.rows.item(i).type;
                     addCombtToTable(id,type);
+                    
                 }
                 catch{
                     console.log("Cannot get Combatants");
                 }   
             }
             
-            sortTable();
+            
       });
     
     });
@@ -54,7 +56,8 @@ function addCombtToTable(id, type){
             cell2.innerHTML = row.name;
             cell3.innerHTML = row.CurrentHp + "/" +row.HP;
             cell4.innerHTML = "<button id='attack' onclick='attack(this)'>Attack/Heal</button><input id='attackInput' type='number'>"
-      });
+            sortTable();
+        });
     });
 }
 
@@ -121,4 +124,42 @@ function rollD20(){
 function rollD100(){
     var roll = Math.floor(Math.random()*100)+1;
     document.getElementById("d100").innerHTML = roll;
+}
+
+
+function initButton(button){
+    var rows = table.rows;
+    parent = rows[1].parentNode;
+    var init = parseInt(rows[1].cells[0].innerHTML);
+    var toAppend = [];
+    if(!started){
+        button.innerHTML = init;
+        for(var a = 1; a< rows.length; a++){
+            if(parseInt(rows[a].cells[0].innerHTML) == init){
+                rows[a].style.backgroundColor = "rgba(100,100,100,0.8)";
+            }
+        }
+        started = true;
+    }else{
+        for(var a = 1; a< rows.length; a++){
+        if(parseInt(rows[a].cells[0].innerHTML) == init){
+            toAppend.push(rows[a]);  
+        }
+        }
+        for(a = 0; a<toAppend.length;a++){
+            table.appendChild(toAppend[a]);
+        }
+        toAppend = [];
+        init = parseInt(rows[1].cells[0].innerHTML)
+        button.innerHTML = init;
+
+        for(var a = 1; a< rows.length; a++){
+            if(parseInt(rows[a].cells[0].innerHTML) == init){
+                rows[a].style.backgroundColor = "rgba(100,100,100,0.8)";
+            }else{
+                rows[a].style.backgroundColor = "rgba(0,0,0,0.6)";
+            }
+        }
+
+    }
 }
