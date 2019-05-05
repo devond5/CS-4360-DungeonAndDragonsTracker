@@ -12,7 +12,7 @@ window.onload = function (){
     cell1.innerHTML = "Initiative";
     cell2.innerHTML = "Combatant Name";
     cell3.innerHTML = "HP";
-    cell4.innerHTML = "Attack Combatant";
+    cell4.innerHTML = "Attack/Heal Combatant";
     db.transaction(function (tx) {
         tx.executeSql('SELECT * FROM combatants', [], function (tx, results) {
             for(var i = 0; i < results.rows.length; i++){
@@ -46,14 +46,14 @@ function addCombtToTable(id, type){
             var cell4 = row.insertCell(3);
             var row = combatant.rows[0];
             
-            if(row.Initiative == null){
+            if(row.Initiative == null || typeof row.Initiative == "undefined" ){
                 cell1.innerHTML = 0;
             }else{
                 cell1.innerHTML = row.Initiative;
             }
             cell2.innerHTML = row.name;
             cell3.innerHTML = row.CurrentHp + "/" +row.HP;
-            cell4.innerHTML = "<button id='attack' onclick='attack(this)'>Attack!</button><input id='attackInput' type='number'>"
+            cell4.innerHTML = "<button id='attack' onclick='attack(this)'>Attack/Heal</button><input id='attackInput' type='number'>"
       });
     });
 }

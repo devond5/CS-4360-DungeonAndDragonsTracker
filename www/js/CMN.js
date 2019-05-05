@@ -764,12 +764,18 @@ function off(currentId) {
   if (currentId == "characterOverlay") {
     document.getElementById("characterOverlay").style.visibility = "hidden"
     document.getElementById("characterOverlay").style.opacity = "0";
+    document.getElementById("error").innerHTML = ""
+    document.getElementById("characterName").style.borderColor = "";
   } else if (currentId == "monsterOverlay") {
     document.getElementById("monsterOverlay").style.visibility = "hidden";
     document.getElementById("monsterOverlay").style.opacity = "0";
+    document.getElementById("monsterError").innerHTML = ""
+  document.getElementById("monsterName").style.borderColor = "";
   } else {
     document.getElementById("npcOverlay").style.visibility = "hidden";
     document.getElementById("npcOverlay").style.opacity = "0";
+    document.getElementById("npcError").innerHTML = ""
+    document.getElementById("npcName").style.borderColor = "";
   }
   var elements = document.getElementsByTagName("input");
   for (var ii = 0; ii < elements.length; ii++) {

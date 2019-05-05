@@ -247,11 +247,11 @@ body{
     padding-left:5px;
   }
 
-  #close{
+  #closeChar,#closeMon,#closeNPC{
 margin-right: 100px;
   }
 
-  #close,#done{
+  #closeChar,#closeMon,#closeNPC,#doneChar,#doneMon,#doneNPC{
     font-size: 15px;
     border-radius: 5px;
     background-color: black;
@@ -266,7 +266,7 @@ margin-right: 100px;
     -webkit-tap-highlight-color: transparent;
     
   }
-  #close:hover,#done:hover{
+  #closeChar:hover, #closeMon:hover, #closeNPC:hover,#doneChar:hover,#doneMon:hover,#doneNPC:hover{
     background-color: white;
     color: black;
     border: 1px groove black;
@@ -305,7 +305,7 @@ td{
    text-align: center;
  }
 
- #importButton, #formButtonChar, #formButtonMon, #formButtonNPC{
+ #importButtonMon,#importButtonChar, #importButtonNPC,#formButtonChar, #formButtonMon, #formButtonNPC{
   font-size: 16px;
   border-radius: 5px;
   background-color: black;
@@ -334,7 +334,7 @@ td{
  text-align: center;
  }
 
- #importButton:hover, #formButtonChar:hover,#formButtonMon:hover,#formButtonNPC:hover #deleteButton{
+ #importButtonChar:hover,  #importButtonMon:hover,  #importButtonNPC:hover, #formButtonChar:hover,#formButtonMon:hover,#formButtonNPC:hover #deleteButton{
   background-color: white;
   color: black;
   border: 1px groove black;
@@ -361,7 +361,7 @@ td{
 }
 
 @media screen and (max-width: 360px){
-#importButton, #formButtonChar,#formButtonMon,#formButtonNPC{
+  #importButtonMon,#importButtonChar, #importButtonNPC, #formButtonChar,#formButtonMon,#formButtonNPC{
   font-size: 12px;
   width: 150px;
 }
