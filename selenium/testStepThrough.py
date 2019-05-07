@@ -13,14 +13,23 @@ class Testing(unittest.TestCase):
 		driver.find_element_by_id('button1').click()
 		time.sleep(1)
 		driver.find_element_by_id('npcOpen').click()
+		time.sleep(1)
 		driver.find_element_by_id('formButtonNPC').click()
+		time.sleep(1)
 		driver.find_element_by_id('closeNPC').click()
+		time.sleep(1)
 		driver.find_element_by_id('monOpen').click()
+		time.sleep(1)
 		driver.find_element_by_id('formButtonMon').click()
+		time.sleep(1)
 		driver.find_element_by_id('closeMon').click()
+		time.sleep(1)
 		driver.find_element_by_id('charOpen').click()
+		time.sleep(1)
 		driver.find_element_by_id('formButtonChar').click()
+		time.sleep(1)
 		driver.find_element_by_id('closeChar').click()
+		time.sleep(1)
 
 		# Add a character, monster, and NPC to step around
 		driver.find_element_by_id('formButtonChar').click()
@@ -95,18 +104,39 @@ class Testing(unittest.TestCase):
 
 		# Check the go back button
 		driver.find_element_by_id('start').click()
+		time.sleep(1)
 		driver.find_element_by_id('goBack').click()
+		time.sleep(1)
 		driver.find_element_by_id('start').click()
+		time.sleep(1)
 
 		# Select the combatants
 		driver.find_element_by_id('npcSelection').click()
-		driver.find_element_by_id('').click()
+		time.sleep(1)
+		driver.find_element_by_id('NPCtable').click()
+		time.sleep(1)
 		driver.find_element_by_id('monSelection').click()
-		driver.find_element_by_id('').click()
+		time.sleep(1)
+		driver.find_element_by_id('monsterTable').click()
+		time.sleep(1)
 		driver.find_element_by_id('charSelection').click()
-		driver.find_element_by_id('').click()
+		time.sleep(1)
+		driver.find_element_by_id('characterTable').click()
+		time.sleep(1)
 
-		driver.find_element_by_id('').click()
+		# Were the items still selected?
+		driver.find_element_by_id('npcSelection').click()
+		time.sleep(1)
+		driver.find_element_by_id('monSelection').click()
+		time.sleep(1)
+		driver.find_element_by_id('charSelection').click()
+		time.sleep(1)
+
+		# Start combat but then quit
+		driver.find_element_by_id('engage').click()
+		time.sleep(4)
+		driver.find_element_by_id('endit').click()
+		time.sleep(3)
 
 
 	def tearDown(self):

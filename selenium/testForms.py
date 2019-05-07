@@ -8,7 +8,7 @@ class Testing(unittest.TestCase):
 
 	def testCharForm(self):
 		driver = self.browser
-		driver.get('http://localhost:8000/splashHome.html')
+		driver.get('https://dm-combat-tracker-capstone.herokuapp.com/splashHome.html')
 		time.sleep(9)
 		driver.find_element_by_id('button1').click()
 		time.sleep(1)
@@ -38,7 +38,7 @@ class Testing(unittest.TestCase):
 
 	def testMonsterForm(self):
 		driver = self.browser
-		driver.get('http://localhost:8000/splashHome.html')
+		driver.get('https://dm-combat-tracker-capstone.herokuapp.com/splashHome.html')
 		time.sleep(9)
 		driver.find_element_by_id('button1').click()
 		time.sleep(1)
@@ -68,7 +68,7 @@ class Testing(unittest.TestCase):
 
 	def testNPCForm(self):
 		driver = self.browser
-		driver.get('http://localhost:8000/splashHome.html')
+		driver.get('https://dm-combat-tracker-capstone.herokuapp.com/splashHome.html')
 		time.sleep(9)
 		driver.find_element_by_id('button1').click()
 		time.sleep(1)
