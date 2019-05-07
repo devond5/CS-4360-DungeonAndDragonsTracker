@@ -327,7 +327,15 @@ function insertMonster() {
     document.getElementById("monsterName").style.borderColor = "red";
     return;
   }
-  hp = (document.getElementById("monsterHP").value == "" ? 0 : document.getElementById("monsterHP").value);
+  if(document.getElementById("monsterHP").value < 1) {
+    document.getElementById("monsterError").innerHTML = "Monster Must Have Hit Points"
+    document.getElementById("monsterHP").style.borderColor = "red";
+    return;
+  }
+  else{
+    hp = document.getElementById("monsterHP").value;
+  }
+  // hp = (document.getElementById("monsterHP").value == "" ? 0 : document.getElementById("monsterHP").value);
   currenthp = (document.getElementById("monsterHP").value == "" ? 0 : document.getElementById("monsterHP").value),
     ac = (document.getElementById("monsterAC").value == "" ? 0 : document.getElementById("monsterAC").value),
     pp = (document.getElementById("monsterPP").value == "" ? 0 : document.getElementById("monsterPP").value),
@@ -369,6 +377,7 @@ function insertMonster() {
   document.getElementById("monsterOverlay").style.opacity = "0"
   document.getElementById("monsterError").innerHTML = ""
   document.getElementById("monsterName").style.borderColor = "";
+  document.getElementById("monsterHP").style.borderColor = "";
 }
 
 function addToMonsTable() {
