@@ -3,7 +3,7 @@ var db = window.openDatabase('dmdb', '1.0', 'DM Data', 2 * 1024 * 1024);
 window.onload = function () {
 
     db.transaction(function (tr) {
-        tr.executeSql('CREATE TABLE IF NOT EXISTS combatants (id integer, relid integer, name text, type text)'); 
+        tr.executeSql('CREATE TABLE IF NOT EXISTS combatants (id integer, relid integer, name text, type text)');
         viewCharacters();
         viewMonsters();
         viewNPCs();
@@ -15,7 +15,7 @@ window.onload = function () {
     }, function (error) {
         console.log('transaction error: ' + error.message);
     }, function () {
-        console.log('transaction ok');   
+        console.log('transaction ok');
     });
 };
 //****************************************************BASIC PAGE FUNCTIONS***************************************************************************/
@@ -49,28 +49,28 @@ function toggleClass(cell, className) {
         cell.setAttribute("class", "selected");
         insertCombatant(cell.parentNode);
         checkTableLength();
-        
+
     }
 }
 
 //****************************************************TABLE FUNCTIONS***************************************************************************/
 
 
-function highlightCombatants(){
+function highlightCombatants() {
     var table = document.getElementById("characterTable");
     db.transaction(function (transaction) {
-        transaction.executeSql("SELECT * FROM combatants", [], function(tx, results){
+        transaction.executeSql("SELECT * FROM combatants", [], function (tx, results) {
             len = results.rows.length;
-            for(var i = 0; i < len; i++){
-                try{
-                    var cellId = results.rows.item(i).id;    
+            for (var i = 0; i < len; i++) {
+                try {
+                    var cellId = results.rows.item(i).id;
                     console.log(cellId)
                     var cell = document.getElementById(cellId);
                     cell.setAttribute("class", "selected");
                 }
                 catch{
                     console.log("Cannot highlight combatants");
-                }   
+                }
             }
         });
     })
@@ -88,7 +88,7 @@ function viewCharacters() {
                 cell = document.createElement("td");
                 cell.setAttribute("onclick", "toggleClass(this, 'selected')");
                 cell.setAttribute("class", "hover");
-                cell.setAttribute("id", results.rows.item(i).id+" characters")
+                cell.setAttribute("id", results.rows.item(i).id + " characters")
                 cell.innerHTML = results.rows.item(i).name;
                 row.appendChild(cell);
                 cell2 = document.createElement("td");
@@ -113,7 +113,7 @@ function viewMonsters() {
                 row.setAttribute("id", "monsters");
                 cell = document.createElement("td");
                 cell.setAttribute("onclick", "toggleClass(this, 'selected')");
-                cell.setAttribute("id", results.rows.item(i).id+" monsters")
+                cell.setAttribute("id", results.rows.item(i).id + " monsters")
                 cell.setAttribute("class", "hover");
                 cell.innerHTML = results.rows.item(i).name;
                 row.appendChild(cell);
@@ -140,7 +140,7 @@ function viewNPCs() {
                 cell = document.createElement("td");
                 cell.setAttribute("onclick", "toggleClass(this, 'selected')");
                 cell.setAttribute("class", "hover");
-                cell.setAttribute("id", results.rows.item(i).id+" NPCs");
+                cell.setAttribute("id", results.rows.item(i).id + " NPCs");
                 cell.innerHTML = results.rows.item(i).name;
                 row.appendChild(cell);
                 cell2 = document.createElement("td");
@@ -157,7 +157,7 @@ function viewNPCs() {
 
 //*********************************************COMBATANT FUNCTIONS***************************************************************************/
 
-function insertCombatant(row){
+function insertCombatant(row) {
     cell = row.getElementsByTagName("td");
     var id = cell[0].id;
     var relid = id.split(" ")[0];
@@ -176,49 +176,49 @@ function insertCombatant(row){
     })
 }
 
-function removeCombatant(row){
+function removeCombatant(row) {
     var cell = row.getElementsByTagName("td");
     var id = cell[0].id;
     // var type = row.id
     console.log(id);
-    db.transaction(function (transaction){
+    db.transaction(function (transaction) {
         var executeQuery = "DELETE FROM combatants WHERE id=?";
-            transaction.executeSql(executeQuery, [id],
-                //On Success
-                function (tx, result) { console.log('Delete successfully'); },
-                //On Error
-                function (error) { console.log('Something went Wrong'); });
+        transaction.executeSql(executeQuery, [id],
+            //On Success
+            function (tx, result) { console.log('Delete successfully'); },
+            //On Error
+            function (error) { console.log('Something went Wrong'); });
     })
 }
 
 function checkTableLength() {
     console.log("Checking Length");
     db.transaction(function (tx) {
-      tx.executeSql('SELECT * FROM combatants', [], function (tx, results) {
-           len = results.rows.length; 
-           console.log(len);
-           if(len < 2){
-               document.getElementById("engage").disabled = true;
-           }
-           else{
-               document.getElementById("engage").disabled = false;
-           }
+        tx.executeSql('SELECT * FROM combatants', [], function (tx, results) {
+            len = results.rows.length;
+            console.log(len);
+            if (len < 2) {
+                document.getElementById("engage").disabled = true;
+            }
+            else {
+                document.getElementById("engage").disabled = false;
+            }
         }
-  
-      );
+
+        );
 
     });
-  }
+}
 
-  function updateInit(info){
-      var initiative = info.value;
-      var id = info.parentNode.parentNode.children[0].id;
-      id = id.split(" ");
-      var type = id[1];
-      id = id[0];
-      
+function updateInit(info) {
+    var initiative = info.value;
+    var id = info.parentNode.parentNode.children[0].id;
+    id = id.split(" ");
+    var type = id[1];
+    id = id[0];
+
     db.transaction(function (transaction) {
-        var executeQuery = 'UPDATE '+type+ ' SET initiative=? WHERE id=?';
+        var executeQuery = 'UPDATE ' + type + ' SET initiative=? WHERE id=?';
         transaction.executeSql(executeQuery, [initiative, id],
             function (tx, result) {
                 console.log('Updated');
@@ -227,6 +227,6 @@ function checkTableLength() {
                 console.log('Error occurred');
             });
     });
-  }
-  
+}
+
 

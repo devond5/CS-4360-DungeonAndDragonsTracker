@@ -95,6 +95,29 @@ class Testing(unittest.TestCase):
 		time.sleep(1)
 		driver.find_element_by_id('1 characters').click()
 		time.sleep(1)
+		driver.find_element_by_id('engage').click()
+
+		driver.find_element_by_id('d100').click()
+		driver.find_element_by_id('d20').click()
+		driver.find_element_by_id('d12').click()
+		driver.find_element_by_id('d10').click()
+		driver.find_element_by_id('d8').click()
+		driver.find_element_by_id('d6').click()
+		driver.find_element_by_id('d4').click()
+		time.sleep(3)
+
+		driver.find_element_by_id('initButton').click()
+		time.sleep(1)
+		driver.find_element_by_id('initButton').click()
+		time.sleep(1)
+		driver.find_element_by_id('initButton').click()
+		time.sleep(1)
+		driver.find_element_by_id('initButton').click()
+		time.sleep(1)
+		driver.find_element_by_id('initButton').click()
+		time.sleep(4)
+		driver.find_element_by_id('endit').click()
+		time.sleep(5)
 
 
 	def tearDown(self):
