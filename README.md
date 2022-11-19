@@ -1,6 +1,11 @@
 # CS-4360-DungeonAndDragonsTracker
-
-
+To Do List
+- [x] Update Characters from main
+- [ ] Update Monsters from main
+- [ ] Update NPC from main
+- [ ] Save Off Characters locally for import
+- [ ] Save Off Monsters locally for import
+- [ ] Save Off NPCs locally for import
 
 ## Environment setup
 
