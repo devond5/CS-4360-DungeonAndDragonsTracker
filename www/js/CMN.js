@@ -61,7 +61,7 @@ function fillCharTable(results) {
     cell1Head.innerHTML = "Character";
     cell2Head.innerHTML = "Statistics";
     cell3Head.innerHTML = "Player Info";
-    cell4Head.innerHTML = "Delete";
+    cell4Head.innerHTML = "Edit/Delete";
   }
   for (var i = 0; i < lenDbChar; i++) {
     var row = table.insertRow(1);
@@ -86,7 +86,7 @@ function fillCharTable(results) {
     }
     cell2.innerHTML = reStats;
     cell3.innerHTML = rePlayers;
-    cell4.innerHTML = "<button id='deleteButton' data-name=" + items['name'] + " onclick='deleteCharacter(this)'>Delete</button>"
+    cell4.innerHTML = "<button id='editButton' data-name=" + items['name'] + " onclick='editCharacter(this)'>Edit</button> <button id='deleteButton' data-name=" + items['name'] + " onclick='deleteCharacter(this)'>Delete</button>"
   }
 }
 
@@ -101,7 +101,7 @@ function fillMonsTable(results) {
     cell1Head.innerHTML = "Monster";
     cell2Head.innerHTML = "Statistics";
     cell3Head.innerHTML = "Saving Statistics";
-    cell4Head.innerHTML = "Delete";
+    cell4Head.innerHTML = "Edit/Delete";
   }
   for (var i = 0; i < lenDbMons; i++) {
     var row = table.insertRow(1);
@@ -144,7 +144,7 @@ function fillMonsTable(results) {
     }
     cell2.innerHTML = reStats;
     cell3.innerHTML = reSaving;
-    cell4.innerHTML = "<button id='deleteButton' data-name=" + items['name'] + " onclick='deleteMonster(this)'>Delete</button>"
+    cell4.innerHTML = "<button id='editButton' data-name=" + items['name'] + " onclick='editMonster(this)'>Edit</button><button id='deleteButton' data-name=" + items['name'] + " onclick='deleteMonster(this)'>Delete</button>"
   }
 }
 
@@ -159,7 +159,7 @@ function fillNpcTable(results) {
     cell1Head.innerHTML = "NPC";
     cell2Head.innerHTML = "Statistics";
     cell3Head.innerHTML = "Saving Statistics";
-    cell4Head.innerHTML = "Delete";
+    cell4Head.innerHTML = "Edit/Delete";
   }
   for (var i = 0; i < lenDbNpc; i++) {
     var row = table.insertRow(1);
@@ -202,7 +202,7 @@ function fillNpcTable(results) {
     }
     cell2.innerHTML = reStats;
     cell3.innerHTML = reSaving;
-    cell4.innerHTML = "<button id='deleteButton' data-name=" + items['name'] + " onclick='deleteNpc(this)'>Delete</button>"
+    cell4.innerHTML = "<button id='editButton' data-name=" + items['name'] + " onclick='editNpc(this)'>Edit</button><button id='deleteButton' data-name=" + items['name'] + " onclick='deleteNpc(this)'>Delete</button>"
   }
 }
 
@@ -233,18 +233,39 @@ function insertCharacter() {
     race = (document.getElementById("Race").value == "" ? null : document.getElementById("Race").value);
   if (name != null) {
     db.transaction(function (transaction) {
-
-      var executeQuery = 'INSERT INTO characters (name, HP, CurrentHP, AC, PP, Strength, Dexterity, Constitution, Intelligence, Wisdom, Charisma, Player, Background, ClassLevel, Experience,Align, Race) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)';
-      transaction.executeSql(executeQuery, [name, hp, currenthp, ac, pp, str, dex, constitution, int, wis, charisma, player, bg, classLevel, exp, align, race],
-        function (tx, result) {
-          console.log('Inserted');
-        },
-        function (error) {
-          console.log('Error occurred');
-        });
+      let executeQuery= '';
+      if(document.getElementById("doneChar").innerHTML  == "Update"){
+        executeQuery = 'UPDATE characters SET HP=?,  CurrentHP=?,  AC=?,  PP=?,  Strength=?,  Dexterity=?,  Constitution=?,  Intelligence=?,  Wisdom=?,  Charisma=?,  Player=?,  Background=?,  ClassLevel=?,  Experience=? ,Align=?,  Race=? WHERE name=?';
+        transaction.executeSql(executeQuery, [hp, currenthp, ac, pp, str, dex, constitution, int, wis, charisma, player, bg, classLevel, exp, align, race, name],
+          function (tx, result) {
+            console.log('Updated');
+            updateCharTable();
+          },
+          function (error) {
+            console.log('Error occurred');
+          });
+      }else{
+        executeQuery = 'INSERT INTO characters (name, HP, CurrentHP, AC, PP, Strength, Dexterity, Constitution, Intelligence, Wisdom, Charisma, Player, Background, ClassLevel, Experience,Align, Race) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)';
+        transaction.executeSql(executeQuery, [name, hp, currenthp, ac, pp, str, dex, constitution, int, wis, charisma, player, bg, classLevel, exp, align, race],
+          function (tx, result) {
+            console.log('Inserted');
+           
+          },
+          function (error) {
+            console.log('Error occurred');
+          });
+         
+      }
+     
+      
     });
-    addToCharTable();
+
+    if(document.getElementById("doneChar").innerHTML  != "Update"){
+      addToCharTable();
+    }
+    
   }
+
   var elements = document.getElementsByTagName("input");
   for (var ii = 0; ii < elements.length; ii++) {
     if (elements[ii].type == "text" || elements[ii].type == "number") {
@@ -272,6 +293,56 @@ function deleteCharacter(event) {
     if (document.getElementById("characterTable").rows.length == 1) {
       document.getElementById("characterTable").deleteRow(0);
     }
+  });
+}
+
+function editCharacter(event) {
+  document.getElementById("characterOverlay").style.visibility = "visible"
+  document.getElementById("characterOverlay").style.opacity = "1";
+  document.getElementById("doneChar").innerText  = "Update"; 
+
+  db.transaction(function (transaction) {
+    var name = event.dataset.name;
+    var executeQuery = "SELECT * FROM characters WHERE name=?";
+    transaction.executeSql(executeQuery, [name],
+      //On Success
+      function (tx, result) { 
+        const values = result.rows[0];
+        document.getElementById("characterName").value = values.name;
+        document.getElementById("characterName").disabled = true;
+        document.getElementById("HP").value = values.HP
+        document.getElementById("HP").value = values.CurrentHp
+  document.getElementById("AC").value = values.AC
+  document.getElementById("PP").value = values.PP
+  document.getElementById("Strength").value = values.Strength
+  document.getElementById("Dexterity").value = values.Dexterity
+  document.getElementById("Constitution").value = values.Constitution
+  document.getElementById("Intelligence").value = values.Intelligence
+  document.getElementById("Wisdom").value =values.Wisdom
+  document.getElementById("Charisma").value = values.Charisma
+  document.getElementById("PlayerName").value = values.Player
+  document.getElementById("Background").value = values.Background
+  document.getElementById("ClassAndLevel").value = values.ClassLevel
+  document.getElementById("Experience").value = values.Experience
+  document.getElementById("Alignment").value = values.Align
+  document.getElementById("Race").value = values.Race
+      },
+      //On Error
+      function (error) { console.log("Something went wrong"); });
+    
+  });
+}
+function updateCharTable(){
+  var table = document.getElementById("characterTable");
+  table.innerHTML = "";
+  db.transaction(function (tx) {
+    tx.executeSql('SELECT * FROM characters', [], function (tx, results) {
+
+      lenDbChar = results.rows.length;
+      if (lenDbChar > 0) {
+        fillCharTable(results);
+      }
+    });
   });
 }
 
@@ -304,7 +375,7 @@ function addToCharTable() {
   if (document.getElementById("characterName").value != "") {
     cell1.innerHTML = document.getElementById("characterName").value;
 
-    cell4.innerHTML = "<button id='deleteButton' data-name=" + document.getElementById('characterName').value + " onclick='deleteCharacter(this)'>Delete</button>"
+    cell4.innerHTML = "<button id='editButton' data-name=" + document.getElementById('characterName').value + " onclick='editCharacter(this)'>Edit</button> <button id='deleteButton' data-name=" + document.getElementById('characterName').value + " onclick='deleteCharacter(this)'>Delete</button>"
 
     if (document.getElementById("HP").value != "") {
       stats += "HP:" + document.getElementById("HP").value + "<br/>";
@@ -558,6 +629,11 @@ function deleteMonster(event) {
     }
   });
 }
+
+function editMonster(event) {
+  document.getElementById("monsterOverlay").style.visibility = "visible";
+  document.getElementById("monsterOverlay").style.opacity = "1";
+}
 //***************************************END MONSTER DATABASE FUNCTIONS *********************************************
 
 //***************************************NPC DATABASE FUNCTIONS *********************************************
@@ -743,6 +819,11 @@ function deleteNpc(event) {
   });
 }
 
+function editNpc(event) {
+  document.getElementById("npcOverlay").style.visibility = "visible";
+  document.getElementById("npcOverlay").style.opacity = "1";
+}
+
 
 //***************************************DOCUMENT FUNCTIONS**********************************************************
 
@@ -750,12 +831,18 @@ function cmnForm(currentId) {
   if (currentId == "characterOverlay") {
     document.getElementById("characterOverlay").style.visibility = "visible"
     document.getElementById("characterOverlay").style.opacity = "1";
+    document.getElementById("doneChar").innerText  = "Done"; 
+    document.getElementById("characterName").disabled = false;
   } else if (currentId == "monsterOverlay") {
     document.getElementById("monsterOverlay").style.visibility = "visible";
     document.getElementById("monsterOverlay").style.opacity = "1";
+    document.getElementById("doneMon").innerText  = "Done"; 
+    document.getElementById("monsterName").disabled = false;
   } else {
     document.getElementById("npcOverlay").style.visibility = "visible";
     document.getElementById("npcOverlay").style.opacity = "1";
+    document.getElementById("doneNPC").innerText  = "Done"; 
+    document.getElementById("npcName").disabled = false;
   }
 
 }

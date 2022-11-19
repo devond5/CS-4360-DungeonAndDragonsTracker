@@ -1,4 +1,6 @@
 #ignore platforms and plugin folders
 platforms/
 plugins/
+node_modules
+build
 

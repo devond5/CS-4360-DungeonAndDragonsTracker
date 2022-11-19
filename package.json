@@ -1,16 +1,16 @@
 {
-    "name": "helloworld",
-    "displayName": "HelloCordova",
-    "version": "1.0.0",
+    "name": "dndtracker",
+    "displayName": "DND Master Traker",
+    "version": "2.0.0",
     "main": "splashHome.js",
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1"
     },
-    "author": "Apache Cordova Team",
+    "author": "Devon Despain, John Sanders, Max Morrison",
     "license": "Apache-2.0",
     "dependencies": {
-        "cordova-android": "^7.1.4",
-        "cordova-browser": "^5.0.4",
+        "cordova-android": "^11.0.0",
+        "cordova-browser": "^6.0.0",
         "cordova-plugin-whitelist": "^1.3.3",
         "cordova-sqlite-storage": "^3.2.0"
     },
