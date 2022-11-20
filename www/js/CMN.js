@@ -120,7 +120,7 @@ function fillMonsTable(results) {
           reStats += it + ":" + items[it] + "<br/>";
         }
       }
-      else if (items[it] != null && items[it] != "" && it != "id" && it != "name") {
+      else if (items[it] != null && it != "id" && it != "name") {
         if(it.includes("STstr")){
           reSaving += "Saving Strength" + ":" + items[it] + "<br/>";
         }
@@ -475,18 +475,36 @@ function insertMonster() {
 
 
   if (name != null) {
+
     db.transaction(function (transaction) {
-      var executeQuery = 'INSERT INTO monsters (name, HP, CurrentHP, AC, PP, Strength, Dexterity, Constitution, Intelligence, Wisdom, Charisma, STstr, STdex, STconstitution, STint, STwis, STcharisma) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)';
-      transaction.executeSql(executeQuery, [name, hp, currenthp, ac, pp, str, dex, constitution, int, wis, charisma,
-        SavingStrength, SavingDexterity, SavingConstitution, SavingIntelligence, SavingWisdom, SavingCharisma],
-        function (tx, result) {
-          console.log('Inserted');
-        },
-        function (error) {
-          console.log('Error occurred');
-        });
+      let executeQuery= '';
+      if(document.getElementById("doneMon").innerHTML  == "Update"){
+        executeQuery = 'UPDATE monsters SET HP=?,  CurrentHP=?,  AC=?,  PP=?,  Strength=?,  Dexterity=?,  Constitution=?,  Intelligence=?,  Wisdom=?,  Charisma=?,  STstr=?,  STdex=?,  STconstitution=?,  STint=? ,STwis=?,  STcharisma=? WHERE name=?';
+        transaction.executeSql(executeQuery, [ hp, currenthp, ac, pp, str, dex, constitution, int, wis, charisma,
+          SavingStrength, SavingDexterity, SavingConstitution, SavingIntelligence, SavingWisdom, SavingCharisma, name],
+          function (tx, result) {
+            console.log('Updated');
+            updateMonTable();
+          },
+          function (error) {
+            console.log('Error occurred');
+          });
+      }else{
+        executeQuery = 'INSERT INTO monsters (name, HP, CurrentHP, AC, PP, Strength, Dexterity, Constitution, Intelligence, Wisdom, Charisma, STstr, STdex, STconstitution, STint, STwis, STcharisma) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)';
+        transaction.executeSql(executeQuery, [name, hp, currenthp, ac, pp, str, dex, constitution, int, wis, charisma,
+          SavingStrength, SavingDexterity, SavingConstitution, SavingIntelligence, SavingWisdom, SavingCharisma],
+          function (tx, result) {
+            console.log('Inserted');
+          },
+          function (error) {
+            console.log('Error occurred');
+          });
+      }
+      
     });
+    if(document.getElementById("doneMon").innerHTML  != "Update"){
     addToMonsTable();
+    }
   }
   var elements = document.getElementsByTagName("input");
   for (var ii = 0; ii < elements.length; ii++) {
@@ -498,6 +516,21 @@ function insertMonster() {
   document.getElementById("monsterOverlay").style.opacity = "0"
   document.getElementById("monsterError").innerHTML = ""
   document.getElementById("monsterName").style.borderColor = "";
+}
+
+
+function updateMonTable(){
+  var table = document.getElementById("monsterTable");
+  table.innerHTML = "";
+  db.transaction(function (tx) {
+    tx.executeSql('SELECT * FROM monsters', [], function (tx, results) {
+
+      lenDbMons = results.rows.length;
+      if (lenDbMons > 0) {
+        fillMonsTable(results);
+      }
+    });
+  });
 }
 
 function addToMonsTable() {
@@ -529,7 +562,7 @@ function addToMonsTable() {
   if (document.getElementById("monsterName").value != "") {
     cell1.innerHTML = document.getElementById("monsterName").value;
 
-    cell4.innerHTML = "<button id='deleteButton' data-name=" + document.getElementById('monsterName').value + " onclick='deleteMonster(this)'>Delete</button>"
+    cell4.innerHTML = "<button id='editButton' data-name=" + document.getElementById('monsterName').value + " onclick='editMonster(this)'>Edit</button> <button id='deleteButton' data-name=" + document.getElementById('monsterName').value + " onclick='deleteMonster(this)'>Delete</button>"
 
     if (document.getElementById("monsterHP").value != "") {
       stats += "HP:" + document.getElementById("monsterHP").value + "<br/>";
@@ -633,6 +666,38 @@ function deleteMonster(event) {
 function editMonster(event) {
   document.getElementById("monsterOverlay").style.visibility = "visible";
   document.getElementById("monsterOverlay").style.opacity = "1";
+  document.getElementById("doneMon").innerText  = "Update";
+  db.transaction(function (transaction) {
+    var name = event.dataset.name;
+    var executeQuery = "SELECT * FROM monsters WHERE name=?";
+    transaction.executeSql(executeQuery, [name],
+      //On Success
+      function (tx, result) { 
+        const values = result.rows[0];
+        document.getElementById("monsterName").value = values.name;
+        document.getElementById("monsterName").disabled = true;
+        document.getElementById("monsterHP").value = values.HP
+        document.getElementById("monsterHP").value = values.CurrentHp
+  document.getElementById("monsterAC").value = values.AC
+  document.getElementById("monsterPP").value = values.PP
+  document.getElementById("monsterStrength").value = values.Strength
+  document.getElementById("monsterDexterity").value = values.Dexterity
+  document.getElementById("monsterConstitution").value = values.Constitution
+  document.getElementById("monsterIntelligence").value = values.Intelligence
+  document.getElementById("monsterWisdom").value =values.Wisdom
+  document.getElementById("monsterCharisma").value = values.Charisma
+  document.getElementById("monsterSavingStrength").value = values.STstr
+  document.getElementById("monsterSavingDexterity").value = values.STdex
+  document.getElementById("monsterSavingConstitution").value = values.STconstitution
+  document.getElementById("monsterSavingIntelligence").value = values.STint
+  document.getElementById("monsterSavingWisdom").value = values.STwis
+  document.getElementById("monsterSavingCharisma").value = values.STcharisma
+      },
+      //On Error
+      function (error) { console.log("Something went wrong"); });
+    
+  });
+      
 }
 //***************************************END MONSTER DATABASE FUNCTIONS *********************************************
 
@@ -718,7 +783,7 @@ function addToNpcTable() {
   if (document.getElementById("npcName").value != "") {
     cell1.innerHTML = document.getElementById("npcName").value;
 
-    cell4.innerHTML = "<button id='deleteButton' data-name=" + document.getElementById('npcName').value + " onclick='deleteMonster(this)'>Delete</button>"
+    cell4.innerHTML = "<button id='editButton' data-name=" + document.getElementById('npcName').value + " onclick='editMonster(this)'>Edit</button> <button id='deleteButton' data-name=" + document.getElementById('npcName').value + " onclick='deleteMonster(this)'>Delete</button>"
 
     if (document.getElementById("npcHP").value != "") {
       stats += "HP:" + document.getElementById("npcHP").value + "<br/>";
