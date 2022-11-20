@@ -178,7 +178,7 @@ function fillNpcTable(results) {
           reStats += it + ":" + items[it] + "<br/>";
         }
       }
-      else if (items[it] != null && items[it] != "" && it != "id" && it != "name") {
+      else if (items[it] != null && it != "id" && it != "name") {
         if(it.includes("STstr")){
           reSaving += "Saving Strength" + ":" + items[it] + "<br/>";
         }
@@ -730,17 +730,35 @@ function insertNpc() {
 
   if (name != null) {
     db.transaction(function (transaction) {
-      var executeQuery = 'INSERT INTO NPCs (name, HP, CurrentHP, AC, PP, Strength, Dexterity, Constitution, Intelligence, Wisdom, Charisma, STstr, STdex, STconstitution, STint, STwis, STcharisma) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)';
-      transaction.executeSql(executeQuery, [name, hp, currenthp, ac, pp, str, dex, constitution, int, wis, charisma,
-        SavingStrength, SavingDexterity, SavingConstitution, SavingIntelligence, SavingWisdom, SavingCharisma],
-        function (tx, result) {
-          console.log('Inserted');
-        },
-        function (error) {
-          console.log('Error occurred');
-        });
+      let executeQuery= '';
+      if(document.getElementById("doneNPC").innerHTML  == "Update"){
+        executeQuery = 'UPDATE NPCs SET HP=?,  CurrentHP=?,  AC=?,  PP=?,  Strength=?,  Dexterity=?,  Constitution=?,  Intelligence=?,  Wisdom=?,  Charisma=?,  STstr=?,  STdex=?,  STconstitution=?,  STint=? ,STwis=?,  STcharisma=? WHERE name=?';
+        transaction.executeSql(executeQuery, [ hp, currenthp, ac, pp, str, dex, constitution, int, wis, charisma,
+          SavingStrength, SavingDexterity, SavingConstitution, SavingIntelligence, SavingWisdom, SavingCharisma, name],
+          function (tx, result) {
+            console.log('Updated');
+            updateNpcTable();
+          },
+          function (error) {
+            console.log('Error occurred');
+          });
+      }else{
+        executeQuery = 'INSERT INTO NPCs (name, HP, CurrentHP, AC, PP, Strength, Dexterity, Constitution, Intelligence, Wisdom, Charisma, STstr, STdex, STconstitution, STint, STwis, STcharisma) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)';
+        transaction.executeSql(executeQuery, [name, hp, currenthp, ac, pp, str, dex, constitution, int, wis, charisma,
+          SavingStrength, SavingDexterity, SavingConstitution, SavingIntelligence, SavingWisdom, SavingCharisma],
+          function (tx, result) {
+            console.log('Inserted');
+          },
+          function (error) {
+            console.log('Error occurred');
+          });
+      }
+     
     });
-    addToNpcTable();
+    if(document.getElementById("doneNPC").innerHTML  != "Update"){
+      addToNpcTable();
+      }
+    
   }
   var elements = document.getElementsByTagName("input");
   for (var ii = 0; ii < elements.length; ii++) {
@@ -752,6 +770,22 @@ function insertNpc() {
   document.getElementById("npcOverlay").style.opacity = "0"
   document.getElementById("npcError").innerHTML = ""
   document.getElementById("npcName").style.borderColor = "";
+}
+
+
+
+function updateNpcTable(){
+  var table = document.getElementById("npcTable");
+  table.innerHTML = "";
+  db.transaction(function (tx) {
+    tx.executeSql('SELECT * FROM NPCs', [], function (tx, results) {
+
+      lenDbNpc = results.rows.length;
+      if (lenDbNpc > 0) {
+        fillNpcTable(results);
+      }
+    });
+  });
 }
 
 function addToNpcTable() {
@@ -783,7 +817,7 @@ function addToNpcTable() {
   if (document.getElementById("npcName").value != "") {
     cell1.innerHTML = document.getElementById("npcName").value;
 
-    cell4.innerHTML = "<button id='editButton' data-name=" + document.getElementById('npcName').value + " onclick='editMonster(this)'>Edit</button> <button id='deleteButton' data-name=" + document.getElementById('npcName').value + " onclick='deleteMonster(this)'>Delete</button>"
+    cell4.innerHTML = "<button id='editButton' data-name=" + document.getElementById('npcName').value + " onclick='editNpc(this)'>Edit</button> <button id='deleteButton' data-name=" + document.getElementById('npcName').value + " onclick='deleteMonster(this)'>Delete</button>"
 
     if (document.getElementById("npcHP").value != "") {
       stats += "HP:" + document.getElementById("npcHP").value + "<br/>";
@@ -887,6 +921,37 @@ function deleteNpc(event) {
 function editNpc(event) {
   document.getElementById("npcOverlay").style.visibility = "visible";
   document.getElementById("npcOverlay").style.opacity = "1";
+  document.getElementById("doneNPC").innerText  = "Update";
+  db.transaction(function (transaction) {
+    var name = event.dataset.name;
+    var executeQuery = "SELECT * FROM NPCs monsters WHERE name=?";
+    transaction.executeSql(executeQuery, [name],
+      //On Success
+      function (tx, result) { 
+        const values = result.rows[0];
+        document.getElementById("npcName").value = values.name;
+        document.getElementById("npcName").disabled = true;
+        document.getElementById("npcHP").value = values.HP
+        document.getElementById("npcHP").value = values.CurrentHp
+  document.getElementById("npcAC").value = values.AC
+  document.getElementById("npcPP").value = values.PP
+  document.getElementById("npcStrength").value = values.Strength
+  document.getElementById("npcDexterity").value = values.Dexterity
+  document.getElementById("npcConstitution").value = values.Constitution
+  document.getElementById("npcIntelligence").value = values.Intelligence
+  document.getElementById("npcWisdom").value =values.Wisdom
+  document.getElementById("npcCharisma").value = values.Charisma
+  document.getElementById("npcSavingStrength").value = values.STstr
+  document.getElementById("npcSavingDexterity").value = values.STdex
+  document.getElementById("npcSavingConstitution").value = values.STconstitution
+  document.getElementById("npcSavingIntelligence").value = values.STint
+  document.getElementById("npcSavingWisdom").value = values.STwis
+  document.getElementById("npcSavingCharisma").value = values.STcharisma
+      },
+      //On Error
+      function (error) { console.log("Something went wrong"); });
+    
+  });
 }
 
 

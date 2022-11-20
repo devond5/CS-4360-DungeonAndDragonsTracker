@@ -1,12 +1,14 @@
 # CS-4360-DungeonAndDragonsTracker
 To Do List
-- [x] Update Characters from main
-- [ ] Update Monsters from main
-- [ ] Update NPC from main
+- [X] Update Characters from main
+- [X] Update Monsters from main
+- [X] Update NPC from main
 - [ ] Save Off Characters locally for import
 - [ ] Save Off Monsters locally for import
 - [ ] Save Off NPCs locally for import
 - [ ] Add Spell durration and counter to Combat
+- [ ] Add input validation everywhere
+- [ ] Remember what tab you are on reload/charater
 
 ## Environment setup
 
