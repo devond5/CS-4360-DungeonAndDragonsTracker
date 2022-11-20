@@ -1,16 +1,12 @@
 #ignore platforms and plugin folders
-platforms/
-plugins/
-node_modules
+#ignore platforms and plugin folders
+!platforms
+platforms/*
+
+!plugins
+plugins/*
+node_modules/
 build
-
-!node_modules/
-
 node_modules/*
-!node_modules/.bin/
-!node_modules/cordova-android/
-!node_modules/cordova-browser/
-!node_modules/cordova-plugin-whitelist/
-!node_modules/cordova-sqlite-storage/
-!node_modules/cordova-sqlite-storage-dependencies/
+
 

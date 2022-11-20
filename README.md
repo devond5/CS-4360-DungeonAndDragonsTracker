@@ -6,6 +6,7 @@ To Do List
 - [ ] Save Off Characters locally for import
 - [ ] Save Off Monsters locally for import
 - [ ] Save Off NPCs locally for import
+- [ ] Add Spell durration and counter to Combat
 
 ## Environment setup
 
@@ -27,6 +28,7 @@ To set up environment follow these steps:
 ```
 > npm install -g cordova
 > cd [your D&D Github folder]
+> npm i
 > cordova run browser
 ```
 
