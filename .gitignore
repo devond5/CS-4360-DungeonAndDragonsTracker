@@ -1,12 +1,13 @@
 #ignore platforms and plugin folders
 #ignore platforms and plugin folders
-!platforms
+bin/*
+!/plugins
+!/plugins/android.json
+!/plugins/fetch.json
+plugins/*
 platforms/*
 
-!plugins
-plugins/*
-node_modules/
-build
-node_modules/*
-
-
+node_modules
+www/index.js
+js/**/*.js
+js/**/*.js.map
